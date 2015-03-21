@@ -15,7 +15,30 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    @RenderBody()
+    <div class="row">
+        <div class="large-12 columns">
+            <div class="main-wrapper">
+                <center>
+                    <h1>Some Sort of Game Store</h1>
+
+                    <h3>Maybe the best in town</h3>
+                </center>
+                    <hr>
+                    <div class="row">
+                        <div class="large-6 columns large-centered">
+                            <ul class="button-group even-4">
+                                <li><a href="#" class="button">Home</a></li>
+                                <li><a href="#" class="button">About</a></li>
+                                <li><a href="#" class="button">Adopt</a></li>
+                                <li><a href="#" class="button">Contact</a></li>
+                            </ul>
+                        </div>
+                    </div>
+</div>
+        </div>
+    </div>
+   
+     @RenderBody()
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/foundation")
@@ -25,4 +48,7 @@
     @*Use the Scripts section to define page specific scripts*@
     @RenderSection("scripts", required: false)
 </body>
+
+
 </html>
+
