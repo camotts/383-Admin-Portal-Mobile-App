@@ -1,111 +1,87 @@
-﻿@Scripts.Render("~/bundles/foundation")
-@Styles.Render("~/Content/foundation/css")
+﻿@{
+    ViewBag.Title = "Game Store";
+}
+
 
 
 
 
 <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
-<html>
+<style>
+    .video-section .pattern-overlay {
+background-color: rgba(71, 71, 71, 0.59);
+padding: 110px 0 32px;
+min-height: 496px; 
+/* Incase of overlay problems just increase the min-height*/
+}
+.video-section h1, .video-section h3{
+text-align:center;
+color:#fff;
+}
+.video-section h1{
+font-size:90px;
+font-family: 'Open Sans', sans-serif;
+font-weight:bold;
+margin: 40px auto 0px;
+text-shadow: 1px 1px 1px #000;
+-webkit-text-shadow: 1px 1px 1px #000;
+-moz-text-shadow: 1px 1px 1px #000;
+}
+.video-section h3{
+font-size: 25px;
+font-weight:lighter;
+font-family: 'Open Sans', sans-serif;
+margin: 0px auto 15px;
+}
+.video-section .buttonBar{display:none;}
+.player {font-size: 1px;}
+</style>
 
-<body>
-    
-    <div class="row">
-        <div class="large-12 columns">
 
 
+
+
+<section class="content-section video-section">
+    <div class="pattern-overlay">
+        <a id="bgndVideo" class="player" data-property="{videoURL:'Q21bznzy_HY',containment:'.video-section', quality:'large', autoPlay:true, mute:true, opacity:1}">bg</a>
+        <div class="container">
             <div class="row">
-                <div class="large-12 hide-for-small">
-
-                    <div id="featured" data-orbit>
-                        <img src="~/Content/images/index_fifa15.jpg" style="width:1000px;height:413px" alt="slide image">
-                        <img src="~/Content/images/index_gta5.jpg" style="width:1000px;height:413px" alt="slide image">
-                        <img src="~/Content/images/index_halo5.png" style="width:1000px;height:413px" alt="slide image">
-
-                    </div>
-
+                <div class="col-lg-12" style="padding-top:190px">
+                    <h1>Beta Version 0.1!</h1>
+                    <h3>Best and Cheapest Store in Town...</h3>
                 </div>
             </div>
-            
+        </div>
+    </div>
+</section>
 
-            <div class="row">
-                <hr>
-                <div class="large-8 columns">
-                    <h4>About</h4>
-                    <p>Bacon ipsum dolor sit amet nulla ham qui sint exercitation eiusmod commodo, chuck duis velit. Aute in reprehenderit, dolore aliqua non est magna in labore pig pork biltong. Eiusmod swine spare ribs reprehenderit culpa. Boudin aliqua adipisicing rump corned beef.</p>
-                    <i class="fi-social-twitter"></i>
-                </div>
-                <div class="large-4 columns">
-                    <img src="http://placehold.it/400x300&text=[img]">
-                </div>
-            </div>
+<div class="row">
+    <div class="col-md-4">
+        <h2>Getting started</h2>
+        <p>
+            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
+            enables a clean separation of concerns and gives you full control over markup
+            for enjoyable, agile development.
+        </p>
+        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Get more libraries</h2>
+        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
+        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Web Hosting</h2>
+        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
+        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+    </div>
+</div>
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
 
-            <div class="row">
-                <hr>
-                <div class="large-12 columns">
-                    <h4>Recent Releases</h4>
-                    <p>Click on each image!</p>
-
-                    <ul class="clearing-thumbs small-block-grid-1 medium-block-grid-2 large-block-grid-4" data-clearing>
-                        <li>
-                            <a href="http://placehold.it/800x500&text=[img]">
-                                <img data-caption="caption here..." src="http://placehold.it/800x500&text=[img]">
-                            </a>
-                        </li>
-                        <li>
-                            <a href="http://placehold.it/800x500&text=[img]"><img data-caption="caption 2 here..." src="http://placehold.it/800x500&text=[img]"></a>
-                        </li>
-                        <li>
-                            <a href="http://placehold.it/800x500&text=[img]"><img data-caption="caption 3 here..." src="http://placehold.it/800x500&text=[img]"></a>
-                        </li>
-                        <li>
-                            <a href="http://placehold.it/800x500&text=[img]"><img data-caption="caption 4 here..." src="http://placehold.it/800x500&text=[img]"></a>
-                        </li>
-                        <li>
-                            <a href="http://placehold.it/800x500&text=[img]"><img data-caption="caption 5 here..." src="http://placehold.it/800x500&text=[img]"></a>
-                        </li>
-                        <li>
-                            <a href="http://placehold.it/800x500&text=[img]"><img data-caption="caption 6 here..." src="http://placehold.it/800x500&text=[img]"></a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="row">
-                <div class="large-12 columns">
-                    <div class="panel">
-                        <div class="row">
-                            <div class="large-9 columns">
-                                <h4>Get in touch!</h4>
-                                <p>We're open 9am - 5pm, Monday through Saturdays.</p>
-                            </div>
-                            <div class="large-3 columns">
-                                <a href="#" class="radius button right" style="font-family: 'Open Sans', sans-serif;">Contact Us</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-            <footer class="row">
-                <div class="large-12 columns">
-                    <hr />
-                    <div class="row">
-                        <div class="large-6 columns">
-                            <p>© Copyright no one at all. Go to town.</p>
-                        </div>
-                        <div class="large-6 columns">
-                            <ul class="inline-list right">
-                                <li><a href="#">Link 1</a></li>
-                                <li><a href="#">Link 2</a></li>
-                                <li><a href="#">Link 3</a></li>
-                                <li><a href="#">Link 4</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </footer>
-
-</body>
-</html>
-
-    
+<script src="http://pupunzi.com/mb.components/mb.YTPlayer/demo/inc/jquery.mb.YTPlayer.js"></script>
+<script>
+    $(function () {
+        $(".player").mb_YTPlayer();
+    });
+</script>
