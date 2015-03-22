@@ -411,8 +411,9 @@
     <Content Include="Content\foundation\foundation.css" />
     <Content Include="Content\foundation\foundation.mvc.css" />
     <Content Include="Content\foundation\normalize.css" />
-    <Content Include="Content\images\index_fifa.jpg" />
+    <Content Include="Content\images\index_fifa15.jpg" />
     <Content Include="Content\images\index_gta5.jpg" />
+    <Content Include="Content\images\index_halo5.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -474,6 +475,9 @@
     <Content Include="Content\foundation\foundation-icons\foundation-icons.eot" />
     <Content Include="Content\foundation\foundation-icons\foundation-icons.ttf" />
     <Content Include="Content\foundation\foundation-icons\foundation-icons.woff" />
+    <Content Include="fonts\Junction-webfont.eot" />
+    <Content Include="fonts\Junction-webfont.ttf" />
+    <Content Include="fonts\Junction-webfont.woff" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\foundation\fastclick.js" />
     <Content Include="Scripts\foundation\foundation.abide.js" />

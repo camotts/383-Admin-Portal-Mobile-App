@@ -7,7 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>@ViewBag.Title - Welcome to Foundation</title>
-    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <link href='http://fonts.googleapis.com/css?family=Arvo' rel='stylesheet' type='text/css'>
+        <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
 
     @Styles.Render("~/Content/foundation/css")
 
@@ -17,25 +18,42 @@
 <body>
     <div class="row">
         <div class="large-12 columns">
-            <div class="main-wrapper">
-                <center>
-                    <h1>Some Sort of Game Store</h1>
+           
+                <div class="main-wrapper">
+                    <div class="color-combo" style="background-color:#008CBA">
+                        <center>
+                            <h1 style="font-family: 'Arvo', serif;color:white"><b>Some Sort of Game Store</b></h1>
 
-                    <h3>Maybe the best in town</h3>
-                </center>
-                    <hr>
+                            <h3 style="font-family: 'Arvo', serif;color:white">Maybe the best in town</h3>
+                        </center>
+                        <hr>
+                    </div>
+                    
                     <div class="row">
                         <div class="large-7 columns large-centered">
                             <ul class="button-group even-5">
-                                <li><a href="#" class="button">Home</a></li>
-                                <li><a href="#" class="button">Games</a></li>
-                                <li><a href="#" class="button">About</a></li>
-                                <li><a href="#" class="button">News</a></li>
-                                <li><a href="#" class="button">Contact</a></li>
+                                <li><a href="#" class="button" style="font-family: 'Open Sans', sans-serif;">Home</a></li>
+                                <li><a href="#" class="button" style="font-family: 'Open Sans', sans-serif;">Games</a></li>
+                                <li><a href="#" class="button" style="font-family: 'Open Sans', sans-serif;">About</a></li>
+                                <li><a href="#" class="button" style="font-family: 'Open Sans', sans-serif;">News</a></li>
+                                <li><a href="#" class="button" style="font-family: 'Open Sans', sans-serif;">Contact</a></li>
                             </ul>
                         </div>
                     </div>
 </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="large-12 columns">
+            <div class="nav-bar right">
+                <ul class="button-group  round">
+
+                    <li><a href="#" class="button success" style="font-family: 'Open Sans', sans-serif;">Sign Up</a></li>
+                    <li><a href="#" class="button success" style="font-family: 'Open Sans', sans-serif;">Log In</a></li>
+                </ul>
+            </div>
+
+            <hr />
         </div>
     </div>
    
