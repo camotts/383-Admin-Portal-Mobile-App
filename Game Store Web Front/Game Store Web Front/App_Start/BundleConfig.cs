@@ -1,4 +1,4 @@
-using System.Web;
+﻿using System.Web;
 using System.Web.Optimization;
 
 namespace Game_Store_Web_Front
@@ -19,13 +19,17 @@ namespace Game_Store_Web_Front
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
                         "~/Scripts/modernizr-*"));
 
-            #region Foundation Bundles
+            bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
+                      "~/Scripts/bootstrap.js",
+                      "~/Scripts/respond.js"));
 
-            bundles.Add(Foundation.Styles());
+            bundles.Add(new StyleBundle("~/Content/css").Include(
+                      "~/Content/bootstrap.css",
+                      "~/Content/site.css"));
 
-            bundles.Add(Foundation.Scripts());
-
-            #endregion
+            // Set EnableOptimizations to false for debugging. For more information,
+            // visit http://go.microsoft.com/fwlink/?LinkId=301862
+            BundleTable.EnableOptimizations = true;
         }
     }
 }

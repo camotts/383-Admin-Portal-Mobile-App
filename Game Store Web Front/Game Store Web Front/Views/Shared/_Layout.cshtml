@@ -1,55 +1,137 @@
 ﻿<!DOCTYPE html>
-<html class="no-js" lang="en">
+<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+<style>
+    
+nav.navbar-mybar { background: #fff; border-color: #ccc; box-shadow: 0 0 2px 0 #ccc; }
+nav.navbar-mybar a { color: #E64A19;font-family: 'Open Sans', sans-serif; }
+nav.navbar-mybar ul.navbar-nav a { color: #E64A19; border-style: solid; border-width: 0 0 2px 0; border-color: #fff; font-size:large }
+nav.navbar-mybar ul.navbar-nav a:hover,
+nav.navbar-mybar ul.navbar-nav a:visited,
+nav.navbar-mybar ul.navbar-nav a:focus,
+nav.navbar-mybar ul.navbar-nav a:active { background: #fff; }
+nav.navbar-mybar ul.navbar-nav a:hover { border-color: #f14444; }
+nav.navbar-mybar li.divider { background: #ccc; }
+nav.navbar-mybar button.navbar-toggle { background: #f14444; border-radius: 2px; }
+nav.navbar-mybar button.navbar-toggle:hover { background: #999; }
+nav.navbar-mybar button.navbar-toggle > span.icon-bar { background: #fff; }
+nav.navbar-mybar ul.dropdown-menu { border: 0; background: #fff; border-radius: 4px; margin: 4px 0; box-shadow: 0 0 4px 0 #ccc; }
+nav.navbar-mybar ul.dropdown-menu > li > a { color: #444; }
+nav.navbar-mybar ul.dropdown-menu > li > a:hover { background: #f14444; color: #fff; }
+nav.navbar-mybar span.badge { background: #f14444; font-weight: normal; font-size: 11px; margin: 0 4px; }
+nav.navbar-mybar span.badge.new { background: rgba(255, 0, 0, 0.8); color: #fff; }
+
+
+#search {
+    float: right;
+    margin-top: 9px;
+    width: 250px;
+}
+
+.search {
+    padding: 5px 0;
+    width: 230px;
+    height: 30px;
+    position: relative;
+    left: 10px;
+    float: left;
+    line-height: 42px;
+    font-family: 'Open Sans', sans-serif; 
+}
+
+    .search input {
+        position: absolute;
+        width: 0px;
+        float: Left;
+        margin-left: 210px;
+        -webkit-transition: all 0.7s ease-in-out;
+        -moz-transition: all 0.7s ease-in-out;
+        -o-transition: all 0.7s ease-in-out;
+        transition: all 0.7s ease-in-out;
+        height: 30px;
+        line-height: 18px;
+        padding: 0 2px 0 2px;
+        border-radius:1px;
+    }
+
+        .search:hover input, .search input:focus {
+            width: 200px;
+            margin-left: 0px;
+        }
+
+.btn {
+    height: 40px;
+    position: absolute;
+    right: 0;
+    top: 5px;
+    border-radius:1px;
+     
+}
+
+</style>
+
+
+<html>
 <head>
     <meta charset="utf-8" />
-
-    @*Set the viewport width to device width for mobile *@
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <title>@ViewBag.Title - Welcome to Foundation</title>
-    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-
-    @Styles.Render("~/Content/foundation/css")
-
-    @RenderSection("head", required: false)
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Best Store in Town</title>
+    @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
+
 <body>
-    <div class="row">
-        <div class="large-12 columns">
-            <div class="main-wrapper">
-                <center>
-                    <h1>Some Sort of Game Store</h1>
-
-                    <h3>Maybe the best in town</h3>
-                </center>
-                    <hr>
-                    <div class="row">
-                        <div class="large-7 columns large-centered">
-                            <ul class="button-group even-5">
-                                <li><a href="#" class="button">Home</a></li>
-                                <li><a href="#" class="button">Games</a></li>
-                                <li><a href="#" class="button">About</a></li>
-                                <li><a href="#" class="button">News</a></li>
-                                <li><a href="#" class="button">Contact</a></li>
-                            </ul>
-                        </div>
-                    </div>
-</div>
+    <nav class="navbar navbar-mybar navbar-fixed-top" style="height:60px">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <strong><a class="navbar-brand" href="#" style="font-size:40px">Best Game Store</a></strong> 
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-fw fa-bell-o"></i> Games <span class="glyphicon glyphicon-arrow-down"></span>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="#"><i class="fa fa-fw fa-tag"></i> <span class="badge">Recent Releases</span>  <span class="badge">By Date</span>All the new ones in Store !</a></li>
+                            <li><a href="#"><i class="fa fa-fw fa-thumbs-o-up"></i> <span class="badge">Coming Soon</span> Keep yourself Updated !</a></li>
+                            <li><a href="#"><i class="fa fa-fw fa-thumbs-o-up"></i> <span class="badge">All Collection</span>Look out for all the Games in Store !</a></li>
+                            <li><a href="#"><i class="fa fa-fw fa-thumbs-o-up"></i> <span class="badge">Sale</span>Save more than 36% !(Limited Offer)</a></li>
+                            
+                        </ul>
+                    </li>
+                    <li class="active"><a href="#">News <span class="sr-only">(current)</span></a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">About Us <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="#">Location</a></li>
+                            <li><a href="#">Contact Us</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">Return and Shipping</a></li>
+                            <li><a href="#exit">Our Team</a></li>
+                        </ul>
+                    </li>
+                    <li class="active"><a href="#">Sign In <span class="sr-only">(current)</span></a></li>
+                </ul>
+                <form class="search navbar-right">
+                        <input type="text" class="form-control input-sm" maxlength="64" placeholder="Search Game" />
+                    <button type="submit" class="btn btn-primary btn-sm" style="background-color:#E64A19; border-color: #E64A19; font-size:large ">Search</button>
+                    
+                </form>
         </div>
+    </nav>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Group 2 { Yet to Find a Good Name }</p>
+        </footer>
     </div>
-   
-     @RenderBody()
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/foundation")
-    <script>
-        $(document).foundation();
-    </script>
-    @*Use the Scripts section to define page specific scripts*@
+ 
     @RenderSection("scripts", required: false)
 </body>
-
-
 </html>
-
