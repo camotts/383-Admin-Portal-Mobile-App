@@ -171,7 +171,7 @@ namespace Game_Store_Web_Front.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-        public class UserLogin(){
+        public class UserLogin{
             public string ApiKey { get; set; }
             public int UserId { get; set; }
         }
