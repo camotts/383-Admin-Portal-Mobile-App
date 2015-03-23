@@ -20,6 +20,53 @@ nav.navbar-mybar ul.dropdown-menu > li > a:hover { background: #f14444; color: #
 nav.navbar-mybar span.badge { background: #f14444; font-weight: normal; font-size: 11px; margin: 0 4px; }
 nav.navbar-mybar span.badge.new { background: rgba(255, 0, 0, 0.8); color: #fff; }
 
+
+#search {
+    float: right;
+    margin-top: 9px;
+    width: 250px;
+}
+
+.search {
+    padding: 5px 0;
+    width: 230px;
+    height: 30px;
+    position: relative;
+    left: 10px;
+    float: left;
+    line-height: 42px;
+    font-family: 'Open Sans', sans-serif; 
+}
+
+    .search input {
+        position: absolute;
+        width: 0px;
+        float: Left;
+        margin-left: 210px;
+        -webkit-transition: all 0.7s ease-in-out;
+        -moz-transition: all 0.7s ease-in-out;
+        -o-transition: all 0.7s ease-in-out;
+        transition: all 0.7s ease-in-out;
+        height: 30px;
+        line-height: 18px;
+        padding: 0 2px 0 2px;
+        border-radius:1px;
+    }
+
+        .search:hover input, .search input:focus {
+            width: 200px;
+            margin-left: 0px;
+        }
+
+.btn {
+    height: 40px;
+    position: absolute;
+    right: 0;
+    top: 5px;
+    border-radius:1px;
+     
+}
+
 </style>
 
 
@@ -27,7 +74,7 @@ nav.navbar-mybar span.badge.new { background: rgba(255, 0, 0, 0.8); color: #fff;
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.Title - Best Store in Town</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
@@ -69,17 +116,18 @@ nav.navbar-mybar span.badge.new { background: rgba(255, 0, 0, 0.8); color: #fff;
                     </li>
                     <li class="active"><a href="#">Sign In <span class="sr-only">(current)</span></a></li>
                 </ul>
-                <form class="navbar-form navbar-right search-form" role="search">
-                    <input type="text" class="form-control" placeholder="Search" />
+                <form class="search navbar-right">
+                        <input type="text" class="form-control input-sm" maxlength="64" placeholder="Search Game" />
+                    <button type="submit" class="btn btn-primary btn-sm" style="background-color:#E64A19; border-color: #E64A19; font-size:large ">Search</button>
+                    
                 </form>
-            </div>
         </div>
     </nav>
     <div class="container body-content">
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p>&copy; @DateTime.Now.Year - Group 2 { Yet to Find a Good Name }</p>
         </footer>
     </div>
 
