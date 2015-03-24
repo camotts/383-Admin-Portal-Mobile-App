@@ -2,6 +2,9 @@
     ViewBag.Title = "Login";
 }
 
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+
 <h2>Login to buy Products!</h2>
 
 @using (Html.BeginForm("Login", "User", FormMethod.Post))
@@ -65,5 +68,4 @@
     </div>
 
 }
-
 
