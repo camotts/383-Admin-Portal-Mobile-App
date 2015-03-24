@@ -160,7 +160,7 @@ namespace Game_Store_Web_Front.Controllers
             var request = new RestRequest("api/ApiKey?email=" + email + "&password=" + password, Method.GET);
             var queryResult = client.Execute(request);
 
-            if (queryResult.ErrorException != null)
+            if (queryResult.StatusCode == System.Net.HttpStatusCode.OK)
             {
                 RestSharp.Deserializers.JsonDeserializer deserial = new JsonDeserializer();
                 var x = deserial.Deserialize<UserLogin>(queryResult);
