@@ -160,15 +160,24 @@ namespace Game_Store_Web_Front.Controllers
             var request = new RestRequest("api/ApiKey?email=" + email + "&password=" + password, Method.GET);
             var queryResult = client.Execute(request);
 
-            RestSharp.Deserializers.JsonDeserializer deserial = new JsonDeserializer();
-            var x = deserial.Deserialize<UserLogin>(queryResult);
+            if (queryResult.ErrorException != null)
+            {
+                RestSharp.Deserializers.JsonDeserializer deserial = new JsonDeserializer();
+                var x = deserial.Deserialize<UserLogin>(queryResult);
 
 
-            Session["ApiKey"] = x.ApiKey;
-            Session["UserId"] = x.UserId;
+                Session["ApiKey"] = x.ApiKey;
+                Session["UserId"] = x.UserId;
 
 
-            return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                return Content("An error occured with Log In credential!");
+            }
+            
+           
         }
 
         public class UserLogin{
