@@ -2,14 +2,14 @@
 <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 <style>
     
-nav.navbar-mybar { background: #fff; border-color: #ccc; box-shadow: 0 0 2px 0 #ccc; }
-nav.navbar-mybar a { color: #E64A19;font-family: 'Open Sans', sans-serif; }
+nav.navbar-mybar { background: #fff; border-color: #ccc; box-shadow: 0 0 2px 0 #ccc; text-decoration : none}
+nav.navbar-mybar a { color: #E64A19;font-family: 'Open Sans', sans-serif; text-decoration : none}
 nav.navbar-mybar ul.navbar-nav a { color: #E64A19; border-style: solid; border-width: 0 0 2px 0; border-color: #fff; font-size:large }
 nav.navbar-mybar ul.navbar-nav a:hover,
 nav.navbar-mybar ul.navbar-nav a:visited,
 nav.navbar-mybar ul.navbar-nav a:focus,
 nav.navbar-mybar ul.navbar-nav a:active { background: #fff; }
-nav.navbar-mybar ul.navbar-nav a:hover { border-color: #f14444; }
+nav.navbar-mybar ul.navbar-nav a:hover { border-color: #f14444; text-decoration:none }
 nav.navbar-mybar li.divider { background: #ccc; }
 nav.navbar-mybar button.navbar-toggle { background: #f14444; border-radius: 2px; }
 nav.navbar-mybar button.navbar-toggle:hover { background: #999; }
@@ -89,7 +89,7 @@ nav.navbar-mybar span.badge.new { background: rgba(255, 0, 0, 0.8); color: #fff;
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <strong><a class="navbar-brand" href="#" style="font-size:40px">Best Game Store</a></strong> 
+                <strong style="font-size:40px; text-decoration : none ">@Html.ActionLink("Best Game Store", "Index", "Home")</strong> 
             </div>
             <div class="collapse navbar-collapse" id="navbar">
                 <ul class="nav navbar-nav navbar-right">
@@ -114,7 +114,7 @@ nav.navbar-mybar span.badge.new { background: rgba(255, 0, 0, 0.8); color: #fff;
                             <li><a href="#exit">Our Team</a></li>
                         </ul>
                     </li>
-                    <li class="active"><a href="#">Sign In <span class="sr-only">(current)</span></a></li>
+                    <li class="active">@Html.ActionLink("Sign In","Login","User") <span class="sr-only">(current)</span></li>
                 </ul>
                 <form class="search navbar-right">
                         <input type="text" class="form-control input-sm" maxlength="64" placeholder="Search Game" />
