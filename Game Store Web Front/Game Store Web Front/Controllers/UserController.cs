@@ -12,33 +12,46 @@ namespace Game_Store_Web_Front.Controllers
 {
     public class UserController : Controller
     {
-        // GET: User
+
         public ActionResult Index()
         {
-            var client = new RestClient("http://localhost:12932/");
-            var request = new RestRequest("api/Users", Method.GET);
-            var apiKey = Session["ApiKey"];
-            var UserId = Session["UserId"];
-            request.AddHeader("xcmps383authenticationkey", apiKey.ToString());
-            request.AddHeader("xcmps383authenticationid", UserId.ToString());
-            IRestResponse queryResult = client.Execute(request);
-            List<User> x = new List<User>();
+            return View();
+        }
 
-            statusCodeCheck(queryResult);
-
-            if (queryResult.StatusCode == HttpStatusCode.OK)
+        [HttpPost]
+        public JsonResult ListAllUser(int jtStartIndex=0, int jtPageSize = 0, string jtSorting = null)
+        {
+            try
             {
-                RestSharp.Deserializers.JsonDeserializer deserial = new JsonDeserializer();
-                x = deserial.Deserialize<List<User>>(queryResult);
+                var client = new RestClient("http://localhost:12932/");
+                var request = new RestRequest("api/Users", Method.GET);
+                request.OnBeforeDeserialization = resp => { resp.ContentType = "application/json"; };
+
+                var apiKey = Session["ApiKey"];
+                var UserId = Session["UserId"];
+                request.AddHeader("xcmps383authenticationkey", apiKey.ToString());
+                request.AddHeader("xcmps383authenticationid", UserId.ToString());
+                IRestResponse queryResult = client.Execute(request);
+                List<User> x = new List<User>();
+
+                statusCodeCheck(queryResult);
+
+                if (queryResult.StatusCode == HttpStatusCode.OK)
+                {
+                    RestSharp.Deserializers.JsonDeserializer deserial = new JsonDeserializer();
+                    x = deserial.Deserialize<List<User>>(queryResult);
+                }
+
+                return Json(new { Result = "OK", Records = x }, JsonRequestBehavior.AllowGet);
             }
-
-
-            return View(x);
-            
+            catch (Exception ex) 
+            {
+                return Json(new { Result = "Error Here", Message = ex.Message });
+            }
         }
 
         // GET: User/Details/5
-        public ActionResult Details(int id)
+        public JsonResult Details(int id)
         {
             var client = new RestClient("http://localhost:12932/");
             var request = new RestRequest("api/Users/" + id, Method.GET);
@@ -47,32 +60,29 @@ namespace Game_Store_Web_Front.Controllers
             request.AddHeader("xcmps383authenticationkey", apiKey.ToString());
             request.AddHeader("xcmps383authenticationid", UserId.ToString());
             var queryResult = client.Execute(request);
+
             User x = new User();
 
             statusCodeCheck(queryResult);
 
-            
 
             if (queryResult.StatusCode == HttpStatusCode.OK)
             {
                 RestSharp.Deserializers.JsonDeserializer deserial = new JsonDeserializer();
                 x = deserial.Deserialize<User>(queryResult);
             }
-            return View(x);
+
+            return Json(new { Result = "Ok", Record = x });
         }
 
-        // GET: User/Create
-        public ActionResult Create()
-        {
 
-            return View();
-        }
+       
 
         // POST: User/Create
         [HttpPost]
         public ActionResult Create(User collection)
         {
-
+            
                 // TODO: Add insert logic here
                 var client = new RestClient("http://localhost:12932/");
                 var request = new RestRequest("api/Users/", Method.POST);
@@ -92,6 +102,8 @@ namespace Game_Store_Web_Front.Controllers
                 }
 
                 return RedirectToAction("Index");
+            
+          
         }
 
         // GET: User/Edit/5
@@ -104,6 +116,7 @@ namespace Game_Store_Web_Front.Controllers
             request.AddHeader("xcmps383authenticationkey", apiKey.ToString());
             request.AddHeader("xcmps383authenticationid", UserId.ToString());
             var queryResult = client.Execute(request);
+
             User x = new User();
 
             statusCodeCheck(queryResult);
@@ -115,8 +128,6 @@ namespace Game_Store_Web_Front.Controllers
                 RestSharp.Deserializers.JsonDeserializer deserial = new JsonDeserializer();
                 x = deserial.Deserialize<User>(queryResult);
             }
-
-
             return View(x);
         }
 
@@ -136,7 +147,6 @@ namespace Game_Store_Web_Front.Controllers
                 request.AddObject(collection);
                 var queryResult = client.Execute(request);
 
-
                 statusCodeCheck(queryResult);
 
 
@@ -145,7 +155,6 @@ namespace Game_Store_Web_Front.Controllers
                 {
                     return View();
                 }
-
                 return RedirectToAction("Index");
             }
             catch
@@ -174,7 +183,6 @@ namespace Game_Store_Web_Front.Controllers
                 request.AddHeader("xcmps383authenticationkey", apiKey.ToString());
                 request.AddHeader("xcmps383authenticationid", UserId.ToString());
                 var queryResult = client.Execute(request);
-
                 statusCodeCheck(queryResult);
 
 
@@ -183,7 +191,6 @@ namespace Game_Store_Web_Front.Controllers
                 {
                     return View();
                 }
-
                 return RedirectToAction("Index");
             }
             catch

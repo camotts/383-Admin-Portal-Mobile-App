@@ -1,0 +1,28 @@
+C:\Users\SLU-Student\Desktop\sp15-p3-g2\Game Store Web Front\Game Store Web Front\bin\Game Store Web Front.dll.config
+C:\Users\SLU-Student\Desktop\sp15-p3-g2\Game Store Web Front\Game Store Web Front\bin\Game Store Web Front.dll
+C:\Users\SLU-Student\Desktop\sp15-p3-g2\Game Store Web Front\Game Store Web Front\bin\Game Store Web Front.pdb
+C:\Users\SLU-Student\Desktop\sp15-p3-g2\Game Store Web Front\Game Store Web Front\bin\Antlr3.Runtime.dll
+C:\Users\SLU-Student\Desktop\sp15-p3-g2\Game Store Web Front\Game Store Web Front\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\SLU-Student\Desktop\sp15-p3-g2\Game Store Web Front\Game Store Web Front\bin\Newtonsoft.Json.dll
+C:\Users\SLU-Student\Desktop\sp15-p3-g2\Game Store Web Front\Game Store Web Front\bin\System.Web.Helpers.dll
+C:\Users\SLU-Student\Desktop\sp15-p3-g2\Game Store Web Front\Game Store Web Front\bin\System.Web.Mvc.dll
+C:\Users\SLU-Student\Desktop\sp15-p3-g2\Game Store Web Front\Game Store Web Front\bin\System.Web.Optimization.dll
+C:\Users\SLU-Student\Desktop\sp15-p3-g2\Game Store Web Front\Game Store Web Front\bin\System.Web.Razor.dll
+C:\Users\SLU-Student\Desktop\sp15-p3-g2\Game Store Web Front\Game Store Web Front\bin\System.Web.WebPages.Deployment.dll
+C:\Users\SLU-Student\Desktop\sp15-p3-g2\Game Store Web Front\Game Store Web Front\bin\System.Web.WebPages.dll
+C:\Users\SLU-Student\Desktop\sp15-p3-g2\Game Store Web Front\Game Store Web Front\bin\System.Web.WebPages.Razor.dll
+C:\Users\SLU-Student\Desktop\sp15-p3-g2\Game Store Web Front\Game Store Web Front\bin\WebGrease.dll
+C:\Users\SLU-Student\Desktop\sp15-p3-g2\Game Store Web Front\Game Store Web Front\bin\System.Web.Helpers.xml
+C:\Users\SLU-Student\Desktop\sp15-p3-g2\Game Store Web Front\Game Store Web Front\bin\System.Web.Mvc.xml
+C:\Users\SLU-Student\Desktop\sp15-p3-g2\Game Store Web Front\Game Store Web Front\bin\System.Web.Optimization.xml
+C:\Users\SLU-Student\Desktop\sp15-p3-g2\Game Store Web Front\Game Store Web Front\bin\System.Web.Razor.xml
+C:\Users\SLU-Student\Desktop\sp15-p3-g2\Game Store Web Front\Game Store Web Front\bin\System.Web.WebPages.xml
+C:\Users\SLU-Student\Desktop\sp15-p3-g2\Game Store Web Front\Game Store Web Front\bin\System.Web.WebPages.Deployment.xml
+C:\Users\SLU-Student\Desktop\sp15-p3-g2\Game Store Web Front\Game Store Web Front\bin\System.Web.WebPages.Razor.xml
+C:\Users\SLU-Student\Desktop\sp15-p3-g2\Game Store Web Front\Game Store Web Front\bin\Antlr3.Runtime.pdb
+C:\Users\SLU-Student\Desktop\sp15-p3-g2\Game Store Web Front\Game Store Web Front\bin\Newtonsoft.Json.xml
+C:\Users\SLU-Student\Desktop\sp15-p3-g2\Game Store Web Front\Game Store Web Front\obj\Debug\Game Store Web Front.csprojResolveAssemblyReference.cache
+C:\Users\SLU-Student\Desktop\sp15-p3-g2\Game Store Web Front\Game Store Web Front\obj\Debug\Game Store Web Front.dll
+C:\Users\SLU-Student\Desktop\sp15-p3-g2\Game Store Web Front\Game Store Web Front\obj\Debug\Game Store Web Front.pdb
+C:\Users\SLU-Student\Desktop\sp15-p3-g2\Game Store Web Front\Game Store Web Front\bin\RestSharp.dll
+C:\Users\SLU-Student\Desktop\sp15-p3-g2\Game Store Web Front\Game Store Web Front\bin\RestSharp.xml

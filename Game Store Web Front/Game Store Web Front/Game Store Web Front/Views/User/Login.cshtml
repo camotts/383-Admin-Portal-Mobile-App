@@ -1,0 +1,71 @@
+﻿@{
+    ViewBag.Title = "Login";
+}
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+
+<h2>Login to buy Products!</h2>
+
+@using (Html.BeginForm("Login", "User", FormMethod.Post))
+{
+    <div class="form-horizontal">
+        <h4></h4>
+        <hr />
+        
+        
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            <div class="container-fluid">
+                <section class="container">
+                    <div class="container-page">
+                        <div class="col-md-6">
+
+
+                            <div class="form-group col-lg-6">
+                                <label>Email Address</label>
+                                <input type="text" name="email" id="userLoginEmail" />
+                            </div>
+
+                            <div class="form-group col-lg-6">
+                                <label>Password</label>
+                                <input type="password" name="password" id="userLoginPassword" />
+                            </div>
+
+
+                            <div class="col-md-6">
+                                <input type="submit" value="Login" class="btn btn-primary" />
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <h3 class="dark-grey">Register with the Store</h3>
+                            <p>
+                                Register with us to enjoy Fast Shipping and Discount Offers.
+                            </p>
+                            <p>
+                                Please Contact our store employees to help you with creating an
+                                account with our Game Store.
+                            </p>
+                            <p>
+                                AFter creatign an account, you can log in with your email address and password.
+                            </p>
+                            <p>
+                                For any difficulties, please contact us.
+                            </p>
+
+                        <div class="col-md-6">
+                            <button type="submit" class="btn btn-primary btn-block">Contact Us</button>
+                       
+                            </div>
+                        
+                         </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+}
+
