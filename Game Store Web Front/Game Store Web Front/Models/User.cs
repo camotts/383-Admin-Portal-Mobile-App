@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Mvc;
 
 namespace Game_Store_Web_Front.Models
 {
@@ -18,5 +19,9 @@ namespace Game_Store_Web_Front.Models
 
         public string Password { get; set; }
 
+        
     }
+
+    
+
 }

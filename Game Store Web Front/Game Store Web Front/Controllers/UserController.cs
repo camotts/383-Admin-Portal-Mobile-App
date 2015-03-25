@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Game_Store_Web_Front.Models;
+using System.Net;
 
 namespace Game_Store_Web_Front.Controllers
 {
@@ -20,12 +21,20 @@ namespace Game_Store_Web_Front.Controllers
             var UserId = Session["UserId"];
             request.AddHeader("xcmps383authenticationkey", apiKey.ToString());
             request.AddHeader("xcmps383authenticationid", UserId.ToString());
-            var queryResult = client.Execute(request);
+            IRestResponse queryResult = client.Execute(request);
+            List<User> x = new List<User>();
 
-            RestSharp.Deserializers.JsonDeserializer deserial = new JsonDeserializer();
-            List<User> x = deserial.Deserialize<List<User>>(queryResult);
+            statusCodeCheck(queryResult);
+
+            if (queryResult.StatusCode == HttpStatusCode.OK)
+            {
+                RestSharp.Deserializers.JsonDeserializer deserial = new JsonDeserializer();
+                x = deserial.Deserialize<List<User>>(queryResult);
+            }
+
 
             return View(x);
+            
         }
 
         // GET: User/Details/5
@@ -38,10 +47,17 @@ namespace Game_Store_Web_Front.Controllers
             request.AddHeader("xcmps383authenticationkey", apiKey.ToString());
             request.AddHeader("xcmps383authenticationid", UserId.ToString());
             var queryResult = client.Execute(request);
+            User x = new User();
 
-            RestSharp.Deserializers.JsonDeserializer deserial = new JsonDeserializer();
-            User x = deserial.Deserialize<User>(queryResult);
+            statusCodeCheck(queryResult);
 
+            
+
+            if (queryResult.StatusCode == HttpStatusCode.OK)
+            {
+                RestSharp.Deserializers.JsonDeserializer deserial = new JsonDeserializer();
+                x = deserial.Deserialize<User>(queryResult);
+            }
             return View(x);
         }
 
@@ -56,8 +72,7 @@ namespace Game_Store_Web_Front.Controllers
         [HttpPost]
         public ActionResult Create(User collection)
         {
-            try
-            {
+
                 // TODO: Add insert logic here
                 var client = new RestClient("http://localhost:12932/");
                 var request = new RestRequest("api/Users/", Method.POST);
@@ -68,13 +83,15 @@ namespace Game_Store_Web_Front.Controllers
                 request.AddObject(collection);
                 var queryResult = client.Execute(request);
 
+                statusCodeCheck(queryResult);
+
+
+                if (queryResult.StatusCode != HttpStatusCode.OK)
+                {
+                    return View();
+                }
 
                 return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
         }
 
         // GET: User/Edit/5
@@ -87,9 +104,19 @@ namespace Game_Store_Web_Front.Controllers
             request.AddHeader("xcmps383authenticationkey", apiKey.ToString());
             request.AddHeader("xcmps383authenticationid", UserId.ToString());
             var queryResult = client.Execute(request);
+            User x = new User();
 
-            RestSharp.Deserializers.JsonDeserializer deserial = new JsonDeserializer();
-            User x = deserial.Deserialize<User>(queryResult);
+            statusCodeCheck(queryResult);
+
+
+
+            if (queryResult.StatusCode == HttpStatusCode.OK)
+            {
+                RestSharp.Deserializers.JsonDeserializer deserial = new JsonDeserializer();
+                x = deserial.Deserialize<User>(queryResult);
+            }
+
+
             return View(x);
         }
 
@@ -101,13 +128,23 @@ namespace Game_Store_Web_Front.Controllers
             {
                 // TODO: Add update logic here
                 var client = new RestClient("http://localhost:12932/");
-                var request = new RestRequest("api/Users/", Method.POST);
+                var request = new RestRequest("api/Users/", Method.PUT);
                 var apiKey = Session["ApiKey"];
                 var UserId = Session["UserId"];
                 request.AddHeader("xcmps383authenticationkey", apiKey.ToString());
                 request.AddHeader("xcmps383authenticationid", UserId.ToString());
                 request.AddObject(collection);
                 var queryResult = client.Execute(request);
+
+
+                statusCodeCheck(queryResult);
+
+
+
+                if (queryResult.StatusCode != HttpStatusCode.OK)
+                {
+                    return View();
+                }
 
                 return RedirectToAction("Index");
             }
@@ -137,6 +174,15 @@ namespace Game_Store_Web_Front.Controllers
                 request.AddHeader("xcmps383authenticationkey", apiKey.ToString());
                 request.AddHeader("xcmps383authenticationid", UserId.ToString());
                 var queryResult = client.Execute(request);
+
+                statusCodeCheck(queryResult);
+
+
+
+                if (queryResult.StatusCode != HttpStatusCode.OK)
+                {
+                    return View();
+                }
 
                 return RedirectToAction("Index");
             }
@@ -184,8 +230,31 @@ namespace Game_Store_Web_Front.Controllers
             public string ApiKey { get; set; }
             public int UserId { get; set; }
         }
-        
 
+        public void statusCodeCheck(IRestResponse queryResult)
+        {
+            switch (queryResult.StatusCode)
+            {
+                case HttpStatusCode.OK:
+                    // reaction to HttpStatusCode 
+                    break;
+                case HttpStatusCode.NotFound:
+                    // reaction to HttpStatusCode 
+                    break;
+                case HttpStatusCode.Forbidden:
+                    // reaction to HttpStatusCode 
+                    const string message = "Error retrieving response.  Check inner details for more info.";
+                    var twilioException = new ApplicationException(message, queryResult.ErrorException);
+                    //throw new ApplicationException(queryResult.ErrorMessage);
+                    ModelState.AddModelError("", queryResult.StatusDescription);
+                    //throw twilioException;
+                    break;
+                default:
+                    // reaction to HttpStatusCode 
+                    break;
+            }
+
+        }
 
     }
 }
