@@ -1,0 +1,48 @@
+﻿@model Game_Store_Web_Front.Models.Cart
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Cart</h4>
+    <hr />
+
+        <table class="table">
+            <tr>
+                <td>
+                    Game Name
+                </td>
+                <td>
+                    Price
+                </td>
+                <td>
+                    Inventory Count
+                </td>
+            </tr>
+            @foreach (Game_Store_Web_Front.Models.Game game in Model.Games)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => game.GameName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => game.Price)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => game.InventoryStock)
+                    </td>
+                </tr>
+
+            }
+
+        </table>
+
+   
+</div>
+<p>
+    @Html.ActionLink("Checkout", "Sale", new { id = Model.User_Id }) |
+    @Html.ActionLink("Cancel", "Index")
+</p>

@@ -15,7 +15,6 @@ namespace Game_Store_Web_Front.Models
         public string Email { get; set; }
         public int Role { get; set; }
         public string ApiKey { get; set; }
-
         public string Password { get; set; }
 
     }

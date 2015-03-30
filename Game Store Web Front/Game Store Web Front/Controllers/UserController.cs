@@ -8,6 +8,7 @@ using System.Web.Mvc;
 using Game_Store_Web_Front.Models;
 using System.Net;
 
+
 namespace Game_Store_Web_Front.Controllers
 {
     public class UserController : Controller
