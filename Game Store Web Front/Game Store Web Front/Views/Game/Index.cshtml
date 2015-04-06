@@ -9,63 +9,75 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.GameName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ReleaseDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Price)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.InventoryStock)
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.GameName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ReleaseDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Price)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.InventoryStock)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id}) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            <input type="button" id="@item.Id" onclick="deleteGame(@item.Id)" value="Delete"/>
-        </td>
-    </tr>
-}
+<div class="panel-group" id="accordion">
+    @foreach (var item in Model)
+    {
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#@item.Id">@item.GameName</a>
+                    <a class="pull-right" dir="rtl">
+                        <input type="button" id="deleteButton @item.Id" onclick="deleteGame(@item.Id)" class="pull-right" value="Delete" />       
+                        @Html.ActionLink("Details |", "Details", new { id = item.Id }, new { @class = "pull-right" })
+                        @Html.ActionLink("Edit |", "Edit", new { id = item.Id, }, new { @class = "pull-right" })
+                        
+                    </a>
+                </h4>
+            </div>
+            <div id="@item.Id" class="panel-collapse collapse collapse">
+                <div class="panel-body">
+                    <p>Inventory: @item.InventoryStock</p>
+                    <p>Price: @item.Price</p>
+                    <p>Release Date: @item.ReleaseDate</p>
+                    <p>Tags: 
+                        <ul>
+                            @foreach (var tag in item.Tags)
+                            {
 
-</table>
+                                <li>
+                                    @tag.Name
+                                </li>
 
-<script>
-    function deleteGame(deleteId) {
-        var temp = deleteId
-        $.ajax({
-            contentType: 'application/json',
-            type: 'POST',
-            url: '/Game/Delete',
-            data: JSON.stringify({id: deleteId}),
-            success: function (data) {
-                console.log("GOT IT");
-            },
-            error: function () {
-                console.trace();
-            }
-        });
+                            }
+                        </ul>
+                    </p>
+                    <p>
+                        Genres:
+                        <ul>
+                            @foreach (var genre in item.Genres)
+                            {
 
+                                <li>
+                                    @genre.Name
+                                </li>
+
+                            }
+                        </ul>
+                    </p>
+                </div>
+            </div>
+        </div>
     }
+</div>
 
-</script>
+
+    <script>
+        function deleteGame(deleteId) {
+            var temp = deleteId
+            $.ajax({
+                contentType: 'application/json',
+                type: 'POST',
+                url: '/Game/Delete',
+                data: JSON.stringify({ id: deleteId }),
+                success: function (data) {
+                    console.log("GOT IT");
+                },
+                error: function () {
+                    console.trace();
+                }
+            });
+
+        }
+
+    </script>

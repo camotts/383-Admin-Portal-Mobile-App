@@ -1,0 +1,64 @@
+﻿@model IEnumerable<Game_Store_Web_Front.Models.Tag>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            <input type="button" id="@item.Id" onclick="deleteTag(@item.Id)" value="Delete" />
+        </td>
+    </tr>
+}
+
+</table>
+
+
+<script>
+    function deleteTag(deleteId) {
+        var temp = deleteId
+        $.ajax({
+            contentType: 'application/json',
+            type: 'POST',
+            url: '/Tag/Delete',
+            data: JSON.stringify({id: deleteId}),
+            success: function (data) {
+                console.log("GOT IT");
+            },
+            error: function () {
+                console.trace();
+            }
+        });
+
+    }
+
+</script>
