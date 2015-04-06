@@ -1,10 +1,10 @@
-﻿@model IEnumerable<Game_Store_Web_Front.Models.Cart>
+﻿@model IEnumerable<Game_Store_Web_Front.Models.Sale>
 
 @{
-    ViewBag.Title = "listAllCarts";
+    ViewBag.Title = "listAllSales";
 }
 
-<h2>listAllCarts</h2>
+<h2>listAllSales</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -15,12 +15,14 @@
             @Html.DisplayNameFor(model => model.URL)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.CheckoutReady)
+            @Html.DisplayNameFor(model => model.SalesDate)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.User_Id)
+            @Html.DisplayNameFor(model => model.Total)
         </th>
-        <th></th>
+        <th>
+            Cart Contents
+        </th>
     </tr>
 
 @foreach (var item in Model) {
@@ -29,10 +31,13 @@
             @Html.DisplayFor(modelItem => item.URL)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.CheckoutReady)
+            @Html.DisplayFor(modelItem => item.SalesDate)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.User_Id)
+            @Html.DisplayFor(modelItem => item.Total)
+        </td>
+        <td>
+
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |

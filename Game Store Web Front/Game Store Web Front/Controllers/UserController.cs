@@ -140,7 +140,7 @@ namespace Game_Store_Web_Front.Controllers
             {
                 // TODO: Add update logic here
                 var client = new RestClient("http://localhost:12932/");
-                var request = new RestRequest("api/Users/", Method.PUT);
+                var request = new RestRequest("api/Users/"+id, Method.PUT);
                 var apiKey = Session["ApiKey"];
                 var UserId = Session["UserId"];
                 request.AddHeader("xcmps383authenticationkey", apiKey.ToString());

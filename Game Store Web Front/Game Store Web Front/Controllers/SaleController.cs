@@ -20,10 +20,10 @@ namespace Game_Store_Web_Front.Controllers
             return View();
         }
 
-        public ActionResult listAllCarts()
+        public ActionResult listAllSales()
         {
             var client = new RestClient("http://localhost:12932/");
-            var request = new RestRequest("api/Carts", Method.GET);
+            var request = new RestRequest("api/Sales", Method.GET);
             request.OnBeforeDeserialization = resp => { resp.ContentType = "application/json"; };
 
             var apiKey = Session["ApiKey"];
@@ -31,14 +31,14 @@ namespace Game_Store_Web_Front.Controllers
             request.AddHeader("xcmps383authenticationkey", apiKey.ToString());
             request.AddHeader("xcmps383authenticationid", UserId.ToString());
             IRestResponse queryResult = client.Execute(request);
-            List<Cart> x = new List<Cart>();
+            List<Sale> x = new List<Sale>();
 
             statusCodeCheck(queryResult);
 
             if (queryResult.StatusCode == HttpStatusCode.OK)
             {
                 RestSharp.Deserializers.JsonDeserializer deserial = new JsonDeserializer();
-                x = deserial.Deserialize<List<Cart>>(queryResult);
+                x = deserial.Deserialize<List<Sale>>(queryResult);
             }
 
             return View(x);
@@ -88,6 +88,7 @@ namespace Game_Store_Web_Front.Controllers
 
             statusCodeCheck(queryResult);
 
+
             if (queryResult.StatusCode == HttpStatusCode.OK)
             {
                 RestSharp.Deserializers.JsonDeserializer deserial = new JsonDeserializer();
@@ -97,7 +98,7 @@ namespace Game_Store_Web_Front.Controllers
             //process the sale
             request = new RestRequest("api/Sales/", Method.POST);
             request.OnBeforeDeserialization = resp => { resp.ContentType = "application/json"; };
-            request.AddObject(x);
+            request.AddBody(x);
             queryResult = client.Execute(request);
 
 

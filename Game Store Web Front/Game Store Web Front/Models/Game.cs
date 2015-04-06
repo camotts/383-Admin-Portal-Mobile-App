@@ -12,5 +12,7 @@ namespace Game_Store_Web_Front.Models
         public DateTime ReleaseDate { get; set; }
         public decimal Price { get; set; }
         public int InventoryStock { get; set; }
+        public List<Genre> Genres { get; set; }
+        public List<Tag> Tags { get; set; }
     }
 }
