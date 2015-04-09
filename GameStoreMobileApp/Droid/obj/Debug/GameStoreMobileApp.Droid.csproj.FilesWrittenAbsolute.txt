@@ -17,3 +17,4 @@
 /Users/rahulshrestha/XamProjects/GameStoreMobileApp/Droid/bin/Debug/FormsViewGroup.dll
 /Users/rahulshrestha/XamProjects/GameStoreMobileApp/Droid/bin/Debug/Xamarin.Forms.Core.dll
 /Users/rahulshrestha/XamProjects/GameStoreMobileApp/Droid/bin/Debug/Xamarin.Forms.Xaml.dll
+/Users/rahulshrestha/XamProjects/GameStoreMobileApp/Droid/bin/Debug/RestSharp.MonoDroid.dll

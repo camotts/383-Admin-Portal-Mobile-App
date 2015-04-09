@@ -73,6 +73,7 @@ class MonoPackageManager_Resources {
 		"FormsViewGroup.dll",
 		"Xamarin.Forms.Core.dll",
 		"Xamarin.Forms.Xaml.dll",
+		"RestSharp.MonoDroid.dll",
 		"System.Collections.Concurrent.dll",
 		"System.Collections.dll",
 		"System.ComponentModel.Annotations.dll",

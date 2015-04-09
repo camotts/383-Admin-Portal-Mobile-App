@@ -10,10 +10,10 @@ namespace GameStoreMobileApp
 		{
 			var headingLabel = new MyLabel {
 				XAlign = TextAlignment.Center,
-				Text = "BEST GAME STORE",
+				Text = "Best Game Store",
 				FontFamily = Device.OnPlatform (
 					null,
-					"SF Hollywood Hills",
+					"BEAUTYSC",
 					null),
 				FontSize = 55
 					
