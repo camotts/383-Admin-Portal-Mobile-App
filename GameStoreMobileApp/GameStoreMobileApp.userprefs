@@ -1,18 +1,19 @@
 ﻿<Properties StartupItem="Droid/GameStoreMobileApp.Droid.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.Nexus 5 (KitKat)" />
-  <MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workbench ActiveDocument="Droid/MainActivity.cs">
     <Files>
-      <File FileName="Droid/MainActivity.cs" Line="1" Column="1" />
-      <File FileName="Droid/MyLabelRendererDroid.cs" Line="17" Column="30" />
-      <File FileName="GameStoreMobileApp/GameStoreMobileApp.cs" Line="14" Column="17" />
+      <File FileName="Droid/MainActivity.cs" Line="15" Column="3" />
+      <File FileName="Droid/MyLabelRendererDroid.cs" Line="1" Column="1" />
+      <File FileName="GameStoreMobileApp/GameStoreMobileApp.cs" Line="1" Column="1" />
       <File FileName="GameStoreMobileApp/MyLabel.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
-          <Node name="GameStoreMobileApp.iOS" expanded="True">
-            <Node name="ComponentReferenceFolder" selected="True" />
+          <Node name="GameStoreMobileApp.Droid" expanded="True">
+            <Node name="MainActivity.cs" selected="True" />
           </Node>
+          <Node name="GameStoreMobileApp.iOS" expanded="True" />
         </State>
       </Pad>
     </Pads>
