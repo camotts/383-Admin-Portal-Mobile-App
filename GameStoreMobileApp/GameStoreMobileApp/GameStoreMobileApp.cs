@@ -12,7 +12,7 @@ namespace GameStoreMobileApp
 				XAlign = TextAlignment.Center,
 				Text = "Best Game Store",
 				FontFamily = Device.OnPlatform (
-					null,
+					"Money Money",
 					"BEAUTYSC",
 					null),
 				FontSize = 55
