@@ -14,11 +14,11 @@
 /Users/rahulshrestha/XamProjects/GameStoreMobileApp/iOS/obj/iPhoneSimulator/Debug/Icon-Small-40.png
 /Users/rahulshrestha/XamProjects/GameStoreMobileApp/iOS/obj/iPhoneSimulator/Debug/Icon-Small-40@2x.png
 /Users/rahulshrestha/XamProjects/GameStoreMobileApp/iOS/obj/iPhoneSimulator/Debug/Icon-Small-40@3x.png
-/Users/rahulshrestha/XamProjects/GameStoreMobileApp/iOS/bin/iPhoneSimulator/Debug/GameStoreMobileApp.iOS.exe.mdb
-/Users/rahulshrestha/XamProjects/GameStoreMobileApp/iOS/bin/iPhoneSimulator/Debug/GameStoreMobileApp.iOS.exe
-/Users/rahulshrestha/XamProjects/GameStoreMobileApp/iOS/obj/iPhoneSimulator/Debug/GameStoreMobileApp.iOS.exe
-/Users/rahulshrestha/XamProjects/GameStoreMobileApp/iOS/obj/iPhoneSimulator/Debug/GameStoreMobileApp.iOS.exe.mdb
 /Users/rahulshrestha/XamProjects/GameStoreMobileApp/iOS/bin/iPhoneSimulator/Debug/Xamarin.Forms.Platform.iOS.dll
 /Users/rahulshrestha/XamProjects/GameStoreMobileApp/iOS/bin/iPhoneSimulator/Debug/Xamarin.Forms.Core.dll
 /Users/rahulshrestha/XamProjects/GameStoreMobileApp/iOS/bin/iPhoneSimulator/Debug/Xamarin.Forms.Xaml.dll
 /Users/rahulshrestha/XamProjects/GameStoreMobileApp/iOS/bin/iPhoneSimulator/Debug/RestSharp.MonoTouch.dll
+/Users/rahulshrestha/XamProjects/GameStoreMobileApp/iOS/bin/iPhoneSimulator/Debug/GameStoreMobileApp.iOS.exe.mdb
+/Users/rahulshrestha/XamProjects/GameStoreMobileApp/iOS/bin/iPhoneSimulator/Debug/GameStoreMobileApp.iOS.exe
+/Users/rahulshrestha/XamProjects/GameStoreMobileApp/iOS/obj/iPhoneSimulator/Debug/GameStoreMobileApp.iOS.exe
+/Users/rahulshrestha/XamProjects/GameStoreMobileApp/iOS/obj/iPhoneSimulator/Debug/GameStoreMobileApp.iOS.exe.mdb

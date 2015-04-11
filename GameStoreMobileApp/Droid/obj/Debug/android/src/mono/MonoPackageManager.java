@@ -68,12 +68,12 @@ public class MonoPackageManager {
 class MonoPackageManager_Resources {
 	public static final String[] Assemblies = new String[]{
 		"GameStoreMobileApp.Droid.dll",
-		"Xamarin.Android.Support.v4.dll",
+		"RestSharp.MonoDroid.dll",
 		"Xamarin.Forms.Platform.Android.dll",
 		"FormsViewGroup.dll",
 		"Xamarin.Forms.Core.dll",
 		"Xamarin.Forms.Xaml.dll",
-		"RestSharp.MonoDroid.dll",
+		"Xamarin.Android.Support.v4.dll",
 		"System.Collections.Concurrent.dll",
 		"System.Collections.dll",
 		"System.ComponentModel.Annotations.dll",

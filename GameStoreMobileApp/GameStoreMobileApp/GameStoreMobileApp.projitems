@@ -11,5 +11,6 @@
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)GameStoreMobileApp.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MyLabel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HomeScreen.cs" />
   </ItemGroup>
 </Project>

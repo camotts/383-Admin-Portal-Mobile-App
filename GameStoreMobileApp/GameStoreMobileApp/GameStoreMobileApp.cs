@@ -8,24 +8,9 @@ namespace GameStoreMobileApp
 	{
 		public App ()
 		{
-			var headingLabel = new MyLabel {
-				XAlign = TextAlignment.Center,
-				Text = "Best Game Store",
-				FontFamily = Device.OnPlatform (
-					"Money Money",
-					"BEAUTYSC",
-					null),
-				FontSize = 55
-					
-			};
-
+			
 			// The root page of your application
-			MainPage = new ContentPage {
-				Content = new StackLayout {
-					VerticalOptions = LayoutOptions.Center,
-					Children = {headingLabel}
-					}
-			};
+			MainPage = new HomeScreen {};
 
 		}
 
