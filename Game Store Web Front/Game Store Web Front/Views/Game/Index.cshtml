@@ -26,7 +26,7 @@
                 <div class="panel-body">
                     <p>Inventory: @item.InventoryStock</p>
                     <p>Price: @item.Price</p>
-                    <p>Release Date: @item.ReleaseDate</p>
+                    <p>Release Date: @item.ReleaseDate.ToString("MMMM d, yyyy")</p>
                     <p>Tags: 
                         <ul>
                             @foreach (var tag in item.Tags)

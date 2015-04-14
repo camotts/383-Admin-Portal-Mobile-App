@@ -12,6 +12,8 @@ namespace Game_Store_Web_Front.Models
         public int Id { get; set; }
         public string GameName { get; set; }
 
+        [DisplayFormat(DataFormatString = "{0: MMMM d, yyyy}",
+               ApplyFormatInEditMode = true)]
         [DataType(DataType.Date)]
         public DateTime ReleaseDate { get; set; }
         public decimal Price { get; set; }
