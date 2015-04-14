@@ -17,15 +17,12 @@
             <div class="panel-heading">
                 <h4 class="panel-title">
                     <a data-toggle="collapse" data-parent="#accordion" href="#@item.Id">@item.GameName</a>
-                    <a class="pull-right" dir="rtl">
-                        <input type="button" id="deleteButton @item.Id" onclick="deleteGame(@item.Id)" class="pull-right" value="Delete" />       
-                        @Html.ActionLink("Details |", "Details", new { id = item.Id }, new { @class = "pull-right" })
-                        @Html.ActionLink("Edit |", "Edit", new { id = item.Id, }, new { @class = "pull-right" })
+                        <button type="button" id="deleteButton @item.Id" onclick="deleteGame(@item.Id)" class="pull-right btm btn-danger"  value="Delete">Delete</button>
+                        <button type="button" id="editButton @item.Id" onclick="window.location.href='/game/edit/@item.Id'" class="pull-right btm btn-warning" value="Edit">Edit</button>
                         
-                    </a>
                 </h4>
             </div>
-            <div id="@item.Id" class="panel-collapse collapse collapse">
+            <div id="@item.Id" class="panel-collapse collapse">
                 <div class="panel-body">
                     <p>Inventory: @item.InventoryStock</p>
                     <p>Price: @item.Price</p>
@@ -72,6 +69,7 @@
                 data: JSON.stringify({ id: deleteId }),
                 success: function (data) {
                     console.log("GOT IT");
+                    window.location.href = data.Url
                 },
                 error: function () {
                     console.trace();

@@ -34,6 +34,10 @@ namespace Game_Store_Web_Front.Controllers
             {
                 RestSharp.Deserializers.JsonDeserializer deserial = new JsonDeserializer();
                 tags = deserial.Deserialize<List<Tag>>(queryResult);
+                foreach (var tag in tags)
+                {
+                    tag.Id = parseId(tag.URL);
+                }
             }
 
             return View(tags);
@@ -152,11 +156,13 @@ namespace Game_Store_Web_Front.Controllers
 
                 statusCodeCheck(queryResult);
 
-                return RedirectToAction("Index");
+                var redirectUrl = new UrlHelper(Request.RequestContext).Action("Index", "Tag");
+                return Json(new { Url = redirectUrl });
             }
             catch
             {
-                return View();
+                var redirectUrl = new UrlHelper(Request.RequestContext).Action("Index", "Tag");
+                return Json(new { Url = redirectUrl });
             }
         }
 
@@ -186,6 +192,11 @@ namespace Game_Store_Web_Front.Controllers
                     break;
             }
 
+        }
+        public int parseId(string url)
+        {
+            string[] parsed = url.Split('/');
+            return Convert.ToInt32(parsed[parsed.Length - 1]);
         }
     }
 }

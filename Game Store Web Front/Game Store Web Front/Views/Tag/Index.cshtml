@@ -16,9 +16,6 @@
         <th>
             @Html.DisplayNameFor(model => model.Name)
         </th>
-        <th>
-
-        </th>
         <th></th>
     </tr>
 
@@ -30,12 +27,8 @@
             @Html.DisplayFor(modelItem => item.Name)
         </td>
         <td>
-
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            <input type="button" id="@item.Id" onclick="deleteTag(@item.Id)" value="Delete" />
+            <button type="button" id="editButton @item.Id" onclick="window.location.href='/tag/edit/@item.Id'" class="btm btn-warning" value="Edit">Edit</button>
+            <button type="button" id="@item.Id" onclick="deleteTag(@item.Id)" class="btm btn-danger" value="Delete">Delete</button>
         </td>
     </tr>
 }
@@ -53,6 +46,7 @@
             data: JSON.stringify({id: deleteId}),
             success: function (data) {
                 console.log("GOT IT");
+                window.location.href = data.Url
             },
             error: function () {
                 console.trace();

@@ -1,4 +1,5 @@
-﻿using Game_Store_Web_Front.Models;
+﻿using AutoMapper;
+using Game_Store_Web_Front.Models;
 using RestSharp;
 using RestSharp.Deserializers;
 using System;
@@ -33,8 +34,12 @@ namespace Game_Store_Web_Front.Controllers
             {
                 RestSharp.Deserializers.JsonDeserializer deserial = new JsonDeserializer();
                 allGames = deserial.Deserialize<List<Game>>(response); // string to object
+                foreach (var game in allGames)
+                {
+                    game.Id = parseId(game.URL);
+                }
             }
-
+            //todo parse url into id
             return View(allGames);
         }
 
@@ -67,13 +72,16 @@ namespace Game_Store_Web_Front.Controllers
             var queryResult = client.Execute(request);
             statusCodeCheck(queryResult);
 
+            var redirectUrl = new UrlHelper(Request.RequestContext).Action("Create", "Game");
 
 
             if (queryResult.StatusCode != HttpStatusCode.Created)
             {
-                return RedirectToAction("Create");
+                redirectUrl = new UrlHelper(Request.RequestContext).Action("Create", "Game");
+                return Json(new { Url = redirectUrl });
             }
-            return RedirectToAction("Index");
+            redirectUrl = new UrlHelper(Request.RequestContext).Action("Index", "Game");
+            return Json(new { Url = redirectUrl });
 
         }
 
@@ -108,9 +116,12 @@ namespace Game_Store_Web_Front.Controllers
                 {
                     foreach (Tag compared in game.Tags)
                     {
-                        if (thing.Id == compared.Id)
+                        if (thing.Name != null)
                         {
-                            thing.check = true;
+                            if (thing.Name.Equals(compared.Name))
+                            {
+                                thing.check = true;
+                            }
                         }
                     }
                 }
@@ -119,9 +130,12 @@ namespace Game_Store_Web_Front.Controllers
                 {
                     foreach (Genre compared in game.Genres)
                     {
-                        if (thing.Id == compared.Id)
+                        if (thing.Name != null)
                         {
-                            thing.check = true;
+                            if (thing.Name.Equals(compared.Name))
+                            {
+                                thing.check = true;
+                            }
                         }
                     }
                 }
@@ -137,13 +151,18 @@ namespace Game_Store_Web_Front.Controllers
             try
             {
                 // TODO: Add update logic here
+                Mapper.CreateMap<Game, outGame>();
+
                 var client = new RestClient("http://localhost:12932/");
                 var request = new RestRequest("api/Games/"+editedGame.Id, Method.PUT);
                 var apiKey = Session["ApiKey"];
                 var UserId = Session["UserId"];
                 request.AddHeader("xcmps383authenticationkey", apiKey.ToString());
                 request.AddHeader("xcmps383authenticationid", UserId.ToString());
-                request.AddObject(editedGame);
+
+                outGame outgoingGame = new outGame();
+                outgoingGame = Mapper.Map<outGame>(editedGame);
+                request.AddObject(outgoingGame);
 
                 var queryResult = client.Execute(request);
 
@@ -168,6 +187,7 @@ namespace Game_Store_Web_Front.Controllers
         {
             try
             {
+                
                 // TODO: Add update logic here
                 var client = new RestClient("http://localhost:12932/");
                 var request = new RestRequest("api/Games/" + id, Method.DELETE);
@@ -176,16 +196,19 @@ namespace Game_Store_Web_Front.Controllers
                 request.AddHeader("xcmps383authenticationkey", apiKey.ToString());
                 request.AddHeader("xcmps383authenticationid", UserId.ToString());
 
-
+                
+               
                 var queryResult = client.Execute(request);
 
                 statusCodeCheck(queryResult);
 
-                return RedirectToAction("Index");
+                var redirectUrl = new UrlHelper(Request.RequestContext).Action("Index", "Game");
+                return Json(new { Url = redirectUrl });
             }
             catch
             {
-                return View();
+                var redirectUrl = new UrlHelper(Request.RequestContext).Action("Index", "Game");
+                return Json(new { Url = redirectUrl });
             }
         }
 
@@ -264,6 +287,23 @@ namespace Game_Store_Web_Front.Controllers
                     break;
             }
 
+        }
+
+        public int parseId(string url)
+        {
+            string[] parsed = url.Split('/');
+            return Convert.ToInt32(parsed[parsed.Length-1]);
+        }
+
+        public class outGame{
+            public string URL { get; set; }
+            public int Id { get; set; }
+            public string GameName { get; set; }
+            public DateTime ReleaseDate { get; set; }
+            public decimal Price { get; set; }
+            public int InventoryStock { get; set; }
+            public IEnumerable<Genre> Genres { get; set; }
+            public IEnumerable<Tag> Tags { get; set; }
         }
     }
 }

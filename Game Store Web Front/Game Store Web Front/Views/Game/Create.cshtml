@@ -28,7 +28,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.ReleaseDate, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.ReleaseDate, new { htmlAttributes = new { @class = "form-control", @id="releaseDate" } })
+                @Html.EditorFor(model => model.ReleaseDate, new { htmlAttributes = new { @class = "form-control datepicker", @id="releaseDate" } })
                 @Html.ValidationMessageFor(model => model.ReleaseDate, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -96,6 +96,9 @@
 }
 
 <script>
+    $(function () {
+        $('.datepicker').datepicker();
+    });
     var createGame = {};
     function sendInput() {
         var tags = getCheckedTags();
@@ -127,6 +130,7 @@
             data: JSON.stringify(createGame),
             success: function (data) {
                 console.log("GOT IT");
+                window.location.href = data.Url
             },
             error: function () {
                 console.trace();
