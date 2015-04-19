@@ -11,18 +11,43 @@ namespace GameStoreMobileApp
 			var headingLabel = new MyLabel {
 				XAlign = TextAlignment.Center,
 				YAlign = TextAlignment.Center,
-				Text = "Best Game Store",
+				Text = "GameStore",
 				FontFamily = Device.OnPlatform (
 					"Money Money",
-					"BEAUTYSC",
+					"Money Money",
 					null),
-				FontSize = 55
+				FontSize = Device.OnPlatform (42,45,99)
+
+			};
+
+			var button = new Button {
+				Text = "Sign In",
+				TextColor = Color.White,
+				BackgroundColor = Color.FromHex ("#2196F3"),
+				Font = Font.SystemFontOfSize( 20 ),
+				WidthRequest = 10,
+				HeightRequest = 40,
+
 
 			};
 
 			var layout = new StackLayout();
 
+			if(Device.OS == TargetPlatform.iOS) {
+				layout.Padding = new Thickness (35,2,0,2);
+
+			}
+			if (Device.OS == TargetPlatform.Android) {
+				layout.Padding = new Thickness (35, 2, 0, 2);
+				headingLabel.TextColor = Color.Black;
+			} 
+			else {
+				layout.Padding = new Thickness (35, 2, 0, 2);
+			}
+
 			layout.Children.Add (headingLabel);
+			layout.Children.Add (new BoxView {Color = Color.Transparent, HeightRequest = 90});
+			layout.Children.Add (button);
 
 			// provide the background image
 			var homeScreenImage = new Image {Aspect = Aspect.Fill };

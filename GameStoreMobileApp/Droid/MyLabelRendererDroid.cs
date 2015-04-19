@@ -17,7 +17,7 @@ namespace GameStoreMobileApp.Droid
 			base.OnElementChanged (e);
 
 			var label = (TextView)Control;
-			Typeface font = Typeface.CreateFromAsset (Forms.Context.Assets, "BEAUTYSC.TTF");
+			Typeface font = Typeface.CreateFromAsset (Forms.Context.Assets, "Money Money.ttf");
 			label.Typeface = font;
 		}
 	}

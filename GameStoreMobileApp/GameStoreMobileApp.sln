@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "GameStoreMobileApp", "GameStoreMobileApp\GameStoreMobileApp.shproj", "{47B47693-46A4-4D48-9823-9671276B3C04}"
 EndProject
-Project("{9344BDBB-3E7F-41FC-A0DD-8665D75EE146}") = "GameStoreMobileApp.iOS", "iOS\GameStoreMobileApp.iOS.csproj", "{0E346688-F529-4E57-BE92-0628CE9B187E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameStoreMobileApp.iOS", "iOS\GameStoreMobileApp.iOS.csproj", "{0E346688-F529-4E57-BE92-0628CE9B187E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameStoreMobileApp.Droid", "Droid\GameStoreMobileApp.Droid.csproj", "{C2EA40F3-E197-4FED-B144-3DAD27F97BFA}"
 EndProject
