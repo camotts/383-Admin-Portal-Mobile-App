@@ -80,10 +80,12 @@ nav.navbar-mybar span.badge.new { background: rgba(255, 0, 0, 0.8); color: #fff;
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - Best Store in Town</title>
+    
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/Scripts/Custom%20Scripts/Checkbox.js")
+
     <script src="~/Scripts/Custom%20Scripts/Checkbox.js"></script>
 </head>
 
@@ -97,7 +99,7 @@ nav.navbar-mybar span.badge.new { background: rgba(255, 0, 0, 0.8); color: #fff;
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <strong style="font-size:40px; text-decoration : none ">@Html.ActionLink("Best Game Store", "Index", "Home")</strong> 
+                <strong style="font-size:40px; text-decoration : none ">@Html.ActionLink("Game Store", "Index", "Home")</strong> 
             </div>
             <div class="collapse navbar-collapse" id="navbar">
                 <ul class="nav navbar-nav navbar-right">
