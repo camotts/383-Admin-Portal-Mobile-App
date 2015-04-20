@@ -20,34 +20,38 @@ namespace GameStoreMobileApp
 
 			};
 
-			var button = new Button {
+			var SignUpButton = new Button {
 				Text = "Sign In",
 				TextColor = Color.White,
 				BackgroundColor = Color.FromHex ("#2196F3"),
 				Font = Font.SystemFontOfSize( 20 ),
-				WidthRequest = 10,
+				WidthRequest = 05,
 				HeightRequest = 40,
 
 
 			};
 
+			SignUpButton.Clicked += (o,e) => 
+			{Navigation.PushAsync (new SignUp());};
+
+
 			var layout = new StackLayout();
 
-			if(Device.OS == TargetPlatform.iOS) {
-				layout.Padding = new Thickness (35,2,0,2);
-
-			}
-			if (Device.OS == TargetPlatform.Android) {
-				layout.Padding = new Thickness (35, 2, 0, 2);
-				headingLabel.TextColor = Color.Black;
-			} 
-			else {
-				layout.Padding = new Thickness (35, 2, 0, 2);
-			}
+//			if(Device.OS == TargetPlatform.iOS) {
+//				layout.Padding = new Thickness (20,2,0,2);
+//
+//			}
+//			if (Device.OS == TargetPlatform.Android) {
+//				layout.Padding = new Thickness (35, 2, 0, 2);
+//				headingLabel.TextColor = Color.Black;
+//			} 
+//			else {
+//				layout.Padding = new Thickness (35, 2, 0, 2);
+//			}
 
 			layout.Children.Add (headingLabel);
 			layout.Children.Add (new BoxView {Color = Color.Transparent, HeightRequest = 90});
-			layout.Children.Add (button);
+			layout.Children.Add (SignUpButton);
 
 			// provide the background image
 			var homeScreenImage = new Image {Aspect = Aspect.Fill };
@@ -62,15 +66,13 @@ namespace GameStoreMobileApp
 			var relativeLayout = new RelativeLayout ();
 
 			relativeLayout.Children.Add(homeScreenImage,
-				Constraint.Constant(0),
-				Constraint.Constant(0),
-				Constraint.RelativeToParent((parent) => parent.Width),
-				Constraint.RelativeToParent((parent) => parent.Height));
+				Constraint.RelativeToParent (
+					((parent)=>{return 0;})
+				));
 
 			relativeLayout.Children.Add(layout,
-				Constraint.Constant(0),
-				Constraint.RelativeToParent((parent) => {return parent.Width/2;} ),
-				Constraint.RelativeToParent((parent) => {return parent.Height/2;} ));
+				Constraint.RelativeToParent((parent) => {return parent.Width/8;} ),
+				Constraint.RelativeToParent((parent) => {return parent.Height/3;} ));
 
 			 
 			Content = relativeLayout;

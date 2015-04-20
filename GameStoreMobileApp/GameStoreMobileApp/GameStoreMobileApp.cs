@@ -10,8 +10,9 @@ namespace GameStoreMobileApp
 		{
 			
 			// The root page of your application
-			MainPage = new HomeScreen {};
+			MainPage = new NavigationPage(new HomeScreen {});
 
+			//MainPage = new HomeScreen {};
 		}
 
 		protected override void OnStart ()
