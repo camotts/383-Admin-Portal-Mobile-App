@@ -16,7 +16,7 @@ namespace Game_Store_Web_Front.Controllers
         public ActionResult Index()
         {
             List<Tag> tags = new List<Tag>();
-            var client = new RestClient("http://dev.envocsupport.com/GameStore2/");
+            var client = new RestClient("http://localhost:12932/");
             var request = new RestRequest("api/Genres", Method.GET);
 
             var apiKey = Session["ApiKey"];
@@ -59,7 +59,7 @@ namespace Game_Store_Web_Front.Controllers
         [HttpPost]
         public ActionResult Create(Tag collection)
         {
-            var client = new RestClient("http://dev.envocsupport.com/GameStore2/");
+            var client = new RestClient("http://localhost:12932/");
             var request = new RestRequest("api/Tags/", Method.POST);
             var apiKey = Session["ApiKey"];
             var UserId = Session["UserId"];
@@ -82,7 +82,7 @@ namespace Game_Store_Web_Front.Controllers
         // GET: Tag/Edit/5
         public ActionResult Edit(int id)
         {
-            var client = new RestClient("http://dev.envocsupport.com/GameStore2/");
+            var client = new RestClient("http://localhost:12932/");
             var request = new RestRequest("api/Tags/" + id, Method.GET);
             var apiKey = Session["ApiKey"];
             var UserId = Session["UserId"];
@@ -111,7 +111,7 @@ namespace Game_Store_Web_Front.Controllers
             try
             {
                 // TODO: Add update logic here
-                var client = new RestClient("http://dev.envocsupport.com/GameStore2/");
+                var client = new RestClient("http://localhost:12932/");
                 var request = new RestRequest("api/Tags/" + id, Method.PUT);
                 var apiKey = Session["ApiKey"];
                 var UserId = Session["UserId"];
@@ -144,7 +144,7 @@ namespace Game_Store_Web_Front.Controllers
             try
             {
                 // TODO: Add update logic here
-                var client = new RestClient("http://dev.envocsupport.com/GameStore2/");
+                var client = new RestClient("http://localhost:12932/");
                 var request = new RestRequest("api/Tags/" + id, Method.DELETE);
                 var apiKey = Session["ApiKey"];
                 var UserId = Session["UserId"];

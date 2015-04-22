@@ -17,6 +17,8 @@
             <div class="panel-heading">
                 <h4 class="panel-title">
                     <a data-toggle="collapse" data-parent="#accordion" href="#@item.Id">@item.GameName</a>
+                   Share: @LinkShare.GetHtml(this.Url.ToString(), linkSites: new[]{
+                           LinkShareSite.Reddit, LinkShareSite.Facebook, LinkShareSite.Twitter})
                         <button type="button" id="deleteButton @item.Id" onclick="deleteGame(@item.Id)" class="pull-right btm btn-danger"  value="Delete">Delete</button>
                         <button type="button" id="editButton @item.Id" onclick="window.location.href='/game/edit/@item.Id'" class="pull-right btm btn-warning" value="Edit">Edit</button>
                         
