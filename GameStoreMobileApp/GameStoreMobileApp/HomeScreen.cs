@@ -8,6 +8,7 @@ namespace GameStoreMobileApp
 		public HomeScreen ()
 		{
 			this.Title = " Best Store in Town";
+			NavigationPage.SetBackButtonTitle (this, "Home");
 
 			// provide the heading label
 			var headingLabel = new MyLabel {

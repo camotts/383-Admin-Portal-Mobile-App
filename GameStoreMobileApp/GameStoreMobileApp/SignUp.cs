@@ -8,6 +8,7 @@ namespace GameStoreMobileApp
 		public SignUp ()
 		{
 			this.Title = "Sign Up";
+			NavigationPage.SetBackButtonTitle (this, "Sign Up");
 
 			Padding = new Thickness (20);
 			var outlineFrame = new Frame {
