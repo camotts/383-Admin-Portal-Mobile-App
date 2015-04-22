@@ -7,26 +7,43 @@ namespace GameStoreMobileApp
 	{
 		public SignUp ()
 		{
-			
-			this.Content = new Label 
-			{
+			this.Title = "Sign Up";
+
+			Padding = new Thickness (20);
+			var outlineFrame = new Frame {
+
+				OutlineColor = Color.Accent,
 				HorizontalOptions = LayoutOptions.Center,
 				VerticalOptions = LayoutOptions.Center,
-				Text = "Please Contact our Store Employees to make an account and enjoy " +
-					"lots of offers on Games Online and at the Store.",
-				FontSize = 25
+				BackgroundColor = Color.FromHex ("D#2F2F"),
+
+				Content = new Label {
+
+					XAlign = TextAlignment.Center,
+					Text = "Please Contact our Store Employees to make a Free Account and Enjoy " +
+						"lots of Offers On Games Online and at the Stores.",
+					FontSize = 20
+
+				}
 
 			};
+					
 
-			// provide the background image
-			var backgroundImage = new Image {Aspect = Aspect.Fill };
+			var layout = new StackLayout();
+			layout.Children.Add (outlineFrame);
+			layout.Padding = new Thickness (Device.OnPlatform (5, 0, 0), Device.OnPlatform (45, 0, 0), Device.OnPlatform (5, 0, 0), Device.OnPlatform (5, 0, 0));
 
-			backgroundImage.Source =  Device.OnPlatform(
-				ImageSource.FromFile("home_background.jpg"),
-				ImageSource.FromFile("home_background.jpg"),
-				null);
+			// merge views and create a layout
+			var relativeLayout = new RelativeLayout ();
 
+			//relativeLayout.BackgroundColor = Color.FromHex ("42A5F5");
 
+			relativeLayout.Children.Add(layout,
+				Constraint.RelativeToParent((parent) => {return parent.Width/48;} ),
+				Constraint.RelativeToParent((parent) => {return parent.Height/10;} ));
+			
+
+			Content = relativeLayout;
 		}
 	}
 }

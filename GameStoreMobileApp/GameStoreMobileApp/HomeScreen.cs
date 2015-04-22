@@ -7,6 +7,8 @@ namespace GameStoreMobileApp
 	{
 		public HomeScreen ()
 		{
+			this.Title = " Best Store in Town";
+
 			// provide the heading label
 			var headingLabel = new MyLabel {
 				XAlign = TextAlignment.Center,
