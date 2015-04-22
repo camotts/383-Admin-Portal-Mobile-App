@@ -22,7 +22,7 @@ namespace Game_Store_Web_Front.Controllers
 
         public ActionResult listAllSales()
         {
-            var client = new RestClient("http://localhost:12932/");
+            var client = new RestClient("http://dev.envocsupport.com/GameStore2/");
             var request = new RestRequest("api/Sales", Method.GET);
             request.OnBeforeDeserialization = resp => { resp.ContentType = "application/json"; };
 
@@ -49,7 +49,7 @@ namespace Game_Store_Web_Front.Controllers
 
         public ActionResult Details(int id)
         {
-            var client = new RestClient("http://localhost:12932/");
+            var client = new RestClient("http://dev.envocsupport.com/GameStore2/");
             var request = new RestRequest("api/Carts/"+id, Method.GET);
             request.OnBeforeDeserialization = resp => { resp.ContentType = "application/json"; };
 
@@ -75,7 +75,7 @@ namespace Game_Store_Web_Front.Controllers
         public ActionResult Sale(int id)
         {
             //get the cart we are selling
-            var client = new RestClient("http://localhost:12932/");
+            var client = new RestClient("http://dev.envocsupport.com/GameStore2/");
             var request = new RestRequest("api/Carts/" + id, Method.GET);
             request.OnBeforeDeserialization = resp => { resp.ContentType = "application/json"; };
 

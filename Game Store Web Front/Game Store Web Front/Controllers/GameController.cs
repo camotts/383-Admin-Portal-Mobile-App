@@ -16,7 +16,7 @@ namespace Game_Store_Web_Front.Controllers
         // GET: Game
         public ActionResult Index()
         {
-            var client = new RestClient("http://localhost:12932/");
+            var client = new RestClient("http://dev.envocsupport.com/GameStore2/");
             var request = new RestRequest("api/Games", Method.GET);
 
             var apiKey = Session["ApiKey"];
@@ -62,7 +62,7 @@ namespace Game_Store_Web_Front.Controllers
         [HttpPost]
         public ActionResult Create(Game createGame)
         {
-            var client = new RestClient("http://localhost:12932/");
+            var client = new RestClient("http://dev.envocsupport.com/GameStore2/");
             var request = new RestRequest("api/Games", Method.POST);
             var apiKey = Session["ApiKey"];
             var UserId = Session["UserId"];
@@ -88,7 +88,7 @@ namespace Game_Store_Web_Front.Controllers
         [HttpGet]
         public ActionResult Edit(int id)
         {
-            var client = new RestClient("http://localhost:12932/");
+            var client = new RestClient("http://dev.envocsupport.com/GameStore2/");
             var request = new RestRequest("api/Games/" + id, Method.GET);
             var apiKey = Session["ApiKey"];
             var UserId = Session["UserId"];
@@ -153,7 +153,7 @@ namespace Game_Store_Web_Front.Controllers
                 // TODO: Add update logic here
                 Mapper.CreateMap<Game, outGame>();
 
-                var client = new RestClient("http://localhost:12932/");
+                var client = new RestClient("http://dev.envocsupport.com/GameStore2/");
                 var request = new RestRequest("api/Games/"+editedGame.Id, Method.PUT);
                 var apiKey = Session["ApiKey"];
                 var UserId = Session["UserId"];
@@ -189,7 +189,7 @@ namespace Game_Store_Web_Front.Controllers
             {
                 
                 // TODO: Add update logic here
-                var client = new RestClient("http://localhost:12932/");
+                var client = new RestClient("http://dev.envocsupport.com/GameStore2/");
                 var request = new RestRequest("api/Games/" + id, Method.DELETE);
                 var apiKey = Session["ApiKey"];
                 var UserId = Session["UserId"];
@@ -214,7 +214,7 @@ namespace Game_Store_Web_Front.Controllers
 
         public List<Genre> getGenres()
         {
-            var client = new RestClient("http://localhost:12932/");
+            var client = new RestClient("http://dev.envocsupport.com/GameStore2/");
             var request = new RestRequest("api/Genres", Method.GET);
 
             var apiKey = Session["ApiKey"];
@@ -238,7 +238,7 @@ namespace Game_Store_Web_Front.Controllers
 
         public List<Tag> getTags()
         {
-            var client = new RestClient("http://localhost:12932/");
+            var client = new RestClient("http://dev.envocsupport.com/GameStore2/");
             var request = new RestRequest("api/Genres", Method.GET);
 
             var apiKey = Session["ApiKey"];
