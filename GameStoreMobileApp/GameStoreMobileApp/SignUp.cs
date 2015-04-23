@@ -28,19 +28,36 @@ namespace GameStoreMobileApp
 				}
 
 			};
-					
 
+			var ContactUsButton = new Button {
+				Text = "Contact Us",
+				TextColor = Color.White,
+				BackgroundColor = Color.FromHex ("#FF5722"),
+				Font = Font.SystemFontOfSize( 20 ),
+				WidthRequest = 1,
+				HeightRequest = 40
+
+			};
+
+			ContactUsButton.Clicked += (o,e) => 
+			{Navigation.PushAsync (new ContactUs());};
+		
+					
 			var layout = new StackLayout();
+
 			layout.Children.Add (outlineFrame);
+			layout.Children.Add (new BoxView {Color = Color.Transparent, HeightRequest = 40});
+			layout.Children.Add (ContactUsButton);
+
 			layout.Padding = new Thickness (Device.OnPlatform (5, 0, 0), Device.OnPlatform (45, 0, 0), Device.OnPlatform (5, 0, 0), Device.OnPlatform (5, 0, 0));
 
 			// merge views and create a layout
 			var relativeLayout = new RelativeLayout ();
 
-			//relativeLayout.BackgroundColor = Color.FromHex ("42A5F5");
+			//relativeLayout.BackgroundColor = Color.FromHex ("FAFAFA");
 
 			relativeLayout.Children.Add(layout,
-				Constraint.RelativeToParent((parent) => {return parent.Width/48;} ),
+				Constraint.RelativeToParent((parent) => {return parent.Width/50;} ),
 				Constraint.RelativeToParent((parent) => {return parent.Height/10;} ));
 			
 

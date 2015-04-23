@@ -13,5 +13,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)MyLabel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HomeScreen.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)SignUp.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ContactUs.cs" />
   </ItemGroup>
 </Project>

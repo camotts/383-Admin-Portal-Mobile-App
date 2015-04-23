@@ -14,7 +14,7 @@ namespace GameStoreMobileApp
 			var headingLabel = new MyLabel {
 				XAlign = TextAlignment.Center,
 				YAlign = TextAlignment.Center,
-				Text = "GameStore",
+				Text = "ANFIELD",
 				FontFamily = Device.OnPlatform (
 					"Money Money",
 					"Money Money",
@@ -29,7 +29,7 @@ namespace GameStoreMobileApp
 				BackgroundColor = Color.FromHex ("#2196F3"),
 				Font = Font.SystemFontOfSize( 20 ),
 				WidthRequest = 05,
-				HeightRequest = 40,
+				HeightRequest = 40
 
 
 			};
