@@ -66,6 +66,7 @@
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="MyLabelRendererDroid.cs" />
+    <Compile Include="SplashActivity.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -86,10 +87,14 @@
     <AndroidResource Include="Resources\drawable-hdpi\home_background.jpg" />
     <AndroidResource Include="Resources\drawable-xhdpi\home_background.jpg" />
     <AndroidResource Include="Resources\drawable-xxhdpi\home_background.jpg" />
-    <AndroidResource Include="Resources\drawable\21.jpg" />
     <AndroidResource Include="Resources\drawable-hdpi\21.jpg" />
     <AndroidResource Include="Resources\drawable-xhdpi\21.jpg" />
     <AndroidResource Include="Resources\drawable-xxhdpi\21.jpg" />
+    <AndroidResource Include="Resources\values\styles.xml" />
+    <AndroidResource Include="Resources\drawable\splash.png" />
+    <AndroidResource Include="Resources\drawable\21.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AndroidResource>
   </ItemGroup>
   <Import Project="..\GameStoreMobileApp\GameStoreMobileApp.projitems" Label="Shared" Condition="Exists('..\GameStoreMobileApp\GameStoreMobileApp.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />

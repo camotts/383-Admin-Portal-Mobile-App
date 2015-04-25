@@ -1,16 +1,15 @@
-﻿<Properties StartupItem="iOS/GameStoreMobileApp.iOS.csproj">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.Nexus 5 (KitKat)" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Droid/obj/Debug/android/src/gamestoremobileapp/droid/R.java">
+﻿<Properties StartupItem="Droid/GameStoreMobileApp.Droid.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.Nexus 5 (Lollipop)" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Droid/Resources/Resource.designer.cs">
     <Files>
-      <File FileName="GameStoreMobileApp/HomeScreen.cs" Line="101" Column="28" />
-      <File FileName="GameStoreMobileApp/SignUp.cs" Line="35" Column="46" />
-      <File FileName="GameStoreMobileApp/ContactUs.cs" Line="19" Column="32" />
+      <File FileName="GameStoreMobileApp/HomeScreen.cs" Line="97" Column="4" />
+      <File FileName="GameStoreMobileApp/SignUp.cs" Line="1" Column="1" />
+      <File FileName="GameStoreMobileApp/ContactUs.cs" Line="1" Column="1" />
       <File FileName="GameStoreMobileApp/LogIn.cs" Line="1" Column="1" />
       <File FileName="GameStoreMobileApp/LookAround.cs" Line="1" Column="1" />
-      <File FileName="../../Downloads/Xamarin.Forms_Intro/XamarinFormsSample/XamarinFormsSample/XamarinFormsSample/Views/EmployeeDetailPage.cs" Line="106" Column="4" />
-      <File FileName="GameStoreMobileApp/GameStoreMobileApp.cs" Line="16" Column="4" />
-      <File FileName="Droid/Resources/Resource.designer.cs" Line="42" Column="4" />
-      <File FileName="Droid/obj/Debug/android/src/gamestoremobileapp/droid/R.java" Line="15" Column="32" />
+      <File FileName="Droid/SplashActivity.cs" Line="27" Column="21" />
+      <File FileName="Droid/Resources/values/styles.xml" Line="3" Column="59" />
+      <File FileName="Droid/Resources/Resource.designer.cs" Line="54" Column="38" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

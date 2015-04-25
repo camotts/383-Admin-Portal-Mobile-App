@@ -1,5 +1,6 @@
 GameStoreMobileApp.Droid.MainActivity;gamestoremobileapp.droid.MainActivity
 GameStoreMobileApp.Droid.MyLabelRendererDroid;gamestoremobileapp.droid.MyLabelRendererDroid
+GameStoreMobileApp.Droid.SplashActivity;gamestoremobileapp.droid.SplashActivity
 Xamarin.Forms.Platform.Android.CellAdapter;xamarin.forms.platform.android.CellAdapter
 Xamarin.Forms.Platform.Android.FormsApplicationActivity;xamarin.forms.platform.android.FormsApplicationActivity
 Xamarin.Forms.Platform.Android.AndroidActivity;xamarin.forms.platform.android.AndroidActivity
