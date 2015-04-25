@@ -15,3 +15,21 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.well {
+    color:red;
+}
+
+.genre{
+    color:#E64A19;
+    background-color: white;
+}
+.tag {
+    color:#E64A19;
+    background-color: white;
+}
+
+.list-group-item.active, .list-group-item.active:hover, .list-group-item.active:focus {
+    color: white;
+    background-color: #E64A19;
+}
