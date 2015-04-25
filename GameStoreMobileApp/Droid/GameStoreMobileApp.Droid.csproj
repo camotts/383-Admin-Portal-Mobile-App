@@ -86,6 +86,10 @@
     <AndroidResource Include="Resources\drawable-hdpi\home_background.jpg" />
     <AndroidResource Include="Resources\drawable-xhdpi\home_background.jpg" />
     <AndroidResource Include="Resources\drawable-xxhdpi\home_background.jpg" />
+    <AndroidResource Include="Resources\drawable\21.jpg" />
+    <AndroidResource Include="Resources\drawable-hdpi\21.jpg" />
+    <AndroidResource Include="Resources\drawable-xhdpi\21.jpg" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\21.jpg" />
   </ItemGroup>
   <Import Project="..\GameStoreMobileApp\GameStoreMobileApp.projitems" Label="Shared" Condition="Exists('..\GameStoreMobileApp\GameStoreMobileApp.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />

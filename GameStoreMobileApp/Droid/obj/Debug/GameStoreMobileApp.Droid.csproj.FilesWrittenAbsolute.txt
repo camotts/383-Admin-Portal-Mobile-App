@@ -22,3 +22,11 @@
 /Users/rahulshrestha/XamProjects/GameStoreMobileApp/Droid/obj/Debug/uploadflags.txt
 /Users/rahulshrestha/XamProjects/GameStoreMobileApp/Droid/obj/Debug/GameStoreMobileApp.Droid.dll
 /Users/rahulshrestha/XamProjects/GameStoreMobileApp/Droid/obj/Debug/GameStoreMobileApp.Droid.dll.mdb
+/Users/rahulshrestha/XamProjects/GameStoreMobileApp/Droid/obj/Debug/res/drawable/1.jpg
+/Users/rahulshrestha/XamProjects/GameStoreMobileApp/Droid/obj/Debug/res/drawable/2.png
+/Users/rahulshrestha/XamProjects/GameStoreMobileApp/Droid/obj/Debug/res/drawable-hdpi/1.jpg
+/Users/rahulshrestha/XamProjects/GameStoreMobileApp/Droid/obj/Debug/res/drawable-hdpi/2.png
+/Users/rahulshrestha/XamProjects/GameStoreMobileApp/Droid/obj/Debug/res/drawable-xhdpi/1.jpg
+/Users/rahulshrestha/XamProjects/GameStoreMobileApp/Droid/obj/Debug/res/drawable-xhdpi/2.png
+/Users/rahulshrestha/XamProjects/GameStoreMobileApp/Droid/obj/Debug/res/drawable-xxhdpi/1.jpg
+/Users/rahulshrestha/XamProjects/GameStoreMobileApp/Droid/obj/Debug/res/drawable-xxhdpi/2.png

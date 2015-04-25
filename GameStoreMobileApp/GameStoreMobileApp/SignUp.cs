@@ -39,6 +39,16 @@ namespace GameStoreMobileApp
 
 			};
 
+			var LocateUsButton = new Button {
+				Text = "Locate Our Stores",
+				TextColor = Color.White,
+				BackgroundColor = Color.FromHex ("#FF5722"),
+				Font = Font.SystemFontOfSize( 20 ),
+				WidthRequest = 1,
+				HeightRequest = 40
+
+			};
+
 			ContactUsButton.Clicked += (o,e) => 
 			{Navigation.PushAsync (new ContactUs());};
 		
@@ -46,8 +56,10 @@ namespace GameStoreMobileApp
 			var layout = new StackLayout();
 
 			layout.Children.Add (outlineFrame);
-			layout.Children.Add (new BoxView {Color = Color.Transparent, HeightRequest = 40});
+			layout.Children.Add (new BoxView {Color = Color.Transparent, HeightRequest = 45});
 			layout.Children.Add (ContactUsButton);
+			layout.Children.Add (new BoxView {Color = Color.Transparent, HeightRequest = 25});
+			layout.Children.Add (LocateUsButton);
 
 			layout.Padding = new Thickness (Device.OnPlatform (5, 0, 0), Device.OnPlatform (45, 0, 0), Device.OnPlatform (5, 0, 0), Device.OnPlatform (5, 0, 0));
 

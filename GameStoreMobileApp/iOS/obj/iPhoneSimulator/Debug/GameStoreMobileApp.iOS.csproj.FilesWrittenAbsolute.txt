@@ -22,3 +22,4 @@
 /Users/rahulshrestha/XamProjects/GameStoreMobileApp/iOS/bin/iPhoneSimulator/Debug/GameStoreMobileApp.iOS.exe
 /Users/rahulshrestha/XamProjects/GameStoreMobileApp/iOS/obj/iPhoneSimulator/Debug/GameStoreMobileApp.iOS.exe
 /Users/rahulshrestha/XamProjects/GameStoreMobileApp/iOS/obj/iPhoneSimulator/Debug/GameStoreMobileApp.iOS.exe.mdb
+/Users/rahulshrestha/XamProjects/GameStoreMobileApp/iOS/obj/iPhoneSimulator/Debug/2.PNG

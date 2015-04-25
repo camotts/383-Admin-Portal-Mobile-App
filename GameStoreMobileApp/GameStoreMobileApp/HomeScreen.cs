@@ -24,9 +24,9 @@ namespace GameStoreMobileApp
 			};
 
 			var SignUpButton = new Button {
-				Text = "Sign In",
+				Text = "Sign Up",
 				TextColor = Color.White,
-				BackgroundColor = Color.FromHex ("#2196F3"),
+				BackgroundColor = Color.Accent,
 				Font = Font.SystemFontOfSize( 20 ),
 				WidthRequest = 05,
 				HeightRequest = 40
@@ -34,8 +34,38 @@ namespace GameStoreMobileApp
 
 			};
 
+			var LogInButton = new Button {
+				Text = "Log In",
+				TextColor = Color.White,
+				BackgroundColor = Color.FromHex ("#2196F3"),
+				Font = Font.SystemFontOfSize( 20 ),
+				WidthRequest = 05,
+				HeightRequest = 40,
+
+			
+			};
+
+			var LookAroundButton = new Button {
+				Text = "Look Around",
+				TextColor = Color.White,
+				BackgroundColor = Color.FromHex ("#2196F3"),
+				Font = Font.SystemFontOfSize( 20 ),
+				WidthRequest = 05,
+				HeightRequest = 40
+			
+			};
+					
+
+
 			SignUpButton.Clicked += (o,e) => 
 			{Navigation.PushAsync (new SignUp());};
+
+//			LogInButton.Clicked += (o,e) =>
+//			{Navigation.PushAsync (new LogIn());};
+//
+//			LookAroundButton.Clicked += (o,e) =>
+//			{Navigation.PushAsync (new LookAround());};
+
 
 
 			var layout = new StackLayout();
@@ -52,18 +82,23 @@ namespace GameStoreMobileApp
 //				layout.Padding = new Thickness (35, 2, 0, 2);
 //			}
 
+			layout.Children.Add (new BoxView {Color = Color.Transparent, HeightRequest = 50});
 			layout.Children.Add (headingLabel);
-			layout.Children.Add (new BoxView {Color = Color.Transparent, HeightRequest = 90});
+			layout.Children.Add (new BoxView {Color = Color.Transparent, HeightRequest = 30});
 			layout.Children.Add (SignUpButton);
+			
+			layout.Children.Add (new BoxView {Color = Color.Transparent, HeightRequest = 40});
+			layout.Children.Add(new BoxView() { Color = Color.FromHex ("EEEEEE"), WidthRequest = 100, HeightRequest = 2 });
+			layout.Children.Add (LogInButton);
+			layout.Children.Add (LookAroundButton);
 
 			// provide the background image
 			var homeScreenImage = new Image {Aspect = Aspect.Fill };
 
 			homeScreenImage.Source =  Device.OnPlatform(
-				ImageSource.FromFile("home_background.jpg"),
-				ImageSource.FromFile("home_background.jpg"),
+				ImageSource.FromFile("21.jpg"),
+				ImageSource.FromFile("21.jpg"),
 				null);
-
 
 			// merge views and create a layout
 			var relativeLayout = new RelativeLayout ();
@@ -77,7 +112,7 @@ namespace GameStoreMobileApp
 				Constraint.RelativeToParent((parent) => {return parent.Width/8;} ),
 				Constraint.RelativeToParent((parent) => {return parent.Height/3;} ));
 
-			 
+
 			Content = relativeLayout;
 			
 		}

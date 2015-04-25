@@ -14,5 +14,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)HomeScreen.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)SignUp.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ContactUs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)LogIn.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)LookAround.cs" />
   </ItemGroup>
 </Project>
