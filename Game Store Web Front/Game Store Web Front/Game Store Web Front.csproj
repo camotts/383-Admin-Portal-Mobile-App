@@ -141,12 +141,20 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Cart.cs" />
-    <Compile Include="Models\Game.cs" />
-    <Compile Include="Models\Genre.cs" />
-    <Compile Include="Models\Sale.cs" />
-    <Compile Include="Models\Tag.cs" />
-    <Compile Include="Models\User.cs" />
+    <Compile Include="Models\GetApikeyDTO.cs" />
+    <Compile Include="Models\GetCartDTO.cs" />
+    <Compile Include="Models\GetGameDTO.cs" />
+    <Compile Include="Models\GetGenreDTO.cs" />
+    <Compile Include="Models\GetSalesDTo.cs" />
+    <Compile Include="Models\GetTagDTO.cs" />
+    <Compile Include="Models\GetUserDTO.cs" />
+    <Compile Include="Models\Roles.cs" />
+    <Compile Include="Models\SetCartDTO.cs" />
+    <Compile Include="Models\SetGameDTO.cs" />
+    <Compile Include="Models\SetGenreDTO.cs" />
+    <Compile Include="Models\SetSalesDTO.cs" />
+    <Compile Include="Models\SetTagDTO.cs" />
+    <Compile Include="Models\SetUserDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -397,6 +405,8 @@
     <Content Include="Views\Genre\Index.cshtml" />
     <Content Include="Views\Genre\Edit.cshtml" />
     <Content Include="Views\Genre\Create.cshtml" />
+    <Content Include="Views\Sale\listAllCarts.cshtml" />
+    <Content Include="Views\Sale\createSale.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

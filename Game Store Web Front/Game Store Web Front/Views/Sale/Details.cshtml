@@ -1,4 +1,4 @@
-﻿@model Game_Store_Web_Front.Models.Cart
+﻿@model Game_Store_Web_Front.Models.GetCartDTO
 
 @{
     ViewBag.Title = "Details";
@@ -22,17 +22,17 @@
                     Inventory Count
                 </td>
             </tr>
-            @foreach (Game_Store_Web_Front.Models.Game game in Model.Games)
+            @foreach (var game in Model.Games)
             {
                 <tr>
                     <td>
-                        @Html.DisplayFor(modelItem => game.GameName)
+                        @Html.DisplayFor(modelItem => game.Item1.GameName)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => game.Price)
+                        @Html.DisplayFor(modelItem => game.Item1.Price)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => game.InventoryStock)
+                        @Html.DisplayFor(modelItem => game.Item1.InventoryStock)
                     </td>
                 </tr>
 

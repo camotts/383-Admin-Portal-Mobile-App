@@ -1,4 +1,4 @@
-﻿@model Game_Store_Web_Front.Models.Game
+﻿@model Game_Store_Web_Front.Models.SetGameDTO
 
 @{
     ViewBag.Title = "Create";
@@ -55,22 +55,24 @@
             <div class="row">
                 <div class="col-xs-6">
                     <h3 class="text-center">Genres</h3>
+                    <input type="search" placeholder="Genre Search" id="genreSearch" />
                     <div class="well" style="max-height: 300px;overflow: auto;">
-                        <ul id="check-list-box-genres"  class="list-group checked-list-box">
-                            @foreach (Game_Store_Web_Front.Models.Genre genre in ViewBag.genres)
+                        <ul id="check-list-box-genres" class="list-group checked-list-box">
+                            @foreach (Game_Store_Web_Front.Models.GetGenreDTO genre in ViewBag.genres)
                             {
-                                <li class="list-group-item" id="genre-@genre.Id">@genre.Name</li>
+                                <li class="genre list-group-item" id="genre-@genre.Id">@genre.Name</li>
                             }
                         </ul>
                     </div>
                 </div>
                 <div class="col-xs-6">
                     <h3 class="text-center">Tags</h3>
+                    <input type="search" placeholder="Tag Search" id="tagSearch" />
                     <div class="well" style="max-height: 300px;overflow: auto;">
                         <ul id="check-list-box-tags" class="list-group checked-list-box">
-                            @foreach (Game_Store_Web_Front.Models.Tag tag in ViewBag.tags)
+                            @foreach (Game_Store_Web_Front.Models.GetTagDTO tag in ViewBag.tags)
                             {
-                                <li class="list-group-item" id="genre-@tag.Id">@tag.Name</li>
+                                <li class="tag list-group-item" id="genre-@tag.Id">@tag.Name</li>
                             }
                         </ul>
                     </div>
@@ -78,12 +80,12 @@
             </div>
         </div>
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="button" value="Create" class="btn btn-default" onclick="sendInput();"/>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="button" value="Create" class="btn btn-default" onclick="sendInput();" />
+                </div>
             </div>
         </div>
-    </div>
  </form>
 }
 
@@ -157,4 +159,40 @@
         });
         return checkedItems;
     }
+
+    jQuery('#tagSearch').on('input', function () {
+        //$('.tag').css("display", "none");
+        var searchLetter = $('#tagSearch').val().toLocaleLowerCase();
+        $('.tag').each(function( idx, li){
+            var split = $(li).text().toLowerCase();
+            
+            if(!(split.indexOf(searchLetter) > -1)) {
+                li.style.display = "none";
+                console.log("hide?")
+            }
+            else{
+                
+                li.style.display = "block";
+                console.log("show?")
+            }
+
+        })
+    });
+
+    jQuery('#genreSearch').on('input', function () {
+        var searchLetter = $('#genreSearch').val().toLocaleLowerCase();
+        $('.genre').each(function (idx, li) {
+            var split = $(li).text().toLowerCase();
+
+            if (!(split.indexOf(searchLetter) > -1)) {
+                li.style.display = "none";
+                console.log("hide?")
+            }
+            else {
+
+                li.style.display = "block";
+                console.log("show?")
+            }
+
+        })
 </script>

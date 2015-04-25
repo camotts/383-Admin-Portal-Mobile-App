@@ -22,10 +22,14 @@ namespace Game_Store_Web_Front.Controllers
             var apiKey = Session["ApiKey"];
             var UserId = Session["UserId"];
 
-            request.AddHeader("xcmps383authenticationkey", apiKey.ToString());
-            request.AddHeader("xcmps383authenticationid", UserId.ToString());
+            try
+            {
+                request.AddHeader("xcmps383authenticationkey", apiKey.ToString());
+                request.AddHeader("xcmps383authenticationid", UserId.ToString());
+            }
+            catch { }
            
-            List<Game> allGames = new List<Game>();
+            List<GetGameDTO> allGames = new List<GetGameDTO>();
             var response = client.Execute(request);
 
             statusCodeCheck(response);
@@ -33,7 +37,7 @@ namespace Game_Store_Web_Front.Controllers
             if (response.StatusCode == HttpStatusCode.OK)
             {
                 RestSharp.Deserializers.JsonDeserializer deserial = new JsonDeserializer();
-                allGames = deserial.Deserialize<List<Game>>(response); // string to object
+                allGames = deserial.Deserialize<List<GetGameDTO>>(response); // string to object
                 foreach (var game in allGames)
                 {
                     game.Id = parseId(game.URL);
@@ -46,8 +50,8 @@ namespace Game_Store_Web_Front.Controllers
         [HttpGet]
         public ActionResult Create()
         {
-            List<Genre> genres = new List<Genre>();
-            List<Tag> tags = new List<Tag>();
+            List<GetGenreDTO> genres = new List<GetGenreDTO>();
+            List<GetTagDTO> tags = new List<GetTagDTO>();
 
             genres = getGenres();
             tags = getTags();
@@ -60,7 +64,7 @@ namespace Game_Store_Web_Front.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(Game createGame)
+        public ActionResult Create(SetGameDTO createGame)
         {
             var client = new RestClient("http://localhost:12932/");
             var request = new RestRequest("api/Games", Method.POST);
@@ -68,7 +72,8 @@ namespace Game_Store_Web_Front.Controllers
             var UserId = Session["UserId"];
             request.AddHeader("xcmps383authenticationkey", apiKey.ToString());
             request.AddHeader("xcmps383authenticationid", UserId.ToString());
-            request.AddObject(createGame);
+            request.RequestFormat = DataFormat.Json;
+            request.AddBody(createGame);
             var queryResult = client.Execute(request);
             statusCodeCheck(queryResult);
 
@@ -96,13 +101,13 @@ namespace Game_Store_Web_Front.Controllers
             request.AddHeader("xcmps383authenticationid", UserId.ToString());
             var queryResult = client.Execute(request);
 
-            List<Genre> genres = new List<Genre>();
-            List<Tag> tags = new List<Tag>();
+            List<GetGenreDTO> genres = new List<GetGenreDTO>();
+            List<GetTagDTO> tags = new List<GetTagDTO>();
             genres = getGenres();
             tags = getTags();
             
 
-            Game game = new Game();
+            GetGameDTO game = new GetGameDTO();
 
             statusCodeCheck(queryResult);
 
@@ -111,10 +116,10 @@ namespace Game_Store_Web_Front.Controllers
             if (queryResult.StatusCode == HttpStatusCode.OK)
             {
                 RestSharp.Deserializers.JsonDeserializer deserial = new JsonDeserializer();
-                game = deserial.Deserialize<Game>(queryResult);
-                foreach (Tag thing in tags)
+                game = deserial.Deserialize<GetGameDTO>(queryResult);
+                foreach (GetTagDTO thing in tags)
                 {
-                    foreach (Tag compared in game.Tags)
+                    foreach (GetTagDTO compared in game.Tags)
                     {
                         if (thing.Name != null)
                         {
@@ -126,9 +131,9 @@ namespace Game_Store_Web_Front.Controllers
                     }
                 }
 
-                foreach (Genre thing in genres)
+                foreach (GetGenreDTO thing in genres)
                 {
-                    foreach (Genre compared in game.Genres)
+                    foreach (GetGenreDTO compared in game.Genres)
                     {
                         if (thing.Name != null)
                         {
@@ -140,45 +145,66 @@ namespace Game_Store_Web_Front.Controllers
                     }
                 }
             }
+
+                game.Id = parseId(game.URL);
+
             ViewBag.genres = genres;
             ViewBag.tags = tags;
             return View(game);
         }
 
         [HttpPost]
-        public ActionResult Edit(Game editedGame)
+        public ActionResult Edit(GetGameDTO editedGame, string url)
         {
             try
             {
+                Mapper.CreateMap<SetGameDTO, GetGameDTO>();
                 // TODO: Add update logic here
-                Mapper.CreateMap<Game, outGame>();
 
-                var client = new RestClient("http://localhost:12932/");
-                var request = new RestRequest("api/Games/"+editedGame.Id, Method.PUT);
+                var client = new RestClient(editedGame.URL);
+                var request = new RestRequest(Method.PUT);
                 var apiKey = Session["ApiKey"];
                 var UserId = Session["UserId"];
                 request.AddHeader("xcmps383authenticationkey", apiKey.ToString());
                 request.AddHeader("xcmps383authenticationid", UserId.ToString());
+                request.RequestFormat = DataFormat.Json;
 
-                outGame outgoingGame = new outGame();
-                outgoingGame = Mapper.Map<outGame>(editedGame);
-                request.AddObject(outgoingGame);
+                SetGameDTO sentGame = new SetGameDTO();
+                sentGame.GameName = editedGame.GameName;
+                sentGame.Genres = new List<SetGenreDTO>();
+                foreach (var genre in editedGame.Genres)
+                {
+                    sentGame.Genres.Add(new SetGenreDTO() { Name = genre.Name });
+                }
+                sentGame.InventoryStock = editedGame.InventoryStock;
+                sentGame.Price = editedGame.Price;
+                sentGame.ReleaseDate = editedGame.ReleaseDate;
+                sentGame.Tags = new List<SetTagDTO>();
+                foreach (var tag in editedGame.Tags)
+                {
+                    sentGame.Tags.Add(new SetTagDTO() { Name = tag.Name });
+                }
 
+                request.AddBody(sentGame);
+                
                 var queryResult = client.Execute(request);
 
                 statusCodeCheck(queryResult);
 
-
+                var redirectUrl = new UrlHelper(Request.RequestContext).Action("Index", "Game");
 
                 if (queryResult.StatusCode != HttpStatusCode.OK)
                 {
-                    return View();
+                    redirectUrl = new UrlHelper(Request.RequestContext).Action("Edit/"+editedGame.Id, "Game");
+                    return Json(new { Url = redirectUrl });
                 }
-                return RedirectToAction("Index");
+                redirectUrl = new UrlHelper(Request.RequestContext).Action("Index", "Game");
+                return Json(new { Url = redirectUrl });
             }
-            catch
+            catch 
             {
-                return View();
+                var redirectUrl = new UrlHelper(Request.RequestContext).Action("Edit/"+editedGame.Id, "Game");
+                return Json(new { Url = redirectUrl });
             }
         }
 
@@ -212,7 +238,7 @@ namespace Game_Store_Web_Front.Controllers
             }
         }
 
-        public List<Genre> getGenres()
+        public List<GetGenreDTO> getGenres()
         {
             var client = new RestClient("http://localhost:12932/");
             var request = new RestRequest("api/Genres", Method.GET);
@@ -231,12 +257,12 @@ namespace Game_Store_Web_Front.Controllers
             if (queryResult.StatusCode == HttpStatusCode.OK)
             {
                 RestSharp.Deserializers.JsonDeserializer deserial = new JsonDeserializer();
-                return deserial.Deserialize<List<Genre>>(queryResult);
+                return deserial.Deserialize<List<GetGenreDTO>>(queryResult);
             }
             return null;
         }
 
-        public List<Tag> getTags()
+        public List<GetTagDTO> getTags()
         {
             var client = new RestClient("http://localhost:12932/");
             var request = new RestRequest("api/Genres", Method.GET);
@@ -255,7 +281,7 @@ namespace Game_Store_Web_Front.Controllers
             if (queryResult.StatusCode == HttpStatusCode.OK)
             {
                 RestSharp.Deserializers.JsonDeserializer deserial = new JsonDeserializer();
-                return deserial.Deserialize<List<Tag>>(queryResult);
+                return deserial.Deserialize<List<GetTagDTO>>(queryResult);
             }
 
             return null;
@@ -295,15 +321,5 @@ namespace Game_Store_Web_Front.Controllers
             return Convert.ToInt32(parsed[parsed.Length-1]);
         }
 
-        public class outGame{
-            public string URL { get; set; }
-            public int Id { get; set; }
-            public string GameName { get; set; }
-            public DateTime ReleaseDate { get; set; }
-            public decimal Price { get; set; }
-            public int InventoryStock { get; set; }
-            public IEnumerable<Genre> Genres { get; set; }
-            public IEnumerable<Tag> Tags { get; set; }
-        }
     }
 }

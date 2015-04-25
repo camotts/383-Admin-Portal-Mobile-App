@@ -1,0 +1,50 @@
+﻿@model IEnumerable<Game_Store_Web_Front.Models.GetCartDTO>
+
+@{
+    ViewBag.Title = "listAllCarts";
+}
+
+<h2>listAllCarts</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.URL)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CheckoutReady)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.User_Id)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        if (item.CheckoutReady)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.URL)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CheckoutReady)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.User_Id)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                    <button type="button" id="deleteButton @item.Id" onclick="deleteCart(@item.Id)" class="pull-right btm btn-danger" value="Delete">Delete</button> |
+                    @Html.ActionLink("Checkout", "Sale", new { id = item.Id })
+                </td>
+            </tr>
+        }
+    }
+
+</table>

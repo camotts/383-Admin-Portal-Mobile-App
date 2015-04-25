@@ -1,17 +1,20 @@
-﻿using System;
+﻿
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Net.Http;
+using System.Web;
 
 namespace Game_Store_Web_Front.Models
 {
-    public class Cart
+    public class GetCartDTO
     {
-        public string URL { get; set; }
         public int Id { get; set; }
+        public string URL { get; set; }
         public bool CheckoutReady { get; set; }
         public int User_Id { get; set; }
-        public List<Game> Games { get; set; }
+        public List<Tuple<SetGameDTO, int>> Games { get; set; }
+
     }
 }

@@ -33,14 +33,14 @@ namespace Game_Store_Web_Front.Controllers
                 request.AddHeader("xcmps383authenticationkey", apiKey.ToString());
                 request.AddHeader("xcmps383authenticationid", UserId.ToString());
                 IRestResponse queryResult = client.Execute(request);
-                List<User> x = new List<User>();
+                List<GetUserDTO> x = new List<GetUserDTO>();
 
                 statusCodeCheck(queryResult);
 
                 if (queryResult.StatusCode == HttpStatusCode.OK)
                 {
                     RestSharp.Deserializers.JsonDeserializer deserial = new JsonDeserializer();
-                    x = deserial.Deserialize<List<User>>(queryResult);
+                    x = deserial.Deserialize<List<GetUserDTO>>(queryResult);
                 }
 
                 return Json(new { Result = "OK", Records = x }, JsonRequestBehavior.AllowGet);
@@ -62,7 +62,7 @@ namespace Game_Store_Web_Front.Controllers
             request.AddHeader("xcmps383authenticationid", UserId.ToString());
             var queryResult = client.Execute(request);
 
-            User x = new User();
+            GetUserDTO x = new GetUserDTO();
 
             statusCodeCheck(queryResult);
 
@@ -70,7 +70,7 @@ namespace Game_Store_Web_Front.Controllers
             if (queryResult.StatusCode == HttpStatusCode.OK)
             {
                 RestSharp.Deserializers.JsonDeserializer deserial = new JsonDeserializer();
-                x = deserial.Deserialize<User>(queryResult);
+                x = deserial.Deserialize<GetUserDTO>(queryResult);
             }
 
             return Json(new { Result = "Ok", Record = x });
@@ -81,7 +81,7 @@ namespace Game_Store_Web_Front.Controllers
 
         // POST: User/Create
         [HttpPost]
-        public ActionResult Create(User collection)
+        public ActionResult Create(SetUserDTO collection)
         {
             
                 // TODO: Add insert logic here
@@ -118,7 +118,7 @@ namespace Game_Store_Web_Front.Controllers
             request.AddHeader("xcmps383authenticationid", UserId.ToString());
             var queryResult = client.Execute(request);
 
-            User x = new User();
+            GetUserDTO x = new GetUserDTO();
 
             statusCodeCheck(queryResult);
 
@@ -127,14 +127,14 @@ namespace Game_Store_Web_Front.Controllers
             if (queryResult.StatusCode == HttpStatusCode.OK)
             {
                 RestSharp.Deserializers.JsonDeserializer deserial = new JsonDeserializer();
-                x = deserial.Deserialize<User>(queryResult);
+                x = deserial.Deserialize<GetUserDTO>(queryResult);
             }
             return View(x);
         }
 
         // POST: User/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, User collection)
+        public ActionResult Edit(int id, SetUserDTO collection)
         {
             try
             {
@@ -217,7 +217,7 @@ namespace Game_Store_Web_Front.Controllers
             if (queryResult.StatusCode == System.Net.HttpStatusCode.OK)
             {
                 RestSharp.Deserializers.JsonDeserializer deserial = new JsonDeserializer();
-                var x = deserial.Deserialize<UserLogin>(queryResult);
+                var x = deserial.Deserialize<GetApikeyDTO>(queryResult);
 
 
                 Session["ApiKey"] = x.ApiKey;
@@ -234,10 +234,6 @@ namespace Game_Store_Web_Front.Controllers
            
         }
 
-        public class UserLogin{
-            public string ApiKey { get; set; }
-            public int UserId { get; set; }
-        }
 
         public void statusCodeCheck(IRestResponse queryResult)
         {

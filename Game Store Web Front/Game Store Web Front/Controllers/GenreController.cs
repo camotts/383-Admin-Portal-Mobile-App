@@ -14,7 +14,7 @@ namespace Game_Store_Web_Front.Controllers
     {
         public ActionResult Index()
         {
-            List<Genre> genres = new List<Genre>();
+            List<GetGenreDTO> genres = new List<GetGenreDTO>();
             var client = new RestClient("http://localhost:12932/");
             var request = new RestRequest("api/Genres", Method.GET);
 
@@ -32,7 +32,7 @@ namespace Game_Store_Web_Front.Controllers
             if (queryResult.StatusCode == HttpStatusCode.OK)
             {
                 RestSharp.Deserializers.JsonDeserializer deserial = new JsonDeserializer();
-                genres = deserial.Deserialize<List<Genre>>(queryResult);
+                genres = deserial.Deserialize<List<GetGenreDTO>>(queryResult);
                 foreach (var genre in genres)
                 {
                     genre.Id = parseId(genre.URL);
@@ -56,7 +56,7 @@ namespace Game_Store_Web_Front.Controllers
 
         // POST: Genre/Create
         [HttpPost]
-        public ActionResult Create(Genre collection)
+        public ActionResult Create(SetGenreDTO collection)
         {
             var client = new RestClient("http://localhost:12932/");
             var request = new RestRequest("api/Genres/", Method.POST);
@@ -89,7 +89,7 @@ namespace Game_Store_Web_Front.Controllers
             request.AddHeader("xcmps383authenticationid", UserId.ToString());
             var queryResult = client.Execute(request);
 
-            Genre x = new Genre();
+            GetGenreDTO x = new GetGenreDTO();
 
             statusCodeCheck(queryResult);
 
@@ -98,14 +98,17 @@ namespace Game_Store_Web_Front.Controllers
             if (queryResult.StatusCode == HttpStatusCode.OK)
             {
                 RestSharp.Deserializers.JsonDeserializer deserial = new JsonDeserializer();
-                x = deserial.Deserialize<Genre>(queryResult);
+                x = deserial.Deserialize<GetGenreDTO>(queryResult);
+                
+                x.Id = parseId(x.URL);
+                
             }
             return View(x);
         }
 
         // POST: Genre/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, Genre collection)
+        public ActionResult Edit(int id, SetGenreDTO collection)
         {
             try
             {

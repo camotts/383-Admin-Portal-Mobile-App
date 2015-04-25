@@ -15,7 +15,7 @@ namespace Game_Store_Web_Front.Controllers
         // GET: Tag
         public ActionResult Index()
         {
-            List<Tag> tags = new List<Tag>();
+            List<GetTagDTO> tags = new List<GetTagDTO>();
             var client = new RestClient("http://localhost:12932/");
             var request = new RestRequest("api/Genres", Method.GET);
 
@@ -33,7 +33,7 @@ namespace Game_Store_Web_Front.Controllers
             if (queryResult.StatusCode == HttpStatusCode.OK)
             {
                 RestSharp.Deserializers.JsonDeserializer deserial = new JsonDeserializer();
-                tags = deserial.Deserialize<List<Tag>>(queryResult);
+                tags = deserial.Deserialize<List<GetTagDTO>>(queryResult);
                 foreach (var tag in tags)
                 {
                     tag.Id = parseId(tag.URL);
@@ -57,7 +57,7 @@ namespace Game_Store_Web_Front.Controllers
 
         // POST: Tag/Create
         [HttpPost]
-        public ActionResult Create(Tag collection)
+        public ActionResult Create(SetTagDTO collection)
         {
             var client = new RestClient("http://localhost:12932/");
             var request = new RestRequest("api/Tags/", Method.POST);
@@ -90,7 +90,7 @@ namespace Game_Store_Web_Front.Controllers
             request.AddHeader("xcmps383authenticationid", UserId.ToString());
             var queryResult = client.Execute(request);
 
-            Tag x = new Tag();
+            GetTagDTO x = new GetTagDTO();
 
             statusCodeCheck(queryResult);
 
@@ -99,14 +99,15 @@ namespace Game_Store_Web_Front.Controllers
             if (queryResult.StatusCode == HttpStatusCode.OK)
             {
                 RestSharp.Deserializers.JsonDeserializer deserial = new JsonDeserializer();
-                x = deserial.Deserialize<Tag>(queryResult);
+                x = deserial.Deserialize<GetTagDTO>(queryResult);
+                x.Id = parseId(x.URL);
             }
             return View(x);
         }
 
         // POST: Tag/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, Tag collection)
+        public ActionResult Edit(int id, SetTagDTO collection)
         {
             try
             {

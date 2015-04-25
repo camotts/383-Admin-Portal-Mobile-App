@@ -1,4 +1,4 @@
-﻿@model Game_Store_Web_Front.Models.Game
+﻿@model Game_Store_Web_Front.Models.GetGameDTO
 
 @{
     ViewBag.Title = "Edit";
@@ -16,6 +16,7 @@
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.Id, new { @id = "gameId" })
+        @Html.HiddenFor(model => model.URL, new { @id = "gameURL" })
 
         <div class="form-group">
             @Html.LabelFor(model => model.GameName, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -28,7 +29,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.ReleaseDate, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.ReleaseDate, new { htmlAttributes = new { @class = "form-control", @id = "releaseDate" } })
+                @Html.EditorFor(model => model.ReleaseDate, new { htmlAttributes = new { @class = "form-control datepicker", @id = "releaseDate" } })
                 @Html.ValidationMessageFor(model => model.ReleaseDate, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -53,17 +54,18 @@
             <div class="row">
                 <div class="col-xs-6">
                     <h3 class="text-center">Genres</h3>
+                    <input type="search" placeholder="Genre Search" id="genreSearch" />
                     <div class="well" style="max-height: 300px;overflow: auto;">
                         <ul id="check-list-box-genres" class="list-group checked-list-box">
-                            @foreach (Game_Store_Web_Front.Models.Genre genre in ViewBag.genres)
+                            @foreach (Game_Store_Web_Front.Models.GetGenreDTO genre in ViewBag.genres)
                             {
                                 if (genre.check)
                                 {
-                                    <li class="list-group-item list-group-item-primary active" id="genre-@genre.Id" data-checked="true">@genre.Name</li>
+                                    <li class="genre list-group-item list-group-item-primary active" id="genre-@genre.Id" data-checked="true">@genre.Name</li>
                                 }
                                 else
                                 {
-                                    <li class="list-group-item" id="genre-@genre.Id">@genre.Name</li>
+                                    <li class="genre list-group-item" id="genre-@genre.Id">@genre.Name</li>
                                 
                                 }
                             }
@@ -72,17 +74,18 @@
                 </div>
                 <div class="col-xs-6">
                     <h3 class="text-center">Tags</h3>
+                    <input type="search" placeholder="Tag Search" id="tagSearch" />
                     <div class="well" style="max-height: 300px;overflow: auto;">
                         <ul id="check-list-box-tags" class="list-group checked-list-box">
-                            @foreach (Game_Store_Web_Front.Models.Tag tag in ViewBag.tags)
+                            @foreach (Game_Store_Web_Front.Models.GetTagDTO tag in ViewBag.tags)
                             {
                                 if (tag.check)
                                 {
-                                    <li class="list-group-item list-group-item-primary active" id="genre-@tag.Id" data-checked="true">@tag.Name</li>
+                                    <li class="tag list-group-item list-group-item-primary active" id="genre-@tag.Id" data-checked="true">@tag.Name</li>
                                 }
                                 else
                                 {
-                                    <li class="list-group-item" id="genre-@tag.Id">@tag.Name</li>
+                                    <li class="tag list-group-item" id="genre-@tag.Id">@tag.Name</li>
                                 }
                             }
                         </ul>
@@ -131,16 +134,19 @@
         editGame.Genres = genres;
         editGame.Tags = tags;
         editGame.id = $('#gameId').val();
+        editGame.URL = $('#gameURL').val();
 
-        console.debug(editGame);
+
 
         $.ajax({
             contentType: 'application/json',
             type: 'POST',
             url: '/Game/Edit',
-            data: JSON.stringify(editGame),
+            data:  JSON.stringify(editGame) ,
+                
             success: function (data) {
                 console.log("GOT IT");
+                window.location.href = data.Url
             },
             error: function () {
                 console.trace();
@@ -167,4 +173,47 @@
         });
         return checkedItems;
     }
+
+    function tagSearch() {
+        //var searchLetter = $('#tagSearch').val();
+        //console.log(searchLetter);
+        console.log("hemlp");
+    }
+
+    jQuery('#tagSearch').on('input', function () {
+        //$('.tag').css("display", "none");
+        var searchLetter = $('#tagSearch').val().toLocaleLowerCase();
+        $('.tag').each(function( idx, li){
+            var split = $(li).text().toLowerCase();
+            
+            if(!(split.indexOf(searchLetter) > -1)) {
+                li.style.display = "none";
+                console.log("hide?")
+            }
+            else{
+                
+                li.style.display = "block";
+                console.log("show?")
+            }
+
+        })
+    });
+
+    jQuery('#genreSearch').on('input', function () {
+        var searchLetter = $('#genreSearch').val().toLocaleLowerCase();
+        $('.genre').each(function (idx, li) {
+            var split = $(li).text().toLowerCase();
+
+            if (!(split.indexOf(searchLetter) > -1)) {
+                li.style.display = "none";
+                console.log("hide?")
+            }
+            else {
+
+                li.style.display = "block";
+                console.log("show?")
+            }
+
+        })
+    });
 </script>
