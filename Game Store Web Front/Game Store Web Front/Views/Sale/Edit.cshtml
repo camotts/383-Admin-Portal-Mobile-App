@@ -1,0 +1,157 @@
+﻿@model Game_Store_Web_Front.Models.GetSalesDTO
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>GetSalesDTO</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Id)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.URL, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.URL, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.URL, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.SalesDate, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.SalesDate, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.SalesDate, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Total, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Total, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Total, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        @Html.HiddenFor(model => model.Cart);
+        @Html.HiddenFor(model => model.Cart.CheckoutReady);
+        @Html.HiddenFor(model => model.Cart.Games);
+        @Html.HiddenFor(model => model.Cart.Id);
+        @Html.HiddenFor(model => model.Cart.URL);
+        @Html.HiddenFor(model => model.Cart.User_Id);
+
+        <div class="col-xs-6">
+            <h3 class="text-center">Games</h3>
+            <input type="search" placeholder="Game Search" id="gameSearch" />
+            <div class="well" style="max-height: 300px;overflow: auto;">
+                <ul id="check-list-box-games" class="list-group checked-list-box">
+                    @foreach(var game in Model.Cart.Games)
+                    {
+                        
+
+                            <li class="game list-group-item list-group-item-primary active" id="game-@game.Item1.Id" data-checked="true" >
+                            @game.Item1.GameName <input type="text" id="@game.Item1.GameName" placeholder="Quantity" value="@game.Item2" class="fedUpGameList" />
+                            </li>
+
+                        
+                    }
+                </ul>
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" onclick=""/>
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+<script>
+    var editSale = {};
+    function sendInput() {
+        var games = getCheckedGames();
+
+
+        var gameName = "test";
+        var releaseDate = "test";
+        var price = "1";
+        var inventoryCount = "1";
+        var id = "1"
+
+        
+        //createGame.Id = "1";
+        editSale.GameName = $('#gameName').val();;
+        editSale.ReleaseDate = $('#releaseDate').val();
+        editSale.Price = $('#price').val();
+        editSale.InventoryStock = $('#inventoryStock').val();
+        editSale.Genres = genres;
+        editSale.Tags = tags;
+        editSale.id = $('#gameId').val();
+        editSale.URL = $('#gameURL').val();
+
+
+
+        $.ajax({
+            contentType: 'application/json',
+            type: 'POST',
+            url: '/Game/Edit',
+            data: JSON.stringify(editGame),
+
+            success: function (data) {
+                console.log("GOT IT");
+                window.location.href = data.Url
+            },
+            error: function () {
+                console.trace();
+            }
+        });
+        
+    }
+
+    function getCheckedGames(){
+        var checkedItems = [], counter = 0;
+        $(".fedUpGameList").each(function (idx, li) {
+            var object = $(li);
+            checkedItems.push({ GameName: object.attr('id'), Quantity: object.val() });
+            
+        });
+        console.log(checkedItems);
+        return checkedItems;
+    }
+
+    jQuery('#gameSearch').on('input', function () {
+        var searchLetter = $('#gameSearch').val().toLocaleLowerCase();
+        $('.game').each(function (idx, li) {
+            var split = $(li).text().toLowerCase();
+
+            if (!(split.indexOf(searchLetter) > -1)) {
+                li.style.display = "none";
+                console.log("hide?")
+            }
+            else {
+
+                li.style.display = "block";
+                console.log("show?")
+            }
+
+        })
+    });
+</script>

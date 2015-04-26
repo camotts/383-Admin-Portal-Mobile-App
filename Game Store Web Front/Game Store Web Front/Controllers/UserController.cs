@@ -7,11 +7,12 @@ using System.Web;
 using System.Web.Mvc;
 using Game_Store_Web_Front.Models;
 using System.Net;
+using Game_Store_Web_Front.Attributes;
 
 
 namespace Game_Store_Web_Front.Controllers
 {
-    public class UserController : Controller
+    public class UserController : BaseController
     {
 
         public ActionResult Index()
@@ -201,12 +202,14 @@ namespace Game_Store_Web_Front.Controllers
         }
 
         [HttpGet]
+        [RequireSSL]
         public ActionResult Login()
         {
             return View();
         }
 
         [HttpPost]
+        [RequireSSL]
         public ActionResult Login(string email, string password)
         {
 

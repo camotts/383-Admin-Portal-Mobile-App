@@ -9,33 +9,35 @@ using Game_Store_Web_Front.Models;
 using System.Net;
 using AutoMapper;
 using Newtonsoft.Json;
+using Game_Store_Web_Front.DataContext;
+using Game_Store_Web_Front.Attributes;
 
 namespace Game_Store_Web_Front.Controllers
 {
-    public class SaleController : Controller
+
+    public class SaleController : BaseController
     {
-        
+        public dbContext db = new dbContext();
 
         //get Cart
         public ActionResult Index()
         {
-            
+
             return View();
         }
 
         public ActionResult listAllCarts()
         {
-            
+
 
             return View(getCarts());
         }
 
         [HttpGet]
         public ActionResult createSale(int id)
-        
         {
-            
-            return View(getSpecificSellCart(id));   
+
+            return View(getSpecificSellCart(id));
         }
 
 
@@ -56,7 +58,7 @@ namespace Game_Store_Web_Front.Controllers
             //manualy parse to an SetCartDTO
 
             outgoingCart.User_Id = parseId(sellCart.URL);
-            
+
             /*
             foreach (GetGameDTO game in sellCart.Games)
             {
@@ -75,10 +77,10 @@ namespace Game_Store_Web_Front.Controllers
                 tempGame.ReleaseDate = game.ReleaseDate;
                 cartGames.Add(tempGame);
             }
-             */ 
-             
+             */
+
             //outgoingCart.Games = cartGames;
-             
+
 
 
 
@@ -89,7 +91,7 @@ namespace Game_Store_Web_Front.Controllers
             var UserId = Session["UserId"];
             request.AddHeader("xcmps383authenticationkey", apiKey.ToString());
             request.AddHeader("xcmps383authenticationid", UserId.ToString());
-            
+
             request.AddObject(outgoingCart);
             var queryResult = client.Execute(request);
             statusCodeCheck(queryResult);
@@ -121,18 +123,22 @@ namespace Game_Store_Web_Front.Controllers
             {
                 RestSharp.Deserializers.JsonDeserializer deserial = new JsonDeserializer();
                 x = JsonConvert.DeserializeObject<List<GetSalesDTO>>(queryResult.Content);
+                foreach (var sale in x)
+                {
+                    sale.Id = parseId(sale.URL);
+                }
             }
 
             return View(x);
 
 
-            
+
         }
 
         public ActionResult Details(int id)
         {
             var client = new RestClient("http://localhost:12932/");
-            var request = new RestRequest("api/Carts/"+id, Method.GET);
+            var request = new RestRequest("api/Carts/" + id, Method.GET);
             request.OnBeforeDeserialization = resp => { resp.ContentType = "application/json"; };
 
 
@@ -153,7 +159,7 @@ namespace Game_Store_Web_Front.Controllers
             }
 
             return View(x);
-        
+
         }
 
         public ActionResult Sale(int id)
@@ -162,7 +168,7 @@ namespace Game_Store_Web_Front.Controllers
             var client = new RestClient("http://localhost:12932/");
             var request = new RestRequest("api/Carts/" + id, Method.GET);
             request.OnBeforeDeserialization = resp => { resp.ContentType = "application/json"; };
-            
+
             var apiKey = Session["ApiKey"];
             var UserId = Session["UserId"];
             request.AddHeader("xcmps383authenticationkey", apiKey.ToString());
@@ -179,7 +185,7 @@ namespace Game_Store_Web_Front.Controllers
                 RestSharp.Deserializers.JsonDeserializer deserial = new JsonDeserializer();
                 x = JsonConvert.DeserializeObject<GetCartDTO>(queryResult.Content);
             }
-            
+
             //process the sale
             request = new RestRequest("api/Sales/", Method.POST);
             request.AddHeader("xcmps383authenticationkey", apiKey.ToString());
@@ -199,10 +205,115 @@ namespace Game_Store_Web_Front.Controllers
 
             }
 
-            return RedirectToAction("Index");
+            return RedirectToAction("ListAllCarts");
 
         }
 
+        [HttpGet]
+        [RequireSSL]
+        public ActionResult Payment(int id)
+        {
+
+            GetCartDTO thing = getSpecificSellCart(id);
+            decimal price = 0;
+            foreach (var game in thing.Games)
+            {
+                price += game.Item1.Price;
+            }
+            Session["User"] = thing.User_Id;
+            ViewBag.Price = price;
+            return View();
+        }
+
+        [HttpPost]
+        [RequireSSL]
+        public ActionResult Payment(Payment info)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(info);
+            }
+            info.UserId = Convert.ToInt32(Session["User"]);
+            try
+            {
+                db.Payments.Add(info);
+                db.SaveChanges();
+            }
+            catch { }
+            Session["User"] = null;
+            Sale(info.UserId);
+
+            return RedirectToAction("ListAllCarts");
+        }
+
+        [HttpGet]
+        public ActionResult Edit(int id)
+        {
+            var client = new RestClient("http://localhost:12932/");
+            var request = new RestRequest("api/Sales/" + id, Method.GET);
+            var apiKey = Session["ApiKey"];
+            var UserId = Session["UserId"];
+            request.AddHeader("xcmps383authenticationkey", apiKey.ToString());
+            request.AddHeader("xcmps383authenticationid", UserId.ToString());
+            var queryResult = client.Execute(request);
+            List<GetGameDTO> games = getGames();
+            GetSalesDTO x = new GetSalesDTO();
+            GetSalesDTO send = new GetSalesDTO();
+
+            statusCodeCheck(queryResult);
+
+
+            ViewBag.games = games;
+
+            if (queryResult.StatusCode == HttpStatusCode.OK)
+            {
+                RestSharp.Deserializers.JsonDeserializer deserial = new JsonDeserializer();
+                x = JsonConvert.DeserializeObject<GetSalesDTO>(queryResult.Content);
+
+                x.Id = parseId(x.URL);
+                send.Id = x.Id;
+                send.SalesDate = x.SalesDate;
+                send.Total = x.Total;
+                send.URL = x.URL;
+                send.Cart = new GetCartDTO();
+                send.Cart.Games = new List<Tuple<GetGameDTO, int>>();
+                foreach (var game in games)
+                {
+                    foreach (var thing in x.Cart.Games)
+                    {
+                        if (game.GameName != null)
+                        {
+                            if (game.GameName.Equals(thing.Item1.GameName))
+                            {
+                                game.check = true;
+
+                            }
+                        }
+                    }
+                }
+
+                foreach (GetGameDTO game in games)
+                {
+                    if (x.Cart.Games.FirstOrDefault(m => m.Item1.GameName == game.GameName) != null)
+                    {
+                        send.Cart.Games.Add(Tuple.Create(game, x.Cart.Games.Where(m => m.Item1.GameName == game.GameName).FirstOrDefault().Item2));
+                    }
+                    else
+                    {
+                        send.Cart.Games.Add(Tuple.Create(game, 0));
+                    }
+                }
+
+            }
+            return View(send);
+        }
+
+        [HttpPost]
+        public ActionResult Edit(GetSalesDTO editedSale)
+        {
+
+            return null;
+        }
 
         public void statusCodeCheck(IRestResponse queryResult)
         {
@@ -284,6 +395,30 @@ namespace Game_Store_Web_Front.Controllers
                 }
             }
             return x;
+        }
+        public List<GetGameDTO> getGames()
+        {
+            var client = new RestClient("http://localhost:12932/");
+            var request = new RestRequest("api/Games", Method.GET);
+
+            var apiKey = Session["ApiKey"];
+            var UserId = Session["UserId"];
+
+            request = new RestRequest("api/Games", Method.GET);
+            request.AddHeader("xcmps383authenticationkey", apiKey.ToString());
+            request.AddHeader("xcmps383authenticationid", UserId.ToString());
+
+            var queryResult = client.Execute(request);
+
+            statusCodeCheck(queryResult);
+
+            if (queryResult.StatusCode == HttpStatusCode.OK)
+            {
+                RestSharp.Deserializers.JsonDeserializer deserial = new JsonDeserializer();
+                return deserial.Deserialize<List<GetGameDTO>>(queryResult);
+            }
+
+            return null;
         }
 
     }

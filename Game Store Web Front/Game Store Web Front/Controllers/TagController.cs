@@ -10,7 +10,7 @@ using System.Web.Mvc;
 
 namespace Game_Store_Web_Front.Controllers
 {
-    public class TagController : Controller
+    public class TagController : BaseController
     {
         // GET: Tag
         public ActionResult Index()
