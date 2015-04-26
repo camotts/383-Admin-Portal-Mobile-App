@@ -47,3 +47,6 @@
 /Users/rahulshrestha/sp15-p3-g2/GameStoreMobileApp/iOS/bin/iPhoneSimulator/Debug/Xamarin.Forms.Platform.iOS.dll
 /Users/rahulshrestha/sp15-p3-g2/GameStoreMobileApp/iOS/bin/iPhoneSimulator/Debug/Xamarin.Forms.Core.dll
 /Users/rahulshrestha/sp15-p3-g2/GameStoreMobileApp/iOS/bin/iPhoneSimulator/Debug/Xamarin.Forms.Xaml.dll
+/Users/rahulshrestha/XamProjects/GameStoreMobileApp/iOS/bin/iPhoneSimulator/Debug/Xamarin.Forms.Platform.dll
+/Users/rahulshrestha/XamProjects/GameStoreMobileApp/iOS/bin/iPhoneSimulator/Debug/Xamarin.Forms.Maps.iOS.dll
+/Users/rahulshrestha/XamProjects/GameStoreMobileApp/iOS/bin/iPhoneSimulator/Debug/Xamarin.Forms.Maps.dll

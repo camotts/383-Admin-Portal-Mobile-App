@@ -63,5 +63,9 @@
 		<string>SF Hollywood Hills.ttf</string>
 		<string>Exo2-ExtraBold.otf</string>
 	</array>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Can we use your Location?</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>We are using your Location.</string>
 </dict>
 </plist>

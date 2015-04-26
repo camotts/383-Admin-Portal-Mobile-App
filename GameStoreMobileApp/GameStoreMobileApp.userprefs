@@ -1,4 +1,4 @@
-﻿<Properties StartupItem="iOS/GameStoreMobileApp.iOS.csproj">
+﻿<Properties StartupItem="Droid/GameStoreMobileApp.Droid.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.Nexus 5 (Lollipop)" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Droid/Resources/Resource.designer.cs">
     <Files>

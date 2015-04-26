@@ -16,5 +16,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)ContactUs.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)LogIn.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)LookAround.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)LocateUs.cs" />
   </ItemGroup>
 </Project>

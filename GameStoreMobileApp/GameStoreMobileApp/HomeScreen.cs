@@ -63,7 +63,7 @@ namespace GameStoreMobileApp
 
 //			LogInButton.Clicked += (o,e) =>
 //			{Navigation.PushAsync (new LogIn());};
-//
+
 //			LookAroundButton.Clicked += (o,e) =>
 //			{Navigation.PushAsync (new LookAround());};
 
@@ -98,7 +98,7 @@ namespace GameStoreMobileApp
 
 			homeScreenImage.Source =  Device.OnPlatform(
 				ImageSource.FromFile("21.jpg"),
-				ImageSource.FromFile("21.jpg"),
+				ImageSource.FromFile("home.jpg"),
 				null);
 
 			// merge views and create a layout

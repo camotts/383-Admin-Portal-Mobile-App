@@ -52,7 +52,10 @@ namespace GameStoreMobileApp
 			ContactUsButton.Clicked += (o,e) => 
 			{Navigation.PushAsync (new ContactUs());};
 		
-					
+			LocateUsButton.Clicked += (o,e) => 
+			{Navigation.PushAsync (new LocateUs());};
+
+
 			var layout = new StackLayout();
 
 			layout.Children.Add (outlineFrame);
