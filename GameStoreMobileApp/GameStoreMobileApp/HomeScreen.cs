@@ -16,10 +16,11 @@ namespace GameStoreMobileApp
 				YAlign = TextAlignment.Center,
 				Text = "ANFIELD",
 				FontFamily = Device.OnPlatform (
-					"Money Money",
+					"Exo2-ExtraBold",
 					"Money Money",
 					null),
-				FontSize = Device.OnPlatform (42,45,99)
+				FontSize = Device.OnPlatform (54,45,99),
+				TextColor = Color.FromHex ("#D84315")
 
 			};
 
@@ -84,10 +85,10 @@ namespace GameStoreMobileApp
 
 			layout.Children.Add (new BoxView {Color = Color.Transparent, HeightRequest = 50});
 			layout.Children.Add (headingLabel);
-			layout.Children.Add (new BoxView {Color = Color.Transparent, HeightRequest = 30});
+			layout.Children.Add (new BoxView {Color = Color.Transparent, HeightRequest = 50});
 			layout.Children.Add (SignUpButton);
 			
-			layout.Children.Add (new BoxView {Color = Color.Transparent, HeightRequest = 40});
+			layout.Children.Add (new BoxView {Color = Color.Transparent, HeightRequest = 20});
 			layout.Children.Add(new BoxView() { Color = Color.FromHex ("EEEEEE"), WidthRequest = 100, HeightRequest = 2 });
 			layout.Children.Add (LogInButton);
 			layout.Children.Add (LookAroundButton);
@@ -109,8 +110,8 @@ namespace GameStoreMobileApp
 				));
 
 			relativeLayout.Children.Add(layout,
-				Constraint.RelativeToParent((parent) => {return parent.Width/8;} ),
-				Constraint.RelativeToParent((parent) => {return parent.Height/3;} ));
+				Constraint.RelativeToParent((parent) => {return parent.Width/6.5;} ),
+				Constraint.RelativeToParent((parent) => {return parent.Height/4;} ));
 
 
 			Content = relativeLayout;

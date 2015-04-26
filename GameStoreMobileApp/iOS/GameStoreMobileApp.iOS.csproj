@@ -126,6 +126,7 @@
     </BundleResource>
     <BundleResource Include="Resources\home_background.jpg" />
     <BundleResource Include="Resources\21.jpg" />
+    <BundleResource Include="Resources\Exo2-ExtraBold.otf" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
