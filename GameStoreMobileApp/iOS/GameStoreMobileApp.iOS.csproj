@@ -136,6 +136,8 @@
     <BundleResource Include="Resources\home_background.jpg" />
     <BundleResource Include="Resources\21.jpg" />
     <BundleResource Include="Resources\Exo2-ExtraBold.otf" />
+    <BundleResource Include="Resources\glypish_globe.png" />
+    <BundleResource Include="Resources\glypish_way.png" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
