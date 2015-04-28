@@ -61,8 +61,8 @@ namespace GameStoreMobileApp
 			SignUpButton.Clicked += (o,e) => 
 			{Navigation.PushAsync (new SignUp());};
 
-//			LogInButton.Clicked += (o,e) =>
-//			{Navigation.PushAsync (new LogIn());};
+			LogInButton.Clicked += (o,e) =>
+			{Navigation.PushAsync (new LogIn());};
 
 //			LookAroundButton.Clicked += (o,e) =>
 //			{Navigation.PushAsync (new LookAround());};

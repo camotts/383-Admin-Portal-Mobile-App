@@ -38,6 +38,19 @@ namespace GameStoreMobileApp
 			};
 			map.Pins.Add (pinB);
 
+
+			// pin third address
+			var positionC = new Position (42.360091,-71.09416);
+
+			var pinC = new Pin {
+				Type = PinType.Place,
+				Position = positionC,
+				Label = "Store C",
+				Address = "Boston, MA, \n 02481"
+			};
+			map.Pins.Add (pinC);
+
+
 			// add the slider
 			var slider = new Slider (1, 18, 1);
 			slider.ValueChanged += (sender, e) => {

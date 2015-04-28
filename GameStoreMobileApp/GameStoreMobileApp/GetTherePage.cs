@@ -62,6 +62,24 @@ namespace GameStoreMobileApp
 				}
 			};
 
+			var getDirectionCButton = new Button {
+				Text = "Get Location to Store C",
+				BackgroundColor = Color.FromHex ("#FF5722"),
+				FontSize = 20,
+				TextColor = Color.White
+			};
+
+			getDirectionCButton.Clicked += (sender, e) => {
+
+				if(Device.OS == TargetPlatform.iOS){
+					Device.OpenUri (new Uri("http://maps.apple.com/?q=Boston+MA"));
+				} else if(Device.OS == TargetPlatform.Android){
+					Device.OpenUri (new Uri("geo:0,0?q=Boston+MA"));
+				} else if(Device.OS == TargetPlatform.Windows){
+					DisplayAlert ("Under Construction","Still working on it. Will be implemented soon..","Ok!");
+				}
+			};
+
 			var layout = new StackLayout ();
 
 			layout.Children.Add (outlineFrame);
@@ -70,6 +88,8 @@ namespace GameStoreMobileApp
 			layout.Children.Add (getDirectionAButton);
 			layout.Children.Add (new BoxView {Color = Color.Transparent, HeightRequest = 7});
 			layout.Children.Add (getDirectionBButton);
+			layout.Children.Add (new BoxView {Color = Color.Transparent, HeightRequest = 7});
+			layout.Children.Add (getDirectionCButton);
 
 			Content = layout;
 		}
