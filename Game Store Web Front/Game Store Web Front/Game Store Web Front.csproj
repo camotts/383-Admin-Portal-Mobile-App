@@ -16,7 +16,7 @@
     <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
-    <IISExpressSSLPort />
+    <IISExpressSSLPort>44300</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
@@ -45,6 +45,12 @@
     <Reference Include="AutoMapper.Net4">
       <HintPath>..\packages\AutoMapper.3.3.1\lib\net40\AutoMapper.Net4.dll</HintPath>
     </Reference>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Web.Helpers">
       <HintPath>..\packages\Microsoft.AspNet.WebHelpers.3.2.3\lib\net45\Microsoft.Web.Helpers.dll</HintPath>
@@ -54,7 +60,6 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -132,15 +137,25 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Attributes\CardValidator.cs" />
+    <Compile Include="Attributes\ExitHttps.cs" />
+    <Compile Include="Attributes\RequireSSL.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\GameController.cs" />
     <Compile Include="Controllers\GenreController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SaleController.cs" />
     <Compile Include="Controllers\TagController.cs" />
     <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="DataContext\dbContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201504261944433_UserID Add.cs" />
+    <Compile Include="Migrations\201504261944433_UserID Add.Designer.cs">
+      <DependentUpon>201504261944433_UserID Add.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\GetApikeyDTO.cs" />
     <Compile Include="Models\GetCartDTO.cs" />
     <Compile Include="Models\GetGameDTO.cs" />
@@ -148,6 +163,7 @@
     <Compile Include="Models\GetSalesDTo.cs" />
     <Compile Include="Models\GetTagDTO.cs" />
     <Compile Include="Models\GetUserDTO.cs" />
+    <Compile Include="Models\Payment.cs" />
     <Compile Include="Models\Roles.cs" />
     <Compile Include="Models\SetCartDTO.cs" />
     <Compile Include="Models\SetGameDTO.cs" />
@@ -407,6 +423,8 @@
     <Content Include="Views\Genre\Create.cshtml" />
     <Content Include="Views\Sale\listAllCarts.cshtml" />
     <Content Include="Views\Sale\createSale.cshtml" />
+    <Content Include="Views\Sale\Payment.cshtml" />
+    <Content Include="Views\Sale\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -420,6 +438,11 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201504261944433_UserID Add.resx">
+      <DependentUpon>201504261944433_UserID Add.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

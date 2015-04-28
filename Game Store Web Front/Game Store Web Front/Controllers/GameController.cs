@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Game_Store_Web_Front.Attributes;
 using Game_Store_Web_Front.Models;
 using RestSharp;
 using RestSharp.Deserializers;
@@ -11,9 +12,10 @@ using System.Web.Mvc;
 
 namespace Game_Store_Web_Front.Controllers
 {
-    public class GameController : Controller
+    public class GameController : BaseController
     {
         // GET: Game
+        
         public ActionResult Index()
         {
             var client = new RestClient("http://localhost:12932/");

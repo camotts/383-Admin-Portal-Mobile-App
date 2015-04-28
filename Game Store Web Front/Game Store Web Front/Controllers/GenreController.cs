@@ -10,7 +10,7 @@ using System.Web.Mvc;
 
 namespace Game_Store_Web_Front.Controllers
 {
-    public class GenreController : Controller
+    public class GenreController : BaseController
     {
         public ActionResult Index()
         {

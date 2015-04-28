@@ -14,7 +14,7 @@ namespace Game_Store_Web_Front.Models
         public string URL { get; set; }
         public bool CheckoutReady { get; set; }
         public int User_Id { get; set; }
-        public List<Tuple<SetGameDTO, int>> Games { get; set; }
+        public List<Tuple<GetGameDTO, int>> Games { get; set; }
 
     }
 }
