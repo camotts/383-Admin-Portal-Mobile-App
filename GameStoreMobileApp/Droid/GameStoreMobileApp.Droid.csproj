@@ -111,7 +111,9 @@
     <AndroidResource Include="Resources\drawable-hdpi\home.jpg" />
     <AndroidResource Include="Resources\drawable-xhdpi\home.jpg" />
     <AndroidResource Include="Resources\drawable-xxhdpi\home.jpg" />
-    <AndroidResource Include="Resources\drawable\17.jpg" />
+    <AndroidResource Include="Resources\drawable\17.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AndroidResource>
     <AndroidResource Include="Resources\drawable-hdpi\17.jpg" />
     <AndroidResource Include="Resources\drawable-xhdpi\17.jpg" />
     <AndroidResource Include="Resources\drawable-xxhdpi\17.jpg" />
