@@ -10,19 +10,80 @@
     @Html.ActionLink("Create New", "Create")
 </p>
 
+
+<table id="myTable" class="hover dataTable">
+    <thead>
+        <tr>
+            <th>
+                Game Name
+            </th>
+            <th>
+                Price
+            </th>
+            <th>
+                Release Date
+            </th>
+            <th>
+                Inventory Stock
+            </th>
+            <th>
+                Genres
+            </th>
+            <th>
+                Tags
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.GameName</td>
+                <td>@item.Price</td>
+                <td>@item.ReleaseDate.ToString("MMMM d, yyyy")</td>
+
+                
+                <td>@item.InventoryStock</td>
+                <td>
+                    <ul>
+                        @foreach (var thing in item.Genres)
+                        {
+                            <li>
+                                @thing.Name
+                            </li>
+                        }
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        @foreach (var thing in item.Tags)
+                        {
+                            <li>
+                                @thing.Name
+                            </li>
+                        }
+                    </ul>
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>
+
+<!--
 <div class="panel-group" id="accordion">
     @foreach (var item in Model)
     {
-        
+
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h4 class="panel-title">
                     <a data-toggle="collapse" data-parent="#accordion" href="#@item.Id">@item.GameName</a>
-                   Share: @LinkShare.GetHtml(this.Url.ToString(), linkSites: new[]{
+                    Share: @LinkShare.GetHtml(this.Url.ToString(), linkSites: new[]{
                            LinkShareSite.Reddit, LinkShareSite.Facebook, LinkShareSite.Twitter})
-                        <button type="button" id="deleteButton @item.Id" onclick="deleteGame(@item.Id)" class="pull-right btm btn-danger"  value="Delete">Delete</button>
-                        <button type="button" id="editButton @item.Id" onclick="window.location.href='/game/edit/@item.Id'" class="pull-right btm btn-warning" value="Edit">Edit</button>
-                        
+                    <button type="button" id="deleteButton @item.Id" onclick="deleteGame(@item.Id)" class="pull-right btm btn-danger" value="Delete">Delete</button>
+                    <button type="button" id="editButton @item.Id" onclick="window.location.href='/game/edit/@item.Id'" class="pull-right btm btn-warning" value="Edit">Edit</button>
+
                 </h4>
             </div>
             <div id="@item.Id" class="panel-collapse collapse">
@@ -30,7 +91,8 @@
                     <p>Inventory: @item.InventoryStock</p>
                     <p>Price: @item.Price</p>
                     <p>Release Date: @item.ReleaseDate.ToString("MMMM d, yyyy")</p>
-                    <p>Tags: 
+                    <p>
+                        Tags:
                         <ul>
                             @foreach (var tag in item.Tags)
                             {
@@ -60,25 +122,30 @@
         </div>
     }
 </div>
+-->
 
 
-    <script>
-        function deleteGame(deleteId) {
-            var temp = deleteId
-            $.ajax({
-                contentType: 'application/json',
-                type: 'POST',
-                url: '/Game/Delete',
-                data: JSON.stringify({ id: deleteId }),
-                success: function (data) {
-                    console.log("GOT IT");
-                    window.location.href = data.Url
-                },
-                error: function () {
-                    console.trace();
-                }
-            });
+<script>
+    function deleteGame(deleteId) {
+        var temp = deleteId
+        $.ajax({
+            contentType: 'application/json',
+            type: 'POST',
+            url: '/Game/Delete',
+            data: JSON.stringify({ id: deleteId }),
+            success: function (data) {
+                console.log("GOT IT");
+                window.location.href = data.Url
+            },
+            error: function () {
+                console.trace();
+            }
+        });
 
-        }
+    }
 
-    </script>
+    $(document).ready(function () {
+        $('#myTable').DataTable();
+    });
+
+</script>

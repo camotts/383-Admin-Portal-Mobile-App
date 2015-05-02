@@ -17,11 +17,41 @@ namespace Game_Store_Web_Front.Controllers
 
         public ActionResult Index()
         {
-            return View();
+            try
+            {
+                var client = new RestClient("http://localhost:12932/");
+                var request = new RestRequest("api/Users", Method.GET);
+                request.OnBeforeDeserialization = resp => { resp.ContentType = "application/json"; };
+
+                var apiKey = Session["ApiKey"];
+                var UserId = Session["UserId"];
+                request.AddHeader("xcmps383authenticationkey", apiKey.ToString());
+                request.AddHeader("xcmps383authenticationid", UserId.ToString());
+                IRestResponse queryResult = client.Execute(request);
+                List<GetUserDTO> x = new List<GetUserDTO>();
+
+                statusCodeCheck(queryResult);
+
+                if (queryResult.StatusCode == HttpStatusCode.OK)
+                {
+                    RestSharp.Deserializers.JsonDeserializer deserial = new JsonDeserializer();
+                    x = deserial.Deserialize<List<GetUserDTO>>(queryResult);
+                    foreach (var user in x)
+                    {
+                        user.Id = parseId(user.URL);
+                    }
+                }
+
+                return View(x);
+            }
+            catch (Exception ex)
+            {
+                return Json(new { Result = "Error Here", Message = ex.Message });
+            }
         }
 
         [HttpPost]
-        public JsonResult ListAllUser(int jtStartIndex=0, int jtPageSize = 0, string jtSorting = null)
+        public JsonResult ListAllUser(int jtStartIndex = 0, int jtPageSize = 0, string jtSorting = null)
         {
             try
             {
@@ -46,7 +76,7 @@ namespace Game_Store_Web_Front.Controllers
 
                 return Json(new { Result = "OK", Records = x }, JsonRequestBehavior.AllowGet);
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
                 return Json(new { Result = "Error Here", Message = ex.Message });
             }
@@ -78,34 +108,38 @@ namespace Game_Store_Web_Front.Controllers
         }
 
 
-       
+        [HttpGet]
+        public ActionResult Create()
+        {
+            return View();
+        }
 
         // POST: User/Create
         [HttpPost]
         public ActionResult Create(SetUserDTO collection)
         {
-            
-                // TODO: Add insert logic here
-                var client = new RestClient("http://localhost:12932/");
-                var request = new RestRequest("api/Users/", Method.POST);
-                var apiKey = Session["ApiKey"];
-                var UserId = Session["UserId"];
-                request.AddHeader("xcmps383authenticationkey", apiKey.ToString());
-                request.AddHeader("xcmps383authenticationid", UserId.ToString());
-                request.AddObject(collection);
-                var queryResult = client.Execute(request);
 
-                statusCodeCheck(queryResult);
+            // TODO: Add insert logic here
+            var client = new RestClient("http://localhost:12932/");
+            var request = new RestRequest("api/Users/", Method.POST);
+            var apiKey = Session["ApiKey"];
+            var UserId = Session["UserId"];
+            request.AddHeader("xcmps383authenticationkey", apiKey.ToString());
+            request.AddHeader("xcmps383authenticationid", UserId.ToString());
+            request.AddObject(collection);
+            var queryResult = client.Execute(request);
+
+            statusCodeCheck(queryResult);
 
 
-                if (queryResult.StatusCode != HttpStatusCode.OK)
-                {
-                    return View();
-                }
+            if (queryResult.StatusCode != HttpStatusCode.Created)
+            {
+                return View();
+            }
 
-                return RedirectToAction("Index");
-            
-          
+            return RedirectToAction("Index");
+
+
         }
 
         // GET: User/Edit/5
@@ -141,7 +175,7 @@ namespace Game_Store_Web_Front.Controllers
             {
                 // TODO: Add update logic here
                 var client = new RestClient("http://localhost:12932/");
-                var request = new RestRequest("api/Users/"+id, Method.PUT);
+                var request = new RestRequest("api/Users/" + id, Method.PUT);
                 var apiKey = Session["ApiKey"];
                 var UserId = Session["UserId"];
                 request.AddHeader("xcmps383authenticationkey", apiKey.ToString());
@@ -165,39 +199,35 @@ namespace Game_Store_Web_Front.Controllers
             }
         }
 
-        // GET: User/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
+
 
         // POST: User/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
+        public ActionResult Delete(int id){
             try
             {
-                // TODO: Add delete logic here
+
+                // TODO: Add update logic here
                 var client = new RestClient("http://localhost:12932/");
                 var request = new RestRequest("api/Users/" + id, Method.DELETE);
                 var apiKey = Session["ApiKey"];
                 var UserId = Session["UserId"];
                 request.AddHeader("xcmps383authenticationkey", apiKey.ToString());
                 request.AddHeader("xcmps383authenticationid", UserId.ToString());
+
+
+
                 var queryResult = client.Execute(request);
+
                 statusCodeCheck(queryResult);
 
-
-
-                if (queryResult.StatusCode != HttpStatusCode.OK)
-                {
-                    return View();
-                }
-                return RedirectToAction("Index");
+                var redirectUrl = new UrlHelper(Request.RequestContext).Action("Index", "User");
+                return Json(new { Url = redirectUrl });
             }
             catch
             {
-                return View();
+                var redirectUrl = new UrlHelper(Request.RequestContext).Action("Index", "User");
+                return Json(new { Url = redirectUrl });
             }
         }
 
@@ -221,11 +251,30 @@ namespace Game_Store_Web_Front.Controllers
             {
                 RestSharp.Deserializers.JsonDeserializer deserial = new JsonDeserializer();
                 var x = deserial.Deserialize<GetApikeyDTO>(queryResult);
-
+                
 
                 Session["ApiKey"] = x.ApiKey;
                 Session["UserId"] = x.UserId;
 
+
+                request = new RestRequest("api/Users/" + x.UserId, Method.GET);
+                var apiKey = Session["ApiKey"];
+                var UserId = Session["UserId"];
+                request.AddHeader("xcmps383authenticationkey", apiKey.ToString());
+                request.AddHeader("xcmps383authenticationid", UserId.ToString());
+                queryResult = client.Execute(request);
+
+                GetUserDTO user = new GetUserDTO();
+
+                statusCodeCheck(queryResult);
+
+
+
+                if (queryResult.StatusCode == HttpStatusCode.OK)
+                {
+                    user = deserial.Deserialize<GetUserDTO>(queryResult);
+                }
+                Session["Role"] = user.Role;
 
                 return RedirectToAction("Index", "Home");
             }
@@ -233,8 +282,8 @@ namespace Game_Store_Web_Front.Controllers
             {
                 return Content("An error occured with Log In credential!");
             }
-            
-           
+
+
         }
 
 
@@ -261,6 +310,12 @@ namespace Game_Store_Web_Front.Controllers
                     break;
             }
 
+        }
+
+        public int parseId(string url)
+        {
+            string[] parsed = url.Split('/');
+            return Convert.ToInt32(parsed[parsed.Length - 1]);
         }
 
     }

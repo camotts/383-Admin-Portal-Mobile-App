@@ -323,5 +323,7 @@ namespace Game_Store_Web_Front.Controllers
             return Convert.ToInt32(parsed[parsed.Length-1]);
         }
 
+        
+
     }
 }
