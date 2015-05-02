@@ -3,9 +3,10 @@ using Xamarin.Forms;
 
 namespace GameStoreMobileApp
 {
-	public class LogIn: ContentPage
+	
+	public class LogInPage: ContentPage
 	{
-		public LogIn ()
+		public LogInPage ()
 		{
 
 			this.Title = "Log In";
@@ -25,6 +26,7 @@ namespace GameStoreMobileApp
 
 			};
 				
+			loginInput.SetBinding (Entry.TextProperty,"Email");
 
 			Entry passwordInput = new Entry {
 				
@@ -33,6 +35,8 @@ namespace GameStoreMobileApp
 				Placeholder = "Password",
 				VerticalOptions = LayoutOptions.Center
 			};
+
+			loginInput.SetBinding (Entry.TextProperty,"Password");
 
 			var LogInButton = new Button {
 				Text = "Log In",
@@ -44,7 +48,19 @@ namespace GameStoreMobileApp
 
 
 			};
-				
+
+			LogInButton.Clicked += (sender, ea) => {
+				 new UserRepository().OnLogInButtonClicked(loginInput.Text,passwordInput.Text);
+
+				if(new UserRepository().OnLogInButtonClicked(loginInput.Text,passwordInput.Text)==true){
+					DisplayAlert ("Yeah", "Done", "OK");
+				}
+				else{
+					DisplayAlert ("Invalid Credentials", "Please Check your Email or Password!", "OK");
+				}
+			};
+
+
 
 			Label noAccount = new Label {
 				Text = "Don't have an account?",
@@ -65,7 +81,10 @@ namespace GameStoreMobileApp
 			};
 
 			SignUpButton.Clicked += (o,e) => 
-			{Navigation.PushAsync (new SignUp());};
+			{
+				Navigation.PushAsync (new SignUp());
+
+			};
 
 			if (Device.OS == TargetPlatform.iOS) {
 				this.BackgroundImage = "17.jpg";

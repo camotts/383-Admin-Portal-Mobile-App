@@ -14,10 +14,17 @@
     <Compile Include="$(MSBuildThisFileDirectory)HomeScreen.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)SignUp.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ContactUs.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)LogIn.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)LookAround.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)LocateUs.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)StoreMapPage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GetTherePage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)LogInPage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\User.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Repositories\UserRepository.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\ApiKey.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="$(MSBuildThisFileDirectory)Models\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Repositories\" />
   </ItemGroup>
 </Project>

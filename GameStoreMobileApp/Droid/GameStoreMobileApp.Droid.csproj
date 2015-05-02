@@ -78,6 +78,9 @@
     <Reference Include="Xamarin.Forms.Maps">
       <HintPath>..\packages\Xamarin.Forms.Maps.1.4.2.6355\lib\MonoAndroid10\Xamarin.Forms.Maps.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\portable-net40+sl5+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainActivity.cs" />
@@ -111,9 +114,7 @@
     <AndroidResource Include="Resources\drawable-hdpi\home.jpg" />
     <AndroidResource Include="Resources\drawable-xhdpi\home.jpg" />
     <AndroidResource Include="Resources\drawable-xxhdpi\home.jpg" />
-    <AndroidResource Include="Resources\drawable\17.jpg">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </AndroidResource>
+    <AndroidResource Include="Resources\drawable\17.jpg" />
     <AndroidResource Include="Resources\drawable-hdpi\17.jpg" />
     <AndroidResource Include="Resources\drawable-xhdpi\17.jpg" />
     <AndroidResource Include="Resources\drawable-xxhdpi\17.jpg" />
