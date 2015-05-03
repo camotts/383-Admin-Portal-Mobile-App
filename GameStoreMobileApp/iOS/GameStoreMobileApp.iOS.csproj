@@ -150,6 +150,11 @@
     <BundleResource Include="Resources\Search-32.png" />
     <BundleResource Include="Resources\Star-32.png" />
     <BundleResource Include="Resources\33.jpg" />
+    <BundleResource Include="Resources\ad1.jpg" />
+    <BundleResource Include="Resources\ad2.jpg" />
+    <BundleResource Include="Resources\ad3.jpg" />
+    <BundleResource Include="Resources\ad4.jpg" />
+    <BundleResource Include="Resources\ad5.jpg" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />

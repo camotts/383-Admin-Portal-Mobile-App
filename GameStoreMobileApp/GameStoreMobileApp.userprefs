@@ -1,32 +1,17 @@
 ﻿<Properties StartupItem="iOS/GameStoreMobileApp.iOS.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.IPhone6.8.3" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="GameStoreMobileApp/Views/LookAround.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="GameStoreMobileApp/Views/UnauthorizedLookAround.cs">
     <Files>
       <File FileName="GameStoreMobileApp/Models/User.cs" Line="1" Column="1" />
-      <File FileName="GameStoreMobileApp/Repositories/UserRepository.cs" Line="17" Column="4" />
-      <File FileName="GameStoreMobileApp/Models/ApiKey.cs" Line="1" Column="1" />
-      <File FileName="GameStoreMobileApp/Views/HomeScreen.cs" Line="65" Column="13" />
-      <File FileName="GameStoreMobileApp/Views/LookAround.cs" Line="16" Column="20" />
-      <File FileName="GameStoreMobileApp/Views/SignUp.cs" Line="55" Column="39" />
-      <File FileName="GameStoreMobileApp/Views/LocateUs.cs" Line="18" Column="2" />
-      <File FileName="GameStoreMobileApp/Views/LogInPage.cs" Line="71" Column="6" />
+      <File FileName="GameStoreMobileApp/Repositories/UserRepository.cs" Line="1" Column="1" />
+      <File FileName="GameStoreMobileApp/Models/UserApiKey.cs" Line="1" Column="1" />
+      <File FileName="GameStoreMobileApp/Views/HomeScreen.cs" Line="68" Column="5" />
+      <File FileName="GameStoreMobileApp/Views/AllGames.cs" Line="1" Column="1" />
+      <File FileName="GameStoreMobileApp/Views/SearchGame.cs" Line="1" Column="1" />
+      <File FileName="GameStoreMobileApp/Views/BestSellingGames.cs" Line="22" Column="4" />
+      <File FileName="../../sp15-p3-g2/Game Store Web Front/Game Store Web Front/Controllers/UserController.cs" Line="265" Column="17" />
+      <File FileName="GameStoreMobileApp/Views/UnauthorizedLookAround.cs" Line="76" Column="40" />
     </Files>
-    <Pads>
-      <Pad Id="ProjectPad">
-        <State name="__root__">
-          <Node name="GameStoreMobileApp" expanded="True">
-            <Node name="GameStoreMobileApp" expanded="True">
-              <Node name="Models" expanded="True" />
-              <Node name="Repositories" expanded="True" />
-              <Node name="Views" expanded="True">
-                <Node name="LookAround.cs" selected="True" />
-              </Node>
-            </Node>
-            <Node name="GameStoreMobileApp.iOS" expanded="True" />
-          </Node>
-        </State>
-      </Pad>
-    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />

@@ -129,6 +129,7 @@ namespace GameStoreMobileApp
 
 			ScrollView scroll = new ScrollView {
 				Content = layout 
+					
 			};
 
 			Content = scroll;
