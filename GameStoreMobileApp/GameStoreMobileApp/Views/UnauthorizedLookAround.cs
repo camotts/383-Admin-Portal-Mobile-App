@@ -11,21 +11,28 @@ namespace GameStoreMobileApp
 		public UnauthorizedLookAround(){
 			this.Title="Store";
 
+			var hud = DependencyService.Get<IHud> ();
+			hud.Show ();
+
+			Device.StartTimer (new TimeSpan (0, 0, 3), () => {
+				hud.Dismiss ();
+				return false; // runs again, or false to stop
+			});
+
 			Grid grid = new Grid {
-				RowSpacing = 0,
+				RowSpacing = 0,VerticalOptions = LayoutOptions.Fill,
 				RowDefinitions =
 				{
-					new RowDefinition { Height = GridLength.Auto },
-					new RowDefinition { Height = GridLength.Auto },
-					new RowDefinition { Height = GridLength.Auto },
-					new RowDefinition { Height = GridLength.Auto },
-					new RowDefinition { Height = GridLength.Auto },
-					new RowDefinition { Height = GridLength.Auto }
-				},
-				HorizontalOptions = LayoutOptions.FillAndExpand
+					new RowDefinition(){ Height = new GridLength(180,GridUnitType.Absolute) },
+					new RowDefinition(){ Height = new GridLength(180,GridUnitType.Absolute) },
+					new RowDefinition(){ Height = new GridLength(200,GridUnitType.Absolute) },
+					new RowDefinition(){ Height = new GridLength(180,GridUnitType.Absolute) },
+					new RowDefinition(){ Height = new GridLength(180,GridUnitType.Absolute) },
+					new RowDefinition(){ Height = new GridLength(50,GridUnitType.Absolute) },
+				}
 
 			};
-					
+	
 			var LogInButton = new Button {
 				Text = "Log In",
 				TextColor = Color.White,
@@ -33,7 +40,6 @@ namespace GameStoreMobileApp
 				Font = Font.SystemFontOfSize(20),
 				WidthRequest = 9,
 				HeightRequest = 40,
-
 
 			};
 
@@ -53,7 +59,7 @@ namespace GameStoreMobileApp
 			fifthImage.Source = ImageSource.FromFile("ad3.jpg");
 
 			//grid.Children.Add (LogInButton);
-			grid.Children.Add (firstImage,0,0);
+			grid.Children.Add (firstImage);
 			grid.Children.Add (secondImage, 0,1);
 			grid.Children.Add (thirdImage, 0,2);
 			grid.Children.Add (fourthImage, 0, 3);
@@ -72,11 +78,13 @@ namespace GameStoreMobileApp
 
 			LogInButton.Clicked += (o,e) =>
 			{Navigation.PushAsync (new LogInPage());};
-
+				
 			ScrollView scroll = new ScrollView {
-				VerticalOptions = LayoutOptions.FillAndExpand,
-				Content = grid 
+				VerticalOptions = LayoutOptions.FillAndExpand, 
+				IsClippedToBounds = true
 			};
+
+			scroll.Content = grid;
 
 			Content = scroll;
 		}
