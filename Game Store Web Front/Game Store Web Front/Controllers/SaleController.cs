@@ -101,6 +101,10 @@ namespace Game_Store_Web_Front.Controllers
             {
                 return RedirectToAction("createSale", parseId(sellCart.URL));
             }
+            else if (queryResult.StatusCode == HttpStatusCode.Forbidden)
+            {
+                return RedirectToAction("Login", "User");
+            }
 
             return RedirectToAction("Index", "Home", "");
         }
@@ -128,6 +132,10 @@ namespace Game_Store_Web_Front.Controllers
                 {
                     sale.Id = parseId(sale.URL);
                 }
+            }
+            else if (queryResult.StatusCode == HttpStatusCode.Forbidden)
+            {
+                return RedirectToAction("Login", "User");
             }
 
             return View(x);
@@ -158,6 +166,10 @@ namespace Game_Store_Web_Front.Controllers
                 RestSharp.Deserializers.JsonDeserializer deserial = new JsonDeserializer();
                 x = JsonConvert.DeserializeObject<GetCartDTO>(queryResult.Content);
             }
+            else if (queryResult.StatusCode == HttpStatusCode.Forbidden)
+            {
+                return RedirectToAction("Login", "User");
+            }
 
             return View(x);
 
@@ -185,6 +197,11 @@ namespace Game_Store_Web_Front.Controllers
             {
                 RestSharp.Deserializers.JsonDeserializer deserial = new JsonDeserializer();
                 x = JsonConvert.DeserializeObject<GetCartDTO>(queryResult.Content);
+
+            }
+            else if (queryResult.StatusCode == HttpStatusCode.Forbidden)
+            {
+                return RedirectToAction("Login", "User");
             }
 
             //process the sale
@@ -204,6 +221,10 @@ namespace Game_Store_Web_Front.Controllers
                 RestSharp.Deserializers.JsonDeserializer deserial = new JsonDeserializer();
                 x = JsonConvert.DeserializeObject<GetCartDTO>(queryResult.Content);
 
+            }
+            else if (queryResult.StatusCode == HttpStatusCode.Forbidden)
+            {
+                return RedirectToAction("Login", "User");
             }
 
             return RedirectToAction("ListAllCarts");
@@ -306,6 +327,10 @@ namespace Game_Store_Web_Front.Controllers
                 }
 
             }
+            else if (queryResult.StatusCode == HttpStatusCode.Forbidden)
+            {
+                return RedirectToAction("Login", "User");
+            }
             return View(send);
         }
 
@@ -395,6 +420,7 @@ namespace Game_Store_Web_Front.Controllers
                     cart.Id = parseId(cart.URL);
                 }
             }
+
             return x;
         }
         public List<GetGameDTO> getGames()
@@ -418,6 +444,7 @@ namespace Game_Store_Web_Front.Controllers
                 RestSharp.Deserializers.JsonDeserializer deserial = new JsonDeserializer();
                 return deserial.Deserialize<List<GetGameDTO>>(queryResult);
             }
+
 
             return null;
         }

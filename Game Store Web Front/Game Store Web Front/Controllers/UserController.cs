@@ -40,6 +40,10 @@ namespace Game_Store_Web_Front.Controllers
                         user.Id = parseId(user.URL);
                     }
                 }
+                else if (queryResult.StatusCode == HttpStatusCode.Forbidden)
+                {
+                    return RedirectToAction("Login", "User");
+                }
 
                 return View(x);
             }
@@ -71,6 +75,8 @@ namespace Game_Store_Web_Front.Controllers
                     RestSharp.Deserializers.JsonDeserializer deserial = new JsonDeserializer();
                     x = deserial.Deserialize<List<GetUserDTO>>(queryResult);
                 }
+                
+
 
                 return Json(new { Result = "OK", Records = x }, JsonRequestBehavior.AllowGet);
             }
@@ -132,6 +138,10 @@ namespace Game_Store_Web_Front.Controllers
             {
                 return View();
             }
+            else if (queryResult.StatusCode == HttpStatusCode.Forbidden)
+            {
+                return RedirectToAction("Login", "User");
+            }
 
             return RedirectToAction("Index");
 
@@ -159,6 +169,10 @@ namespace Game_Store_Web_Front.Controllers
                 RestSharp.Deserializers.JsonDeserializer deserial = new JsonDeserializer();
                 x = deserial.Deserialize<GetUserDTO>(queryResult);
             }
+            else if (queryResult.StatusCode == HttpStatusCode.Forbidden)
+            {
+                return RedirectToAction("Login", "User");
+            }
             return View(x);
         }
 
@@ -184,6 +198,10 @@ namespace Game_Store_Web_Front.Controllers
                 if (queryResult.StatusCode != HttpStatusCode.OK)
                 {
                     return View();
+                }
+                else if (queryResult.StatusCode == HttpStatusCode.Forbidden)
+                {
+                    return RedirectToAction("Login", "User");
                 }
                 return RedirectToAction("Index");
             }
@@ -213,9 +231,14 @@ namespace Game_Store_Web_Front.Controllers
                 var queryResult = client.Execute(request);
 
                 statusCodeCheck(queryResult);
+                if (queryResult.StatusCode == HttpStatusCode.Forbidden)
+                {
+                    var redirectUrl = new UrlHelper(Request.RequestContext).Action("Login", "User");
+                    return Json(new { Url = redirectUrl });
+                }
 
-                var redirectUrl = new UrlHelper(Request.RequestContext).Action("Index", "User");
-                return Json(new { Url = redirectUrl });
+                var redirectUrl2 = new UrlHelper(Request.RequestContext).Action("Index", "User");
+                return Json(new { Url = redirectUrl2 });
             }
             catch
             {

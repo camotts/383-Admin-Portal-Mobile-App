@@ -37,6 +37,10 @@ namespace Game_Store_Web_Front.Controllers
                     genre.Id = parseId(genre.URL);
                 }
             }
+            else if (queryResult.StatusCode == HttpStatusCode.Forbidden)
+            {
+                return RedirectToAction("Login", "User");
+            }
 
             return View(genres);
         }
@@ -72,6 +76,10 @@ namespace Game_Store_Web_Front.Controllers
             {
                 return View();
             }
+            else if (queryResult.StatusCode == HttpStatusCode.Forbidden)
+            {
+                return RedirectToAction("Login", "User");
+            }
 
             return RedirectToAction("Index");
         }
@@ -100,6 +108,10 @@ namespace Game_Store_Web_Front.Controllers
                 x.Id = parseId(x.URL);
                 
             }
+            else if (queryResult.StatusCode == HttpStatusCode.Forbidden)
+            {
+                return RedirectToAction("Login", "User");
+            }
             return View(x);
         }
 
@@ -125,6 +137,10 @@ namespace Game_Store_Web_Front.Controllers
                 if (queryResult.StatusCode != HttpStatusCode.OK)
                 {
                     return View();
+                }
+                else if (queryResult.StatusCode == HttpStatusCode.Forbidden)
+                {
+                    return RedirectToAction("Login", "User");
                 }
                 return RedirectToAction("Index");
             }

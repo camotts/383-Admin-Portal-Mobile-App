@@ -28,7 +28,13 @@ namespace Game_Store_Web_Front.Migrations
             //    );
             //
 
-            context.Images.AddOrUpdate(i => i.imageSource, new ImageSrc { imageSource = "http://i.imgur.com/w1QGGnG.png" });
+            context.Images.AddOrUpdate(
+                i => i.imageSource, 
+                new ImageSrc { imageSource = "http://i.imgur.com/w1QGGnG.png" },
+                new ImageSrc { imageSource = "http://i.imgur.com/fIJTiI3.png" },
+                new ImageSrc { imageSource = "http://i.imgur.com/C7D3oW6.png" }
+            
+            );
         }
     }
 }

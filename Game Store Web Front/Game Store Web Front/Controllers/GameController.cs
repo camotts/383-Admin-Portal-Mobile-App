@@ -48,6 +48,10 @@ namespace Game_Store_Web_Front.Controllers
                     game.Id = parseId(game.URL);
                 }
             }
+            else if (response.StatusCode == HttpStatusCode.Forbidden)
+            {
+                return RedirectToAction("Login", "User");
+            }
             //todo parse url into id
             return View(allGames);
         }
@@ -87,6 +91,11 @@ namespace Game_Store_Web_Front.Controllers
             if (queryResult.StatusCode != HttpStatusCode.Created)
             {
                 redirectUrl = new UrlHelper(Request.RequestContext).Action("Create", "Game");
+                return Json(new { Url = redirectUrl });
+            }
+            else if (queryResult.StatusCode == HttpStatusCode.Forbidden)
+            {
+                redirectUrl = new UrlHelper(Request.RequestContext).Action("Login", "User");
                 return Json(new { Url = redirectUrl });
             }
             redirectUrl = new UrlHelper(Request.RequestContext).Action("Index", "Game");
@@ -148,6 +157,10 @@ namespace Game_Store_Web_Front.Controllers
                     }
                 }
             }
+            else if (queryResult.StatusCode == HttpStatusCode.Forbidden)
+            {
+                return RedirectToAction("Login", "User");
+            }
 
                 game.Id = parseId(game.URL);
 
@@ -201,6 +214,11 @@ namespace Game_Store_Web_Front.Controllers
                     redirectUrl = new UrlHelper(Request.RequestContext).Action("Edit/"+editedGame.Id, "Game");
                     return Json(new { Url = redirectUrl });
                 }
+                else if (queryResult.StatusCode == HttpStatusCode.Forbidden)
+                {
+                    redirectUrl = new UrlHelper(Request.RequestContext).Action("Login", "User");
+                    return Json(new { Url = redirectUrl });
+                }
                 redirectUrl = new UrlHelper(Request.RequestContext).Action("Index", "Game");
                 return Json(new { Url = redirectUrl });
             }
@@ -229,6 +247,8 @@ namespace Game_Store_Web_Front.Controllers
                 var queryResult = client.Execute(request);
 
                 statusCodeCheck(queryResult);
+
+
 
                 var redirectUrl = new UrlHelper(Request.RequestContext).Action("Index", "Game");
                 return Json(new { Url = redirectUrl });
@@ -260,6 +280,7 @@ namespace Game_Store_Web_Front.Controllers
                 RestSharp.Deserializers.JsonDeserializer deserial = new JsonDeserializer();
                 return deserial.Deserialize<List<GetGenreDTO>>(queryResult);
             }
+
             return null;
         }
 
