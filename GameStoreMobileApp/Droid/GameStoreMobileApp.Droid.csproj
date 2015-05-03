@@ -27,6 +27,7 @@
     <WarningLevel>4</WarningLevel>
     <AndroidLinkMode>None</AndroidLinkMode>
     <ConsolePause>false</ConsolePause>
+    <JavaMaximumHeapSize>1G</JavaMaximumHeapSize>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>full</DebugType>
@@ -117,10 +118,10 @@
     <AndroidResource Include="Resources\drawable-hdpi\home.jpg" />
     <AndroidResource Include="Resources\drawable-xhdpi\home.jpg" />
     <AndroidResource Include="Resources\drawable-xxhdpi\home.jpg" />
-    <AndroidResource Include="Resources\drawable\17.jpg" />
-    <AndroidResource Include="Resources\drawable-hdpi\17.jpg" />
-    <AndroidResource Include="Resources\drawable-xhdpi\17.jpg" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\17.jpg" />
+    <AndroidResource Include="Resources\drawable\seventeen.jpg" />
+    <AndroidResource Include="Resources\drawable-hdpi\seventeen.jpg" />
+    <AndroidResource Include="Resources\drawable-xhdpi\seventeen.jpg" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\seventeen.jpg" />
   </ItemGroup>
   <Import Project="..\GameStoreMobileApp\GameStoreMobileApp.projitems" Label="Shared" Condition="Exists('..\GameStoreMobileApp\GameStoreMobileApp.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
