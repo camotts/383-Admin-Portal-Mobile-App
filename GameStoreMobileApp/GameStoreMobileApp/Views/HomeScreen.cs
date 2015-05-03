@@ -55,7 +55,7 @@ namespace GameStoreMobileApp
 				HeightRequest = 40
 			
 			};
-					
+
 
 
 			SignUpButton.Clicked += (o,e) => 
@@ -65,7 +65,14 @@ namespace GameStoreMobileApp
 			{Navigation.PushAsync (new LogInPage());};
 
 			LookAroundButton.Clicked += (o,e) =>
-			{Navigation.PushAsync (new LookAround());};
+			{
+				if(Application.Current.Properties.ContainsKey("UserId")){
+					Navigation.PushAsync (new LookAround());
+				}
+				else{
+					Navigation.PushAsync (new UnauthorizedLookAround());
+				}
+			};
 				
 
 			var layout = new StackLayout();

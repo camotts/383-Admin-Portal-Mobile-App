@@ -24,15 +24,16 @@ namespace GameStoreMobileApp
 
 			var queryResult = client.Execute(request);
 
-
-
 			if (queryResult.StatusCode == HttpStatusCode.OK)
 			{
 				var deserial = new JsonDeserializer();
-				var x = deserial.Deserialize<ApiKey>(queryResult);
+				var x = deserial.Deserialize<UserApiKey>(queryResult);
 							
-				Application.Current.Properties["ApiKey"] = x.UserApiKey;
+				Application.Current.Properties["ApiKey"] = x.ApiKey;
 				Application.Current.Properties ["UserId"] = x.UserId;
+
+//				Console.WriteLine (queryResult.Content);
+//				Console.WriteLine ("key:"+x.ApiKey);
 
 				loginStatus = true;
 				return loginStatus ;

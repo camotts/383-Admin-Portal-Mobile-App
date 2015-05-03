@@ -16,7 +16,7 @@ namespace GameStoreMobileApp
 
 
 			Label header = new Label {
-				Text = "LogIn with Your Email",
+				Text = "Log In with Your Email",
 				FontSize = 27,
 				HorizontalOptions = LayoutOptions.Center
 			};
@@ -107,7 +107,7 @@ namespace GameStoreMobileApp
 			if (Device.OS == TargetPlatform.iOS) {
 				this.BackgroundImage = "17.jpg";
 			} else if (Device.OS == TargetPlatform.Android) {
-				this.BackgroundImage = "drawable/17.jpg";
+				this.BackgroundImage = "drawable/seventeen.jpg";
 			} else if (Device.OS == TargetPlatform.Windows) {
 				DisplayAlert ("Under Construction", "Still working on it. Will be implemented soon..", "Ok!");
 			}

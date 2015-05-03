@@ -3,7 +3,7 @@ using Xamarin.Forms;
 
 namespace GameStoreMobileApp
 {
-	public class LookAround: ContentPage
+	public class LookAround: TabbedPage
 	{
 		public LookAround ()
 		{
@@ -12,17 +12,14 @@ namespace GameStoreMobileApp
 			this.Title = "Store";
 
 			hud.Show("Loading Store");
-
-			var label = new Label { 
-				Text = "This is after user Logs IN."  
-			};
-
-			var layout = new StackLayout ();
-
-			layout.Children.Add (new BoxView {Color = Color.Transparent, HeightRequest = 50});
-			layout.Children.Add (label);
-
-			Content = layout;
+			Device.StartTimer (new TimeSpan (0, 0, 4), () => {
+				hud.Dismiss ();
+				return false; // runs again, or false to stop
+			});
+				
+			Children.Add (new AllGames {Title="All",Icon="Menu-32.png"});
+			Children.Add (new BestSellingGames{Title="Best Seller",Icon="Star-32.png"});
+			Children.Add (new SearchGame {Title="Search",Icon="Search-32.png"});
 		}
 
 

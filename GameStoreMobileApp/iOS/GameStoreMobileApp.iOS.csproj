@@ -145,6 +145,11 @@
     <BundleResource Include="Resources\glypish_globe.png" />
     <BundleResource Include="Resources\glypish_way.png" />
     <BundleResource Include="Resources\17.jpg" />
+    <BundleResource Include="Resources\Shopping Cart-50.png" />
+    <BundleResource Include="Resources\Menu-32.png" />
+    <BundleResource Include="Resources\Search-32.png" />
+    <BundleResource Include="Resources\Star-32.png" />
+    <BundleResource Include="Resources\33.jpg" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />

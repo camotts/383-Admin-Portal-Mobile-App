@@ -12,7 +12,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)GameStoreMobileApp.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\User.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Repositories\UserRepository.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Models\ApiKey.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\ContactUs.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\GetTherePage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\HomeScreen.cs" />
@@ -23,6 +22,11 @@
     <Compile Include="$(MSBuildThisFileDirectory)Views\SignUp.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\StoreMapPage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Interface\IHud.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\AllGames.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\SearchGame.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\BestSellingGames.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\UserApiKey.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\UnauthorizedLookAround.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Models\" />
