@@ -17,7 +17,10 @@ namespace Game_Store_Web_Front.Controllers
 
     public class SaleController : BaseController
     {
+        
         public dbContext db = new dbContext();
+
+        
 
         //get Cart
         public ActionResult Index()
@@ -84,8 +87,6 @@ namespace Game_Store_Web_Front.Controllers
 
 
 
-
-            var client = new RestClient("http://localhost:12932/");
             var request = new RestRequest("api/Sales", Method.POST);
             var apiKey = Session["ApiKey"];
             var UserId = Session["UserId"];
@@ -106,7 +107,7 @@ namespace Game_Store_Web_Front.Controllers
 
         public ActionResult listAllSales()
         {
-            var client = new RestClient("http://localhost:12932/");
+
             var request = new RestRequest("api/Sales", Method.GET);
             request.OnBeforeDeserialization = resp => { resp.ContentType = "application/json"; };
 
@@ -137,7 +138,7 @@ namespace Game_Store_Web_Front.Controllers
 
         public ActionResult Details(int id)
         {
-            var client = new RestClient("http://localhost:12932/");
+
             var request = new RestRequest("api/Carts/" + id, Method.GET);
             request.OnBeforeDeserialization = resp => { resp.ContentType = "application/json"; };
 
@@ -165,7 +166,7 @@ namespace Game_Store_Web_Front.Controllers
         public ActionResult Sale(int id)
         {
             //get the cart we are selling
-            var client = new RestClient("http://localhost:12932/");
+            
             var request = new RestRequest("api/Carts/" + id, Method.GET);
             request.OnBeforeDeserialization = resp => { resp.ContentType = "application/json"; };
 
@@ -249,7 +250,7 @@ namespace Game_Store_Web_Front.Controllers
         [HttpGet]
         public ActionResult Edit(int id)
         {
-            var client = new RestClient("http://localhost:12932/");
+
             var request = new RestRequest("api/Sales/" + id, Method.GET);
             var apiKey = Session["ApiKey"];
             var UserId = Session["UserId"];
@@ -348,7 +349,7 @@ namespace Game_Store_Web_Front.Controllers
 
         public GetCartDTO getSpecificSellCart(int id)
         {
-            var client = new RestClient("http://localhost:12932/");
+
             var request = new RestRequest("api/Carts/" + id, Method.GET);
             request.OnBeforeDeserialization = resp => { resp.ContentType = "application/json"; };
 
@@ -372,7 +373,7 @@ namespace Game_Store_Web_Front.Controllers
         }
         public List<GetCartDTO> getCarts()
         {
-            var client = new RestClient("http://localhost:12932/");
+
             var request = new RestRequest("api/Carts", Method.GET);
             request.OnBeforeDeserialization = resp => { resp.ContentType = "application/json"; };
 
@@ -398,7 +399,7 @@ namespace Game_Store_Web_Front.Controllers
         }
         public List<GetGameDTO> getGames()
         {
-            var client = new RestClient("http://localhost:12932/");
+
             var request = new RestRequest("api/Games", Method.GET);
 
             var apiKey = Session["ApiKey"];

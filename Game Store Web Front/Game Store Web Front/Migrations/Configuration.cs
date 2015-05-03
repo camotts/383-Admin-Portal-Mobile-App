@@ -1,5 +1,6 @@
 namespace Game_Store_Web_Front.Migrations
 {
+    using Game_Store_Web_Front.Models;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
@@ -26,6 +27,8 @@ namespace Game_Store_Web_Front.Migrations
             //      new Person { FullName = "Rowan Miller" }
             //    );
             //
+
+            context.Images.AddOrUpdate(i => i.imageSource, new ImageSrc { imageSource = "http://i.imgur.com/w1QGGnG.png" });
         }
     }
 }

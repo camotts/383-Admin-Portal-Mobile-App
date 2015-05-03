@@ -19,7 +19,6 @@ namespace Game_Store_Web_Front.Controllers
         {
             try
             {
-                var client = new RestClient("http://localhost:12932/");
                 var request = new RestRequest("api/Users", Method.GET);
                 request.OnBeforeDeserialization = resp => { resp.ContentType = "application/json"; };
 
@@ -55,7 +54,6 @@ namespace Game_Store_Web_Front.Controllers
         {
             try
             {
-                var client = new RestClient("http://localhost:12932/");
                 var request = new RestRequest("api/Users", Method.GET);
                 request.OnBeforeDeserialization = resp => { resp.ContentType = "application/json"; };
 
@@ -85,7 +83,6 @@ namespace Game_Store_Web_Front.Controllers
         // GET: User/Details/5
         public JsonResult Details(int id)
         {
-            var client = new RestClient("http://localhost:12932/");
             var request = new RestRequest("api/Users/" + id, Method.GET);
             var apiKey = Session["ApiKey"];
             var UserId = Session["UserId"];
@@ -120,7 +117,6 @@ namespace Game_Store_Web_Front.Controllers
         {
 
             // TODO: Add insert logic here
-            var client = new RestClient("http://localhost:12932/");
             var request = new RestRequest("api/Users/", Method.POST);
             var apiKey = Session["ApiKey"];
             var UserId = Session["UserId"];
@@ -145,7 +141,6 @@ namespace Game_Store_Web_Front.Controllers
         // GET: User/Edit/5
         public ActionResult Edit(int id)
         {
-            var client = new RestClient("http://localhost:12932/");
             var request = new RestRequest("api/Users/" + id, Method.GET);
             var apiKey = Session["ApiKey"];
             var UserId = Session["UserId"];
@@ -174,7 +169,6 @@ namespace Game_Store_Web_Front.Controllers
             try
             {
                 // TODO: Add update logic here
-                var client = new RestClient("http://localhost:12932/");
                 var request = new RestRequest("api/Users/" + id, Method.PUT);
                 var apiKey = Session["ApiKey"];
                 var UserId = Session["UserId"];
@@ -208,7 +202,6 @@ namespace Game_Store_Web_Front.Controllers
             {
 
                 // TODO: Add update logic here
-                var client = new RestClient("http://localhost:12932/");
                 var request = new RestRequest("api/Users/" + id, Method.DELETE);
                 var apiKey = Session["ApiKey"];
                 var UserId = Session["UserId"];
@@ -243,7 +236,6 @@ namespace Game_Store_Web_Front.Controllers
         public ActionResult Login(string email, string password)
         {
 
-            var client = new RestClient("http://localhost:12932/");
             var request = new RestRequest("api/ApiKey?email=" + email + "&password=" + password, Method.GET);
             var queryResult = client.Execute(request);
 

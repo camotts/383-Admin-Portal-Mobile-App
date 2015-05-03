@@ -130,14 +130,6 @@
         top: 5px;
         border-radius: 1px;
     }
-
-
-
-
-
-
-
-
 </style>
 
 
@@ -151,25 +143,26 @@
     @Scripts.Render("~/bundles/modernizr")
 
 
-    
+
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/Scripts/jquery.dataTables.js")
     @Scripts.Render("~/Content/jquery.dataTables.css")
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/Scripts/Custom%20Scripts/Checkbox.js")
-        @Scripts.Render("~/Content/SideBar.css")
-        <link href="~/Content/SideBar.css" rel="stylesheet" />
+    @Scripts.Render("~/Content/SideBar.css")
+    <link href="~/Content/SideBar.css" rel="stylesheet" />
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 </head>
 <body>
 
-    
+
     @if (Convert.ToInt32(Session["Role"]) != 2 && Session["Role"] != null)
     {
-    <nav class="navbar navbar-default sidebar" role="navigation">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <strong style="font-size:20px; text-decoration : none; color:#E64A19 ">
-                    Best Game Store Admin
+        <nav class="navbar navbar-default sidebar" role="navigation">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <strong style="font-size:20px; text-decoration : none; color:#E64A19 ">
+                        Best Game Store Admin
                     </strong>
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-sidebar-navbar-collapse-1">
                         <span class="sr-only">Toggle navigation</span>
@@ -177,31 +170,62 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-</div>
-            <div class="collapse navbar-collapse" id="bs-sidebar-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">Home<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-home"></span></a></li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Usuarios <span class="caret"></span><span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-user"></span></a>
-                        <ul class="dropdown-menu forAnimate" role="menu">
-                            <li><a href="{{URL::to('createusuario')}}">Crear</a></li>
-                            <li><a href="#">Modificar</a></li>
-                            <li><a href="#">Reportar</a></li>
-                            <li class="divider"></li>
-                            <li><a href="#">Separated link</a></li>
-                            <li class="divider"></li>
-                            <li><a href="#">Informes</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#">Libros<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-th-list"></span></a></li>
-                    <li><a href="#">Tags<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-tags"></span></a></li>
-                    <li><a href="#">Logout<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-tags"></span></a></li>
-                </ul>
+                </div>
+                <div class="collapse navbar-collapse" id="bs-sidebar-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Cart Id" id="cartId">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button" onclick="makeSale();">Make Sale</button>
+                                </span>
+                            </div>
+                        </li>
+                        <li class="active"><a href="/Home">Home<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-home"></span></a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Users <span class="caret"></span><span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-user"></span></a>
+                            <ul class="dropdown-menu forAnimate" role="menu">
+                                <li><a href="{{URL::to('createusuario')}}">Crear</a></li>
+                                <li><a href="#">Modificar</a></li>
+                                <li><a href="#">Reportar</a></li>
+                                <li class="divider"></li>
+                                <li><a href="#">Separated link</a></li>
+                                <li class="divider"></li>
+                                <li><a href="#">Informes</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Games <span class="caret"></span><span style="font-size:16px;" class="pull-right hidden-xs showopacity gfa fa-gamepad"></span></a>
+                            <ul class="dropdown-menu forAnimate" role="menu">
+                                <li><a href="/Game">Index</a></li>
+                                <li><a href="/Game/Create">Create</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Tags <span class="caret"></span><span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-tags"></span></a>
+                            <ul class="dropdown-menu forAnimate" role="menu">
+                                <li><a href="/Tag">Index</a></li>
+                                <li><a href="/Tag/Create">Create</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Genres <span class="caret"></span><span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-tags"></span></a>
+                            <ul class="dropdown-menu forAnimate" role="menu">
+                                <li><a href="/Genre">Index</a></li>
+                                <li><a href="/Genre/Create">Create</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="/Sale/ListAllCarts">Carts<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-shopping-cart"></span></a></li>
+                        <li><a href="/Sale/ListAllSales">Sales<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon fa fa-usd"></span></a></li>
+                        <li><a href="#">Logout<span style="font-size:16px;" class="pull-right hidden-xs showopacity fa fa-key"></span></a></li>
+
+                    </ul>
+                </div>
             </div>
-        </div>
-    </nav>
+        </nav>
     }
-    else{
+    else
+    {
         <nav class="navbar navbar-mybar navbar-fixed-top" style="height:60px">
             <div class="container">
                 <div class="navbar-header">
@@ -268,6 +292,21 @@
 </html>
 
 <script>
+    function makeSale() {
+        $.ajax({
+            contentType: 'application/json',
+            type: 'Get',
+            url: '/Sale/Create' + $('#cartId').val(),
+            success: function (data) {
+                console.log("GOT IT");
+                window.location.href = data.Url
+            },
+            error: function () {
+                console.trace();
+            }
+        });
+    }
+
 
 </script>
 

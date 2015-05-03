@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Game_Store_Web_Front.Attributes;
+using Game_Store_Web_Front.DataContext;
 using Game_Store_Web_Front.Models;
 using RestSharp;
 using RestSharp.Deserializers;
@@ -15,10 +16,9 @@ namespace Game_Store_Web_Front.Controllers
     public class GameController : BaseController
     {
         // GET: Game
-        
+        public dbContext db = new dbContext();
         public ActionResult Index()
         {
-            var client = new RestClient("http://localhost:12932/");
             var request = new RestRequest("api/Games", Method.GET);
 
             var apiKey = Session["ApiKey"];
@@ -38,10 +38,13 @@ namespace Game_Store_Web_Front.Controllers
 
             if (response.StatusCode == HttpStatusCode.OK)
             {
+
                 RestSharp.Deserializers.JsonDeserializer deserial = new JsonDeserializer();
                 allGames = deserial.Deserialize<List<GetGameDTO>>(response); // string to object
                 foreach (var game in allGames)
                 {
+                    var thing = db.Images.OrderBy(r => Guid.NewGuid()).Take(1).First();
+                    game.imageSource = thing.imageSource;
                     game.Id = parseId(game.URL);
                 }
             }
@@ -68,7 +71,6 @@ namespace Game_Store_Web_Front.Controllers
         [HttpPost]
         public ActionResult Create(SetGameDTO createGame)
         {
-            var client = new RestClient("http://localhost:12932/");
             var request = new RestRequest("api/Games", Method.POST);
             var apiKey = Session["ApiKey"];
             var UserId = Session["UserId"];
@@ -95,7 +97,6 @@ namespace Game_Store_Web_Front.Controllers
         [HttpGet]
         public ActionResult Edit(int id)
         {
-            var client = new RestClient("http://localhost:12932/");
             var request = new RestRequest("api/Games/" + id, Method.GET);
             var apiKey = Session["ApiKey"];
             var UserId = Session["UserId"];
@@ -217,7 +218,6 @@ namespace Game_Store_Web_Front.Controllers
             {
                 
                 // TODO: Add update logic here
-                var client = new RestClient("http://localhost:12932/");
                 var request = new RestRequest("api/Games/" + id, Method.DELETE);
                 var apiKey = Session["ApiKey"];
                 var UserId = Session["UserId"];
@@ -242,7 +242,6 @@ namespace Game_Store_Web_Front.Controllers
 
         public List<GetGenreDTO> getGenres()
         {
-            var client = new RestClient("http://localhost:12932/");
             var request = new RestRequest("api/Genres", Method.GET);
 
             var apiKey = Session["ApiKey"];
@@ -266,7 +265,7 @@ namespace Game_Store_Web_Front.Controllers
 
         public List<GetTagDTO> getTags()
         {
-            var client = new RestClient("http://localhost:12932/");
+
             var request = new RestRequest("api/Genres", Method.GET);
 
             var apiKey = Session["ApiKey"];

@@ -9,11 +9,19 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-
+<style>
+    .gameCovers {
+        width:100px;
+        height:auto:
+    }
+</style>
 
 <table id="myTable" class="hover dataTable">
     <thead>
         <tr>
+            <th>
+                Cover
+            </th>
             <th>
                 Game Name
             </th>
@@ -38,6 +46,7 @@
         @foreach (var item in Model)
         {
             <tr>
+                <td><img src="@item.imageSource" class="gameCovers"/></td>
                 <td>@item.GameName</td>
                 <td>@item.Price</td>
                 <td>@item.ReleaseDate.ToString("MMMM d, yyyy")</td>

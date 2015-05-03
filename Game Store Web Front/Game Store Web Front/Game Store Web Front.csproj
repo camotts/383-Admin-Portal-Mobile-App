@@ -161,6 +161,10 @@
     <Compile Include="Migrations\201505030631007_this.Designer.cs">
       <DependentUpon>201505030631007_this.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201505031809445_Images.cs" />
+    <Compile Include="Migrations\201505031809445_Images.Designer.cs">
+      <DependentUpon>201505031809445_Images.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\GetApikeyDTO.cs" />
     <Compile Include="Models\GetCartDTO.cs" />
@@ -169,6 +173,7 @@
     <Compile Include="Models\GetSalesDTo.cs" />
     <Compile Include="Models\GetTagDTO.cs" />
     <Compile Include="Models\GetUserDTO.cs" />
+    <Compile Include="Models\ImageSrc.cs" />
     <Compile Include="Models\Payment.cs" />
     <Compile Include="Models\Roles.cs" />
     <Compile Include="Models\SetCartDTO.cs" />
@@ -475,6 +480,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201505030631007_this.resx">
       <DependentUpon>201505030631007_this.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201505031809445_Images.resx">
+      <DependentUpon>201505031809445_Images.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

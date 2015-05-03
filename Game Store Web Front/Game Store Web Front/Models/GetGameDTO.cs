@@ -1,6 +1,7 @@
 ﻿
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
@@ -19,6 +20,9 @@ namespace Game_Store_Web_Front.Models
         public List<GetGenreDTO> Genres { get; set; }
         public List<GetTagDTO> Tags { get; set; }
         public bool check { get; set; }
+
+        [DisplayName("Cover")]
+        public string imageSource { get; set; }
 
     }
 }

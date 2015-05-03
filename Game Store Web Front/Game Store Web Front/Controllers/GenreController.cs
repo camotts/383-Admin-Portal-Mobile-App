@@ -15,7 +15,6 @@ namespace Game_Store_Web_Front.Controllers
         public ActionResult Index()
         {
             List<GetGenreDTO> genres = new List<GetGenreDTO>();
-            var client = new RestClient("http://localhost:12932/");
             var request = new RestRequest("api/Genres", Method.GET);
 
             var apiKey = Session["ApiKey"];
@@ -58,7 +57,6 @@ namespace Game_Store_Web_Front.Controllers
         [HttpPost]
         public ActionResult Create(SetGenreDTO collection)
         {
-            var client = new RestClient("http://localhost:12932/");
             var request = new RestRequest("api/Genres/", Method.POST);
             var apiKey = Session["ApiKey"];
             var UserId = Session["UserId"];
@@ -81,7 +79,6 @@ namespace Game_Store_Web_Front.Controllers
         // GET: Genre/Edit/5
         public ActionResult Edit(int id)
         {
-            var client = new RestClient("http://localhost:12932/");
             var request = new RestRequest("api/Genres/" + id, Method.GET);
             var apiKey = Session["ApiKey"];
             var UserId = Session["UserId"];
@@ -113,7 +110,6 @@ namespace Game_Store_Web_Front.Controllers
             try
             {
                 // TODO: Add update logic here
-                var client = new RestClient("http://localhost:12932/");
                 var request = new RestRequest("api/Genres/" + id, Method.PUT);
                 var apiKey = Session["ApiKey"];
                 var UserId = Session["UserId"];
@@ -146,7 +142,6 @@ namespace Game_Store_Web_Front.Controllers
             try
             {
                 // TODO: Add update logic here
-                var client = new RestClient("http://localhost:12932/");
                 var request = new RestRequest("api/Genres/" + id, Method.DELETE);
                 var apiKey = Session["ApiKey"];
                 var UserId = Session["UserId"];

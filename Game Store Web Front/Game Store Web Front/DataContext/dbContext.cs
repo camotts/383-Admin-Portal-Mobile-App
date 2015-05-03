@@ -13,6 +13,7 @@ namespace Game_Store_Web_Front.DataContext
         public dbContext() : base("DefaultConnection") { }
 
         public DbSet<Payment> Payments { get; set; }
+        public DbSet<ImageSrc> Images { get; set; }
 
         public System.Data.Entity.DbSet<Game_Store_Web_Front.Models.GetSalesDTO> GetSalesDTOes { get; set; }
     }
