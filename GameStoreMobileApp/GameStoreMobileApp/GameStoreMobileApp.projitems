@@ -10,21 +10,24 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)GameStoreMobileApp.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)MyLabel.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)HomeScreen.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)SignUp.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ContactUs.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)LookAround.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)LocateUs.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)StoreMapPage.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)GetTherePage.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)LogInPage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\User.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Repositories\UserRepository.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\ApiKey.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\ContactUs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\GetTherePage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\HomeScreen.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\LocateUs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\LogInPage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\LookAround.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\MyLabel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\SignUp.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\StoreMapPage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Interface\IHud.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Models\" />
     <Folder Include="$(MSBuildThisFileDirectory)Repositories\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Views\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Interface\" />
   </ItemGroup>
 </Project>

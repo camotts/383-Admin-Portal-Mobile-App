@@ -1,42 +1,33 @@
-<<<<<<< Updated upstream
 ﻿<Properties StartupItem="iOS/GameStoreMobileApp.iOS.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.IPhone6.8.3" />
   <MonoDevelop.Ide.Workbench ActiveDocument="GameStoreMobileApp/Repositories/UserRepository.cs">
     <Files>
-      <File FileName="GameStoreMobileApp/HomeScreen.cs" Line="1" Column="1" />
-      <File FileName="GameStoreMobileApp/SignUp.cs" Line="1" Column="1" />
-      <File FileName="GameStoreMobileApp/ContactUs.cs" Line="1" Column="1" />
-      <File FileName="GameStoreMobileApp/LocateUs.cs" Line="1" Column="1" />
-      <File FileName="GameStoreMobileApp/StoreMapPage.cs" Line="1" Column="1" />
-      <File FileName="GameStoreMobileApp/GetTherePage.cs" Line="1" Column="1" />
-      <File FileName="GameStoreMobileApp/LogInPage.cs" Line="6" Column="2" />
       <File FileName="GameStoreMobileApp/Models/User.cs" Line="1" Column="1" />
-      <File FileName="GameStoreMobileApp/Repositories/UserRepository.cs" Line="9" Column="29" />
-      <File FileName="../../sp15-p3-g2/Game Store Web Front/Game Store Web Front/Controllers/UserController.cs" Line="1" Column="1" />
+      <File FileName="GameStoreMobileApp/Repositories/UserRepository.cs" Line="14" Column="4" />
       <File FileName="GameStoreMobileApp/Models/ApiKey.cs" Line="1" Column="1" />
-      <File FileName="../../Downloads/Xamarin.Forms_Intro/XamarinFormsSample/XamarinFormsSample/XamarinFormsSample/Views/LoginPage.cs" Line="44" Column="4" />
-      <File FileName="GameStoreMobileApp/GameStoreMobileApp.cs" Line="1" Column="1" />
-=======
-﻿<Properties StartupItem="Droid\GameStoreMobileApp.Droid.csproj">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.GameStore_22" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Droid\obj\Debug\android\src\gamestoremobileapp\droid\R.java">
-    <Files>
-      <File FileName="GameStoreMobileApp\HomeScreen.cs" Line="1" Column="1" />
-      <File FileName="GameStoreMobileApp\SignUp.cs" Line="1" Column="1" />
-      <File FileName="GameStoreMobileApp\ContactUs.cs" Line="1" Column="1" />
-      <File FileName="GameStoreMobileApp\LocateUs.cs" Line="1" Column="1" />
-      <File FileName="GameStoreMobileApp\StoreMapPage.cs" Line="1" Column="1" />
-      <File FileName="GameStoreMobileApp\GetTherePage.cs" Line="1" Column="1" />
-      <File FileName="Droid\Resources\Resource.designer.cs" Line="1155" Column="26" />
-      <File FileName="Droid\obj\Debug\android\src\gamestoremobileapp\droid\R.java" Line="1986" Column="38" />
-      <File FileName="Droid\MainActivity.cs" Line="1" Column="1" />
-      <File FileName="Droid\Properties\AndroidManifest.xml" Line="1" Column="1" />
-      <File FileName="Droid\obj\Debug\android\src\android\support\v4\R.java" Line="1986" Column="32" />
-      <File FileName="Droid\obj\Debug\android\src\android\support\v7\appcompat\R.java" Line="1986" Column="32" />
-      <File FileName="Droid\obj\Debug\android\src\android\support\v7\mediarouter\R.java" Line="1986" Column="32" />
-      <File FileName="Droid\obj\Debug\android\src\com\google\android\gms\R.java" Line="1986" Column="32" />
->>>>>>> Stashed changes
+      <File FileName="GameStoreMobileApp/Views/HomeScreen.cs" Line="69" Column="5" />
+      <File FileName="GameStoreMobileApp/Views/LookAround.cs" Line="16" Column="20" />
+      <File FileName="GameStoreMobileApp/Views/LogInPage.cs" Line="58" Column="42" />
     </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="GameStoreMobileApp" expanded="True">
+            <Node name="GameStoreMobileApp" expanded="True">
+              <Node name="Models" expanded="True" />
+              <Node name="Repositories" expanded="True">
+                <Node name="UserRepository.cs" selected="True" />
+              </Node>
+              <Node name="Views" expanded="True" />
+            </Node>
+            <Node name="GameStoreMobileApp.iOS" expanded="True">
+              <Node name="ComponentReferenceFolder" expanded="True" />
+              <Node name="Packages" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
