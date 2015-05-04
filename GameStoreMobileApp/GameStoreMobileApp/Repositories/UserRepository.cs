@@ -35,7 +35,7 @@ namespace GameStoreMobileApp
 				Application.Current.Properties["ApiKey"] = x.ApiKey;
 				Application.Current.Properties ["UserId"] = x.UserId;
 
-				Console.WriteLine ("first" + queryResult.Content);
+				//Console.WriteLine ("first" + queryResult.Content);
 //				Console.WriteLine ("key:"+x.ApiKey);
 
 				// next request for User
@@ -59,7 +59,7 @@ namespace GameStoreMobileApp
 				Application.Current.Properties ["FirstName"] = user.FirstName;
 
 //				Console.WriteLine (Application.Current.Properties ["UserId"]);
-				Console.WriteLine ("here" + queryResult.Content);
+				//Console.WriteLine ("here" + queryResult.Content);
 
 
 				loginStatus = true;

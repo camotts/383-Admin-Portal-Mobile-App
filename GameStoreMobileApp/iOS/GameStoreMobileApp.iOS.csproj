@@ -116,6 +116,7 @@
     <Reference Include="BTProgressHUD">
       <HintPath>..\Components\btprogresshud-1.16\lib\ios-unified\BTProgressHUD.dll</HintPath>
     </Reference>
+    <Reference Include="System.Net.Http" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Default.png" />

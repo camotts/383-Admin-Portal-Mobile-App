@@ -6,6 +6,8 @@ namespace GameStoreMobileApp
 	public class AllGames:ContentPage
 	{
 		string currentGreeting = GetGreeting();
+		ListView Lv;
+		Label L;
 
 		public AllGames(){
 
@@ -17,23 +19,29 @@ namespace GameStoreMobileApp
 			var wishLabel = new Button () { 
 				Text = currentGreeting + Application.Current.Properties["FirstName"] +"!",
 				BackgroundColor = semiTransparentColor,
-				FontSize = 20,
-				HeightRequest = 29,
+				FontSize = 16,
+				HeightRequest = 27,
 				TextColor = Color.White,
 				HorizontalOptions = LayoutOptions.EndAndExpand
 					
 			};
 
-			var cartImage = new Image { Aspect = Aspect.AspectFill };
-
-
-
-			var layout = new StackLayout {
-				
+			var getGamesButton = new Button{ Text = "Get Games" };
+			getGamesButton.Clicked += async (sender, e) => {
+				var webService = new GameRepository ();
+				var webServiceCall = await webService.GetGamesAsync ();
 			};
+
+			Lv = new ListView ();
+			Lv.ItemTemplate = new DataTemplate (typeof(TextCell));
+			Lv.ItemTemplate.SetBinding (TextCell.TextProperty,"GameName");
+
+
+			var layout = new StackLayout {};
 
 			//layout.Children.Add (new BoxView {Color = Color.Transparent, HeightRequest = 50});
 			layout.Children.Add (wishLabel);
+			layout.Children.Add (getGamesButton);
 
 			Content = layout;
 		}

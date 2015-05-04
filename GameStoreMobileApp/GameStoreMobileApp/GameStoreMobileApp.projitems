@@ -30,6 +30,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Repositories\GameRepository.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Game.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Roles.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Genre.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Tag.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Models\" />
