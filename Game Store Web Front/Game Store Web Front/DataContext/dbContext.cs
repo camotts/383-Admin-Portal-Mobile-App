@@ -16,5 +16,7 @@ namespace Game_Store_Web_Front.DataContext
         public DbSet<ImageSrc> Images { get; set; }
 
         public System.Data.Entity.DbSet<Game_Store_Web_Front.Models.GetSalesDTO> GetSalesDTOes { get; set; }
+
+        public System.Data.Entity.DbSet<Game_Store_Web_Front.Models.GetCartDTO> GetCartDTOes { get; set; }
     }
 }

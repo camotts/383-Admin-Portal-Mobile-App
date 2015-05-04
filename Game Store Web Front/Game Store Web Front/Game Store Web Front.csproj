@@ -463,6 +463,7 @@
     <Content Include="Views\Sale\createSale.cshtml" />
     <Content Include="Views\Sale\Payment.cshtml" />
     <Content Include="Views\Sale\Edit.cshtml" />
+    <Content Include="Views\Sale\create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

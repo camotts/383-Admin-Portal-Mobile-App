@@ -1,0 +1,57 @@
+﻿@model Game_Store_Web_Front.Models.GetCartDTO
+
+
+<div>
+    @{decimal count = 0.0M;}
+
+    <style>
+        .gameCovers {
+        width:100px;
+        height:auto:
+    }
+
+    </style>
+    <table id="myTable" class="dataTable">
+        <thead>
+            <tr>
+                <th>
+                    Cover
+                </th>
+                <th>
+                    Game Name
+                </th>
+                <th>
+                    Price
+                </th>
+                <th>
+                    Release Date
+                </th>
+                <th>
+                    Quantity
+                </th>
+                
+            </tr>
+</thead>
+        <tbody>
+            
+            @foreach (var item in Model.Games)
+            {
+                count += (@item.Item1.Price * @item.Item2);
+                <tr>
+                    <td><img src="@item.Item1.imageSource" class="gameCovers" /></td>
+                    <td>@item.Item1.GameName</td>
+                    <td>@item.Item1.Price</td>
+                    <td>@item.Item1.ReleaseDate.ToString("MMMM d, yyyy")</td>
+
+
+                    <td>@item.Item2</td>
+                    
+
+                </tr>
+            }
+            </tbody>
+    </table>
+          Total: @count
+</div>
+
+    @Styles.Render("~/Content/css")

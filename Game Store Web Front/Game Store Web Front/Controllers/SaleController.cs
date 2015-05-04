@@ -37,6 +37,13 @@ namespace Game_Store_Web_Front.Controllers
         }
 
         [HttpGet]
+        public ActionResult create(int id)
+        {
+            GetCartDTO cart = getSpecificSellCart(id);
+            return PartialView(cart);
+        }
+
+        [HttpGet]
         public ActionResult createSale(int id)
         {
 
@@ -175,7 +182,7 @@ namespace Game_Store_Web_Front.Controllers
 
         }
 
-        public ActionResult Sale(int id)
+        public void Sale(int id)
         {
             //get the cart we are selling
             
@@ -201,7 +208,6 @@ namespace Game_Store_Web_Front.Controllers
             }
             else if (queryResult.StatusCode == HttpStatusCode.Forbidden)
             {
-                return RedirectToAction("Login", "User");
             }
 
             //process the sale
@@ -224,15 +230,12 @@ namespace Game_Store_Web_Front.Controllers
             }
             else if (queryResult.StatusCode == HttpStatusCode.Forbidden)
             {
-                return RedirectToAction("Login", "User");
             }
 
-            return RedirectToAction("ListAllCarts");
 
         }
 
         [HttpGet]
-        [RequireSSL]
         public ActionResult Payment(int id)
         {
 
@@ -244,16 +247,14 @@ namespace Game_Store_Web_Front.Controllers
             }
             Session["User"] = thing.User_Id;
             ViewBag.Price = price;
-            return View();
+            return PartialView();
         }
 
         [HttpPost]
-        [RequireSSL]
-        public ActionResult Payment(Payment info)
+        public void Payment(Payment info)
         {
             if (!ModelState.IsValid)
             {
-                return View(info);
             }
             info.UserId = Convert.ToInt32(Session["User"]);
             try
@@ -265,7 +266,6 @@ namespace Game_Store_Web_Front.Controllers
             Session["User"] = null;
             Sale(info.UserId);
 
-            return RedirectToAction("ListAllCarts");
         }
 
         [HttpGet]
@@ -393,6 +393,11 @@ namespace Game_Store_Web_Front.Controllers
                 RestSharp.Deserializers.JsonDeserializer deserial = new JsonDeserializer();
                 x = JsonConvert.DeserializeObject<GetCartDTO>(queryResult.Content);
                 x.Id = parseId(x.URL);
+                foreach (var game in x.Games)
+                {
+                    var thing = db.Images.OrderBy(r => Guid.NewGuid()).Take(1).First();
+                    game.Item1.imageSource = thing.imageSource;
+                }
             }
             return x;
         }
@@ -418,6 +423,11 @@ namespace Game_Store_Web_Front.Controllers
                 foreach (var cart in x)
                 {
                     cart.Id = parseId(cart.URL);
+                    foreach (var game in cart.Games)
+                    {
+                        var thing = db.Images.OrderBy(r => Guid.NewGuid()).Take(1).First();
+                        game.Item1.imageSource = thing.imageSource;
+                    }
                 }
             }
 

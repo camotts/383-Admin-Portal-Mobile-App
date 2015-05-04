@@ -12,8 +12,8 @@ namespace Game_Store_Web_Front.Controllers
     public abstract class BaseController : Controller
     {
         //comment and uncomment based on needs
-        //public RestClient client = new RestClient("http://localhost:12932/");
+        public RestClient client = new RestClient("http://localhost:12932/");
 
-        public RestClient client = new RestClient("http://dev.envocsupport.com/GameStore2/");
+        //public RestClient client = new RestClient("http://dev.envocsupport.com/GameStore2/");
     }
 }

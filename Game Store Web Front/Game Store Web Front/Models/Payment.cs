@@ -15,6 +15,7 @@ namespace Game_Store_Web_Front.Models
         [CardValidator(AcceptedCardTypes = CardValidator.CardType.Visa | CardValidator.CardType.MasterCard)]
         public string CardNum { get; set; }
         [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime Expiration { get; set; }
         public decimal Ammount { get; set; }
     }

@@ -301,6 +301,16 @@ namespace Game_Store_Web_Front.Controllers
 
         }
 
+        public ActionResult Logout()
+        {
+            Session["ApiKey"] = null;
+            Session["UserId"] = null;
+            Session["Role"] = null;
+
+            var redirectUrl = new UrlHelper(Request.RequestContext).Action("Index", "Home");
+            return Json(new { Url = redirectUrl });
+        }
+
 
         public void statusCodeCheck(IRestResponse queryResult)
         {

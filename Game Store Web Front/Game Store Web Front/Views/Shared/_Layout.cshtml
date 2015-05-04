@@ -177,7 +177,7 @@
                             <div class="input-group">
                                 <input type="text" class="form-control" placeholder="Cart Id" id="cartId">
                                 <span class="input-group-btn">
-                                    <button class="btn btn-default" type="button" onclick="makeSale();">Make Sale</button>
+                                    <button class="btn btn-default" type="button" onclick="makeSale();" data-toggle="modal" data-target="#myModal">Make Sale</button>
                                 </span>
                             </div>
                         </li>
@@ -217,7 +217,7 @@
                         </li>
                         <li><a href="/Sale/ListAllCarts">Carts<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-shopping-cart"></span></a></li>
                         <li><a href="/Sale/ListAllSales">Sales<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon fa fa-usd"></span></a></li>
-                        <li><a href="#">Logout<span style="font-size:16px;" class="pull-right hidden-xs showopacity fa fa-key"></span></a></li>
+                        <li><a href="#" onclick="logout();">Logout<span style=" font-size:16px;" class="pull-right hidden-xs showopacity fa fa-key"></span></a></li>
 
                     </ul>
                 </div>
@@ -280,26 +280,63 @@
         <hr />
         <footer>
             <p>&copy; @DateTime.Now.Year - Group 2 { Yet to Find a Good Name }</p>
+
         </footer>
     </div>
 
 
     @RenderSection("scripts", required: false)
 
-
-
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Make Sale</h4>
+                </div>
+                <div class="modal-body" id="partialHere">
+                    
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="modalButton" class="btm btn-default" onclick="makePayment();"></button>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
 
 <script>
+    var cartId;
     function makeSale() {
+        cartId = $('#cartId').val();
         $.ajax({
             contentType: 'application/json',
             type: 'Get',
-            url: '/Sale/Create' + $('#cartId').val(),
+            url: '/Sale/create/' + cartId,
             success: function (data) {
-                console.log("GOT IT");
-                window.location.href = data.Url
+                console.log(data);
+                $('#partialHere').html(data);
+                $('#modalButton').html("Payment");
+                $('#modalButton').attr("onclick", "makePayment();");
+            },
+            error: function () {
+                console.trace();
+            }
+        });
+        console.log(cartId);
+    }
+    function makePayment() {
+        console.log(cartId);
+        $.ajax({
+            contentType: 'application/json',
+            type: 'Get',
+            url: '/Sale/payment/' + cartId,
+            data: {'id':cartId},
+            success: function (data) {
+                $('#partialHere').html(data);
+                $('#modalButton').html("Confirm");
+                $('#modalButton').attr("onclick", "confirmPayment();");
             },
             error: function () {
                 console.trace();
@@ -307,6 +344,43 @@
         });
     }
 
+    function confirmPayment() {
+        var info = {};
+        info.cardNum = $('#cardNum').val();
+        info.expirationDate = $('#expirationDate').val();
+        info.ammount = $('#price').val();
+        info.userId = 1;
+        console.log(info);
+        $.ajax({
+            contentType: 'application/json',
+            type: 'Post',
+            url: '/Sale/Payment/',
+            data: JSON.stringify(info),
+            success: function (data) {
+                
+                $('#myModal').modal('hide');
+
+            },
+            error: function () {
+                console.trace();
+            }
+        });
+    }
+
+    function logout() {
+        $.ajax({
+            contentType: 'application/json',
+            type: 'Post',
+            url: '/User/Logout/',
+            success: function (data) {
+                console.log(data);
+                window.location.href = data.Url;
+            },
+            error: function () {
+                console.trace();
+            }
+        });
+    }
 
 </script>
 
