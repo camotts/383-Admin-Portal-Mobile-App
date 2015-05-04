@@ -27,6 +27,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)Views\BestSellingGames.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\UserApiKey.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\UnauthorizedLookAround.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Repositories\GameRepository.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Game.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Roles.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Models\" />
