@@ -16,7 +16,7 @@ namespace GameStoreMobileApp
 		{
 		}
 
-		public async Task<Game[]> GetGamesAsync(){
+		public async Task<List<Game>> GetGamesAsync(){
 
 			var client = new RestClient("http://dev.envocsupport.com/GameStore2/");
 			var request = new RestRequest ("api/Games", Method.GET);
@@ -39,8 +39,8 @@ namespace GameStoreMobileApp
 
 			if (response.StatusCode == HttpStatusCode.OK) {
 
-				var rootObject = new RestSharp.Deserializers.JsonDeserializer().Deserialize<RootObject>(response);
-				return rootObject.games;
+				var rootObject = new RestSharp.Deserializers.JsonDeserializer().Deserialize<List<Game>>(response);
+				return rootObject;
 			}
 			else {
 				return null;

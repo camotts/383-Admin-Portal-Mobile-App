@@ -6,7 +6,7 @@ namespace GameStoreMobileApp
 	public class AllGames:ContentPage
 	{
 		string currentGreeting = GetGreeting();
-		ListView Lv;
+		ListView Lv = new ListView ();
 		Label L;
 
 		public AllGames(){
@@ -30,18 +30,23 @@ namespace GameStoreMobileApp
 			getGamesButton.Clicked += async (sender, e) => {
 				var webService = new GameRepository ();
 				var webServiceCall = await webService.GetGamesAsync ();
+				Lv.ItemsSource= webServiceCall;
+				Xamarin.Forms.Device.BeginInvokeOnMainThread (()=>{
+					Console.WriteLine ("found size" + webServiceCall.Count);
+				});
 			};
 
-			Lv = new ListView ();
+
 			Lv.ItemTemplate = new DataTemplate (typeof(TextCell));
 			Lv.ItemTemplate.SetBinding (TextCell.TextProperty,"GameName");
-
+			//Console.WriteLine ();
 
 			var layout = new StackLayout {};
 
 			//layout.Children.Add (new BoxView {Color = Color.Transparent, HeightRequest = 50});
 			layout.Children.Add (wishLabel);
 			layout.Children.Add (getGamesButton);
+			layout.Children.Add (Lv);
 
 			Content = layout;
 		}
