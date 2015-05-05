@@ -5,18 +5,20 @@ namespace GameStoreMobileApp
 {
 	public class SearchGame:ContentPage
 	{
+		Label resultsLabel;
 		public SearchGame(){
 			this.BackgroundImage = "33.jpg";
 
-			this.Title="Search";
-			var label = new Label { 
-				Text = "This is background check"
+
+			SearchBar searchBar = new SearchBar
+			{
+				Placeholder = "Serach Game",
 			};
 
 			var layout = new StackLayout ();
-
-			layout.Children.Add (new BoxView {Color = Color.Transparent, HeightRequest = 50});
-			layout.Children.Add (label);
+			//searchBar.SearchButtonPressed += OnSearchBarButtonPressed;
+			layout.Children.Add (new BoxView {Color = Color.Transparent, HeightRequest = 20});
+			layout.Children.Add (searchBar);
 
 			Content = layout;
 		}
