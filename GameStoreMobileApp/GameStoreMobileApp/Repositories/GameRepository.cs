@@ -17,7 +17,7 @@ namespace GameStoreMobileApp
 		}
 
 		public async Task<List<Game>> GetGamesAsync(){
-
+			Application.Current.Properties ["CartQuantity"] = "0";
 			var client = new RestClient("http://dev.envocsupport.com/GameStore2/");
 			var request = new RestRequest ("api/Games", Method.GET);
 			request.OnBeforeDeserialization = resp => { resp.ContentType = "application/json"; };
