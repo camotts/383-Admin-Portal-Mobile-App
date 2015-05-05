@@ -1,13 +1,18 @@
 using System;
 using Xamarin.Forms;
+using System.Collections.Generic;
 
 namespace GameStoreMobileApp
 {
 	public class GameDetailPage:ContentPage
 	{
+		
 		public GameDetailPage(){
 
+
+
 			Content = new ScrollView () {
+
 				Content = new StackLayout () {
 
 					Padding = new Thickness(0,0,0,30),
@@ -22,10 +27,10 @@ namespace GameStoreMobileApp
 						GamePrice (),
 						HorzLine (),
 						GameCount (),
-						HorzLine (),
-						Space(),
-						GameMenu () 
-
+						Space2 (),
+						GameMenu (),TotalGamePicker (),
+						AddtoCartButton ()
+					
 					}
 				}
 			}; 
@@ -61,15 +66,46 @@ namespace GameStoreMobileApp
 				Orientation = StackOrientation.Horizontal,
 				VerticalOptions = LayoutOptions.CenterAndExpand,
 
+
+
 				Children = {
-					TextButton ("Add To Cart"),
+					TextButton ("More Info"),
 					VertLine (),
-					TextButton ("Share"),
-					VertLine ()
+					TextButton ("Share")
 				}
 
 			};
 		}
+
+		private Button AddtoCartButton(){
+			var hud = DependencyService.Get<IHud> ();
+			var addtoCartButton = new Button { 
+				Text = "Add To Cart",
+				BackgroundColor = Color.FromHex ("#009688"),
+				HorizontalOptions = LayoutOptions.Center,
+				TextColor = Color.White,
+				WidthRequest = 205
+			};
+
+			addtoCartButton.Clicked += (o,e) =>
+			{
+				hud.ShowSuccessWithStatus ("Added to Cart");
+
+				string previousCartQuantity = ""+Application.Current.Properties["CartQuantity"] ;
+				int additionalItem = 1;
+				int cartValue=Int32.Parse(previousCartQuantity);
+				if(cartValue == 0){
+					Application.Current.Properties["CartQuantity"] = "1";
+				}
+				else{
+					additionalItem = additionalItem+1;
+					Application.Current.Properties ["CartQuantity"] = additionalItem;
+				}
+			};
+
+			return addtoCartButton;
+		}
+
 
 		private BoxView VertLine ()
 		{
@@ -98,16 +134,27 @@ namespace GameStoreMobileApp
 			return  new BoxView () {
 				Color = Color.Transparent,
 				WidthRequest = 1,
-				HeightRequest = 40,
+				HeightRequest = 15,
 				MinimumWidthRequest = 10,
 				MinimumHeightRequest = 10,
 			};
 		}
 
+		private BoxView Space2 ()
+		{
+			return  new BoxView () {
+				Color = Color.Transparent,
+				WidthRequest = 1,
+				HeightRequest = 10,
+				MinimumWidthRequest = 10,
+				MinimumHeightRequest = 10,
+			};
+		}
 		private Button TextButton (string text)
 		{
 			return new Button { 
-				Text = text,  
+				Text = text,
+				TextColor = Color.Black,
 				HorizontalOptions = LayoutOptions.CenterAndExpand 
 			};
 		}
@@ -137,6 +184,38 @@ namespace GameStoreMobileApp
 				TextColor=Color.Accent
 
 			};
+		}
+
+		private Picker TotalGamePicker(){
+
+			string value = ""+ Application.Current.Properties ["GameCount"];
+			int finalValue = Int32.Parse(value);
+			int[] gameQuantity;
+			gameQuantity = new int[finalValue];
+
+			var picker = new Picker
+			{
+
+				Title = "Quantity",
+				VerticalOptions = LayoutOptions.CenterAndExpand
+			};
+			Padding = new Thickness (35, 0, 35, 0);
+
+			picker.SelectedIndexChanged += (sender, args) =>
+			{
+				if (picker.SelectedIndex == -1)
+				{
+					Application.Current.Properties["CartQuantity"] = '0';
+				}
+				else
+				{
+					Application.Current.Properties["CartQuantity"] = picker.Items[picker.SelectedIndex];
+
+
+				}
+			};
+
+			return picker;
 		}
 
 

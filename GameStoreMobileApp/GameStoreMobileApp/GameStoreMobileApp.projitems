@@ -44,6 +44,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Views\LOGOUT.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\GameDetailPage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\CheckOutPage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Repositories\CartRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Models\" />
