@@ -11,7 +11,7 @@ namespace GameStoreMobileApp
 
 		public AllGames ()
 		{
-			Application.Current.Properties ["CartQuantity"] = "0";
+			
 			//this.BackgroundImage = "33.jpg";
 			this.Title="ANFIELD";
 			//var semiTransparentColor = new Color (0, 0, 0, 0.5);

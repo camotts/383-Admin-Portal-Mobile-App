@@ -9,10 +9,18 @@ namespace GameStoreMobileApp
 
 			this.Title="Check Out";
 			this.BackgroundImage = "33.jpg";
+		
+			string showText = "";
+
+			if (CheckCart () == true) {
+				showText = "Total items in Cart: " + Application.Current.Properties ["CartQuantity"];
+			} else {
+				showText="Please buy something to add it to the Cart.";
+			}
 
 			var label = new Label { 
-				Text = "Total items in Cart: " + Application.Current.Properties["CartQuantity"],
-				FontSize = 30,
+				Text = showText,
+				FontSize = 25,
 				HorizontalOptions = LayoutOptions.Center
 			};
 
@@ -23,7 +31,15 @@ namespace GameStoreMobileApp
 			Content = layout;
 		}
 
-
+		public static Boolean CheckCart(){
+			string previousCartQuantity = ""+Application.Current.Properties["CartQuantity"] ;
+			int cartValue=Int32.Parse(previousCartQuantity);
+			if (cartValue == 0) {
+				return false;
+			} else {
+				return true;
+			}
+		}
 	}
 
 
