@@ -31,3 +31,35 @@ C:\Users\Cam\Documents\CMPS\383\API\GamesTore\GamesToreFrontEnd\bin\System.Web.W
 C:\Users\Cam\Documents\CMPS\383\API\GamesTore\GamesToreFrontEnd\obj\Debug\GamesToreFrontEnd.csprojResolveAssemblyReference.cache
 C:\Users\Cam\Documents\CMPS\383\API\GamesTore\GamesToreFrontEnd\obj\Debug\GamesToreFrontEnd.dll
 C:\Users\Cam\Documents\CMPS\383\API\GamesTore\GamesToreFrontEnd\obj\Debug\GamesToreFrontEnd.pdb
+C:\Users\Cam\Documents\CMPS\383\Final Phase\GamesTore\GamesToreFrontEnd\bin\GamesToreFrontEnd.dll.config
+C:\Users\Cam\Documents\CMPS\383\Final Phase\GamesTore\GamesToreFrontEnd\bin\GamesToreFrontEnd.dll
+C:\Users\Cam\Documents\CMPS\383\Final Phase\GamesTore\GamesToreFrontEnd\bin\GamesToreFrontEnd.pdb
+C:\Users\Cam\Documents\CMPS\383\Final Phase\GamesTore\GamesToreFrontEnd\bin\Antlr3.Runtime.dll
+C:\Users\Cam\Documents\CMPS\383\Final Phase\GamesTore\GamesToreFrontEnd\bin\EntityFramework.dll
+C:\Users\Cam\Documents\CMPS\383\Final Phase\GamesTore\GamesToreFrontEnd\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Cam\Documents\CMPS\383\Final Phase\GamesTore\GamesToreFrontEnd\bin\Microsoft.Web.Mvc.FixedDisplayModes.dll
+C:\Users\Cam\Documents\CMPS\383\Final Phase\GamesTore\GamesToreFrontEnd\bin\Newtonsoft.Json.dll
+C:\Users\Cam\Documents\CMPS\383\Final Phase\GamesTore\GamesToreFrontEnd\bin\System.Net.Http.Formatting.dll
+C:\Users\Cam\Documents\CMPS\383\Final Phase\GamesTore\GamesToreFrontEnd\bin\System.Web.Http.dll
+C:\Users\Cam\Documents\CMPS\383\Final Phase\GamesTore\GamesToreFrontEnd\bin\System.Web.Http.WebHost.dll
+C:\Users\Cam\Documents\CMPS\383\Final Phase\GamesTore\GamesToreFrontEnd\bin\System.Web.Mvc.dll
+C:\Users\Cam\Documents\CMPS\383\Final Phase\GamesTore\GamesToreFrontEnd\bin\System.Web.Optimization.dll
+C:\Users\Cam\Documents\CMPS\383\Final Phase\GamesTore\GamesToreFrontEnd\bin\System.Web.Providers.dll
+C:\Users\Cam\Documents\CMPS\383\Final Phase\GamesTore\GamesToreFrontEnd\bin\System.Web.Razor.dll
+C:\Users\Cam\Documents\CMPS\383\Final Phase\GamesTore\GamesToreFrontEnd\bin\System.Web.WebPages.Deployment.dll
+C:\Users\Cam\Documents\CMPS\383\Final Phase\GamesTore\GamesToreFrontEnd\bin\System.Web.WebPages.dll
+C:\Users\Cam\Documents\CMPS\383\Final Phase\GamesTore\GamesToreFrontEnd\bin\System.Web.WebPages.Razor.dll
+C:\Users\Cam\Documents\CMPS\383\Final Phase\GamesTore\GamesToreFrontEnd\bin\WebGrease.dll
+C:\Users\Cam\Documents\CMPS\383\Final Phase\GamesTore\GamesToreFrontEnd\bin\EntityFramework.xml
+C:\Users\Cam\Documents\CMPS\383\Final Phase\GamesTore\GamesToreFrontEnd\bin\Newtonsoft.Json.xml
+C:\Users\Cam\Documents\CMPS\383\Final Phase\GamesTore\GamesToreFrontEnd\bin\System.Net.Http.Formatting.xml
+C:\Users\Cam\Documents\CMPS\383\Final Phase\GamesTore\GamesToreFrontEnd\bin\System.Web.Http.xml
+C:\Users\Cam\Documents\CMPS\383\Final Phase\GamesTore\GamesToreFrontEnd\bin\System.Web.Http.WebHost.xml
+C:\Users\Cam\Documents\CMPS\383\Final Phase\GamesTore\GamesToreFrontEnd\bin\System.Web.Mvc.xml
+C:\Users\Cam\Documents\CMPS\383\Final Phase\GamesTore\GamesToreFrontEnd\bin\System.Web.Razor.xml
+C:\Users\Cam\Documents\CMPS\383\Final Phase\GamesTore\GamesToreFrontEnd\bin\System.Web.WebPages.xml
+C:\Users\Cam\Documents\CMPS\383\Final Phase\GamesTore\GamesToreFrontEnd\bin\System.Web.WebPages.Deployment.xml
+C:\Users\Cam\Documents\CMPS\383\Final Phase\GamesTore\GamesToreFrontEnd\bin\System.Web.WebPages.Razor.xml
+C:\Users\Cam\Documents\CMPS\383\Final Phase\GamesTore\GamesToreFrontEnd\obj\Debug\GamesToreFrontEnd.csprojResolveAssemblyReference.cache
+C:\Users\Cam\Documents\CMPS\383\Final Phase\GamesTore\GamesToreFrontEnd\obj\Debug\GamesToreFrontEnd.dll
+C:\Users\Cam\Documents\CMPS\383\Final Phase\GamesTore\GamesToreFrontEnd\obj\Debug\GamesToreFrontEnd.pdb
