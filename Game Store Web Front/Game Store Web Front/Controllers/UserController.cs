@@ -116,7 +116,7 @@ namespace Game_Store_Web_Front.Controllers
         [HttpGet]
         public ActionResult Create()
         {
-            if (!Session["Role"].Equals("Admin"))
+            if (Session["Role"].Equals("Admin"))
             {
                 return RedirectToAction("Index", "Home");
             } 
@@ -127,7 +127,7 @@ namespace Game_Store_Web_Front.Controllers
         [HttpPost]
         public ActionResult Create(SetUserDTO collection)
         {
-            if (!Session["Role"].Equals("Admin"))
+            if (Session["Role"].Equals("Admin"))
             {
                 return RedirectToAction("Index", "Home");
             } 
@@ -160,7 +160,7 @@ namespace Game_Store_Web_Front.Controllers
         // GET: User/Edit/5
         public ActionResult Edit(int id)
         {
-            if (!Session["Role"].Equals("Admin"))
+            if (Session["Role"].Equals("Admin"))
             {
                 return RedirectToAction("Index", "Home");
             } 
@@ -193,7 +193,7 @@ namespace Game_Store_Web_Front.Controllers
         [HttpPost]
         public ActionResult Edit(int id, SetUserDTO collection)
         {
-            if (!Session["Role"].Equals("Admin"))
+            if (Session["Role"].Equals("Admin"))
             {
                 return RedirectToAction("Index", "Home");
             } 
@@ -233,7 +233,7 @@ namespace Game_Store_Web_Front.Controllers
         // POST: User/Delete/5
         [HttpPost]
         public ActionResult Delete(int id){
-            if (!Session["Role"].Equals("Admin"))
+            if (Session["Role"].Equals("Admin"))
             {
                 return RedirectToAction("Index", "Home");
             } 
