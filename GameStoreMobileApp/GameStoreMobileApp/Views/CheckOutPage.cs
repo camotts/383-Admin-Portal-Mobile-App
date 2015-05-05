@@ -24,9 +24,27 @@ namespace GameStoreMobileApp
 				HorizontalOptions = LayoutOptions.Center
 			};
 
+			var BuyGame = new Button {
+				Text = "Check Out",
+				TextColor = Color.White,
+				BackgroundColor = Color.FromHex ("#2196F3"),
+				Font = Font.SystemFontOfSize( 20 ),
+				WidthRequest = 145,
+				HeightRequest = 40,
+				HorizontalOptions= LayoutOptions.Center
+
+			};
+
+			BuyGame.Clicked += (o,e) => 
+			{
+				DisplayAlert ("Check Out!", "We are still in BETA! Adding it SOON!!!", "OK!");
+			};
+
 			var layout = new StackLayout ();
 			layout.Children.Add (new BoxView {Color = Color.Transparent, HeightRequest = 60});
 			layout.Children.Add (label);
+			layout.Children.Add (new BoxView {Color = Color.Transparent, HeightRequest = 40});
+			layout.Children.Add (BuyGame);
 
 			Content = layout;
 		}
