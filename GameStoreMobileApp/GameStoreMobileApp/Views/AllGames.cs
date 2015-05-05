@@ -12,11 +12,17 @@ namespace GameStoreMobileApp
 		public AllGames ()
 		{
 
-			this.BackgroundImage = "33.jpg";
-
+			//this.BackgroundImage = "33.jpg";
+			this.Title="ANFIELD";
 			var semiTransparentColor = new Color (0, 0, 0, 0.5);
-			Padding = new Thickness (6, 25, 4, 6);
+			Padding = new Thickness (6, 0, 4, 6);
 
+			var label = new Label { 
+				Text="THE GAME SHOP",
+				FontSize = 24,
+				HorizontalOptions = LayoutOptions.Center,
+				TextColor = Color.Accent
+			};
 			var wishLabel = new Button () { 
 				Text = currentGreeting + Application.Current.Properties ["FirstName"] + "!",
 				BackgroundColor = semiTransparentColor,
@@ -57,12 +63,24 @@ namespace GameStoreMobileApp
 
 			Lv.ItemTemplate = new DataTemplate (typeof(TextCell));
 			Lv.ItemTemplate.SetBinding (TextCell.TextProperty, "GameName");
+
+			Lv.ItemSelected += (sender, e) => {
+				var selectGame = (Game)e.SelectedItem;
+
+				Application.Current.Properties["GameName"] = selectGame.GameName;
+				Application.Current.Properties["GamePrice"] = selectGame.Price;
+				Application.Current.Properties["GameCount"] = selectGame.InventoryStock;
+				Application.Current.Properties["ImageValue"] = Random ();
+				Navigation.PushAsync (new GameDetailPage());
+			};
 			//Console.WriteLine ();
 
 			var layout = new StackLayout { };
 
 			//layout.Children.Add (new BoxView {Color = Color.Transparent, HeightRequest = 50});
 			layout.Children.Add (wishLabel);
+			layout.Children.Add (new BoxView {Color = Color.Transparent, HeightRequest = 30});
+			layout.Children.Add (label);
 			layout.Children.Add (getGamesButton);
 			layout.Children.Add (Lv);
 
@@ -85,6 +103,12 @@ namespace GameStoreMobileApp
 				dashGreeting = "Hello, ";
 			}
 			return dashGreeting;
+		}
+
+		public static int Random(){
+			Random randomImage = new Random();
+			int value = randomImage.Next(1,7);
+			return value;
 		}
 	}
 

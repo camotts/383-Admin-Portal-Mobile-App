@@ -26,10 +26,15 @@ namespace GameStoreMobileApp
 					
 			};
 
-
+			var hud = DependencyService.Get<IHud> ();
 			LogOutButton.Clicked += (o,e) => 
 			{
-				Navigation.PushModalAsync (new HomeScreen ());
+				hud.ShowSuccessWithStatus("Logged Out!");
+				Device.StartTimer (new TimeSpan (0, 0, 2), () => {
+					Navigation.PushModalAsync (new HomeScreen ());
+					return false; // runs again, or false to stop
+				});
+
 				Application.Current.Properties.Clear ();
 			};
 

@@ -42,6 +42,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Views\Legal.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\AccountBalance.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\LOGOUT.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\GameDetailPage.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Models\" />

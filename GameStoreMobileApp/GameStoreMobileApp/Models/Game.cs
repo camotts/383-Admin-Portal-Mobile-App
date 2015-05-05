@@ -13,10 +13,13 @@ namespace GameStoreMobileApp
 		public int InventoryStock { get; set;}
 		public List<Genre> Genres { get; set;}
 		public List<Tag> Tags { get; set;}
+
+		public string GameDescription
+		{
+			get { return String.Format ("Game: {0}, Price: {1}", GameName, Price); }
+		}
 	}
 
-	public class RootObject{
-		public Game[] games { get; set;}
-	}
+
 }
 
