@@ -116,7 +116,7 @@ namespace Game_Store_Web_Front.Controllers
         [HttpGet]
         public ActionResult Create()
         {
-            if (Session["Role"].Equals("Admin"))
+            if (!Session["Role"].Equals("Admin"))
             {
                 return RedirectToAction("Index", "Home");
             } 
@@ -127,7 +127,7 @@ namespace Game_Store_Web_Front.Controllers
         [HttpPost]
         public ActionResult Create(SetUserDTO collection)
         {
-            if (Session["Role"].Equals("Admin"))
+            if (!Session["Role"].Equals("Admin"))
             {
                 return RedirectToAction("Index", "Home");
             } 
@@ -160,7 +160,7 @@ namespace Game_Store_Web_Front.Controllers
         // GET: User/Edit/5
         public ActionResult Edit(int id)
         {
-            if (Session["Role"].Equals("Admin"))
+            if (!Session["Role"].Equals("Admin"))
             {
                 return RedirectToAction("Index", "Home");
             } 
@@ -193,7 +193,7 @@ namespace Game_Store_Web_Front.Controllers
         [HttpPost]
         public ActionResult Edit(int id, SetUserDTO collection)
         {
-            if (Session["Role"].Equals("Admin"))
+            if (!Session["Role"].Equals("Admin"))
             {
                 return RedirectToAction("Index", "Home");
             } 
@@ -233,7 +233,7 @@ namespace Game_Store_Web_Front.Controllers
         // POST: User/Delete/5
         [HttpPost]
         public ActionResult Delete(int id){
-            if (Session["Role"].Equals("Admin"))
+            if (!Session["Role"].Equals("Admin"))
             {
                 return RedirectToAction("Index", "Home");
             } 
@@ -292,12 +292,15 @@ namespace Game_Store_Web_Front.Controllers
                 Session["ApiKey"] = x.ApiKey;
                 Session["UserId"] = x.UserId;
 
+                request = new RestRequest("api/ApiKey?email=roboAdmin@selu.edu&password=123456", Method.GET);
+                queryResult = client.Execute(request);
+                var x2 = deserial.Deserialize<GetApikeyDTO>(queryResult);
 
                 request = new RestRequest("api/Users/" + x.UserId, Method.GET);
-                var apiKey = Session["ApiKey"];
-                var UserId = Session["UserId"];
-                request.AddHeader("xcmps383authenticationkey", apiKey.ToString());
-                request.AddHeader("xcmps383authenticationid", UserId.ToString());
+                
+
+                request.AddHeader("xcmps383authenticationkey", x2.ApiKey);
+                request.AddHeader("xcmps383authenticationid", x2.UserId.ToString());
                 queryResult = client.Execute(request);
 
                 GetUserDTO user = new GetUserDTO();
@@ -309,7 +312,15 @@ namespace Game_Store_Web_Front.Controllers
                 if (queryResult.StatusCode == HttpStatusCode.OK)
                 {
                     user = deserial.Deserialize<GetUserDTO>(queryResult);
-                    Session["Role"] = user.Role;
+                    if (user.Role.ToString().Equals("User"))
+                    {
+                        Session["Role"] = null;
+                    }
+                    else
+                    {
+                        Session["Role"] = user.Role.ToString();
+                    }
+                    
                     Session["Name"] = user.FirstName;
                 }
                 else
@@ -317,6 +328,7 @@ namespace Game_Store_Web_Front.Controllers
                     Session["Role"] = "User";
                     Session["Name"] = "Customer";
                 }
+
                 
                 return RedirectToAction("Index", "Home");
             }
