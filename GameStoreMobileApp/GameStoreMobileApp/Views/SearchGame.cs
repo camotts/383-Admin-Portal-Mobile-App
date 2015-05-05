@@ -8,6 +8,7 @@ namespace GameStoreMobileApp
 		public SearchGame(){
 			this.BackgroundImage = "33.jpg";
 
+			this.Title="Search";
 			var label = new Label { 
 				Text = "This is background check"
 			};

@@ -160,6 +160,7 @@
     <BundleResource Include="Resources\detail1.jpg" />
     <BundleResource Include="Resources\detail2.jpg" />
     <BundleResource Include="Resources\detail3.jpg" />
+    <BundleResource Include="Resources\Shopping Cart-25.png" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
