@@ -160,7 +160,18 @@ nav.navbar-mybar {
         -webkit-transform:translate(50px, 0);
         transform:translate(50px,0);
     }
-
+    .thumbnail:hover {
+    position:relative;
+    -webkit-transform: scale(10) translate(50px, 20px);
+    display:block;
+    z-index:999;
+}
+    .thumbnail2:hover {
+    position:relative;
+    -webkit-transform: scale(10);
+    display:block;
+    z-index:999;
+}
 
     
 
