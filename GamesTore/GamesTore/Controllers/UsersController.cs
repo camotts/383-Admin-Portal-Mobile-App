@@ -56,7 +56,7 @@ namespace GamesTore.Controllers
 
         // PUT: api/Users/5
         [HttpPut]
-        public HttpResponseMessage PutUserModel(int id, SetUserDTO usermodel)
+        public HttpResponseMessage PutUserModel(int id, [FromBody]UserModel usermodel)
         {
             if (IsAuthorized(Request, new List<Roles> { Roles.Admin }))
             {
@@ -65,7 +65,10 @@ namespace GamesTore.Controllers
                     return Request.CreateResponse(HttpStatusCode.BadRequest, ModelState);
                 }
 
-
+                if (id != usermodel.Id)
+                {
+                    return Request.CreateResponse(HttpStatusCode.BadRequest);
+                }
 
                 var original = db.Users.Find(id);
 
