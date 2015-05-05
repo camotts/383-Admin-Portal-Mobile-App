@@ -290,7 +290,7 @@ namespace Game_Store_Web_Front.Controllers
                     user = deserial.Deserialize<GetUserDTO>(queryResult);
                 }
                 Session["Role"] = user.Role;
-
+                Session["Name"] = user.FirstName;
                 return RedirectToAction("Index", "Home");
             }
             else
@@ -306,7 +306,7 @@ namespace Game_Store_Web_Front.Controllers
             Session["ApiKey"] = null;
             Session["UserId"] = null;
             Session["Role"] = null;
-
+            Session["Name"] = null;
             var redirectUrl = new UrlHelper(Request.RequestContext).Action("Index", "Home");
             return Json(new { Url = redirectUrl });
         }

@@ -41,6 +41,9 @@
             <th>
                 Tags
             </th>
+            <th>
+                Commands
+            </th>
         </tr>
     </thead>
     <tbody>
@@ -73,6 +76,9 @@
                             </li>
                         }
                     </ul>
+                </td>
+                <td>
+                    <button type="button" id="editButton @item.Id" onclick="window.location.href='/game/edit/@item.Id'" class="pull-right btm btn-warning" value="Edit">Edit</button>
                 </td>
 
             </tr>
@@ -136,6 +142,7 @@
 
 
 <script>
+    speak('Woah now! That is a lot of games! How do yo plan to sell all of these?');
     function deleteGame(deleteId) {
         var temp = deleteId
         $.ajax({

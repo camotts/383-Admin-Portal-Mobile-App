@@ -85,4 +85,8 @@ margin: 0px auto 15px;
     $(function () {
         $(".player").mb_YTPlayer();
     });
+    console.log('@Session["Name"]');
+    if ('@Session["Name"]' != "") {
+        speak('Hello, ' + '@Session["Name"]' + '! How are you today?');
+    }
 </script>

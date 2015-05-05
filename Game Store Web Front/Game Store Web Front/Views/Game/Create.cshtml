@@ -101,6 +101,32 @@
     $(function () {
         $('.datepicker').datepicker();
     });
+    var temp = Math.floor((Math.random() * 2) + 1);
+    var thing;
+    var other;
+    if (temp === 1) {
+        thing = "genre";
+        var genreList = [], counter = 0;
+        $(".genre").each(function (idx, li) {
+            var split = $(li).attr('id').split('-')
+            genreList.push($(li).text())
+        });
+        var item = genreList[Math.floor(Math.random() * genreList.length)];
+        console.log(item);
+        other = item;
+    }
+    else {
+        thing = "tag";
+        var tagList = [], counter = 0;
+        $(".tag").each(function (idx, li) {
+            var split = $(li).attr('id').split('-')
+            tagList.push($(li).text())
+        });
+        var item = tagList[Math.floor(Math.random() * tagList.length)];
+        console.log(item);
+        other = item;
+    }
+    speak('What kind of game would you like to make? Perhaps one with a ' + other + thing);
     var createGame = {};
     function sendInput() {
         var tags = getCheckedTags();
