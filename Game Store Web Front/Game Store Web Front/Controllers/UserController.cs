@@ -89,6 +89,8 @@ namespace Game_Store_Web_Front.Controllers
         // GET: User/Details/5
         public JsonResult Details(int id)
         {
+            
+
             var request = new RestRequest("api/Users/" + id, Method.GET);
             var apiKey = Session["ApiKey"];
             var UserId = Session["UserId"];
@@ -114,6 +116,10 @@ namespace Game_Store_Web_Front.Controllers
         [HttpGet]
         public ActionResult Create()
         {
+            if (!Session["Role"].Equals("Admin"))
+            {
+                return RedirectToAction("Index", "Home");
+            } 
             return View();
         }
 
@@ -121,7 +127,10 @@ namespace Game_Store_Web_Front.Controllers
         [HttpPost]
         public ActionResult Create(SetUserDTO collection)
         {
-
+            if (!Session["Role"].Equals("Admin"))
+            {
+                return RedirectToAction("Index", "Home");
+            } 
             // TODO: Add insert logic here
             var request = new RestRequest("api/Users/", Method.POST);
             var apiKey = Session["ApiKey"];
@@ -151,6 +160,10 @@ namespace Game_Store_Web_Front.Controllers
         // GET: User/Edit/5
         public ActionResult Edit(int id)
         {
+            if (!Session["Role"].Equals("Admin"))
+            {
+                return RedirectToAction("Index", "Home");
+            } 
             var request = new RestRequest("api/Users/" + id, Method.GET);
             var apiKey = Session["ApiKey"];
             var UserId = Session["UserId"];
@@ -180,6 +193,10 @@ namespace Game_Store_Web_Front.Controllers
         [HttpPost]
         public ActionResult Edit(int id, SetUserDTO collection)
         {
+            if (!Session["Role"].Equals("Admin"))
+            {
+                return RedirectToAction("Index", "Home");
+            } 
             try
             {
                 // TODO: Add update logic here
@@ -216,6 +233,10 @@ namespace Game_Store_Web_Front.Controllers
         // POST: User/Delete/5
         [HttpPost]
         public ActionResult Delete(int id){
+            if (!Session["Role"].Equals("Admin"))
+            {
+                return RedirectToAction("Index", "Home");
+            } 
             try
             {
 
@@ -288,9 +309,15 @@ namespace Game_Store_Web_Front.Controllers
                 if (queryResult.StatusCode == HttpStatusCode.OK)
                 {
                     user = deserial.Deserialize<GetUserDTO>(queryResult);
+                    Session["Role"] = user.Role;
+                    Session["Name"] = user.FirstName;
                 }
-                Session["Role"] = user.Role;
-                Session["Name"] = user.FirstName;
+                else
+                {
+                    Session["Role"] = "User";
+                    Session["Name"] = "Customer";
+                }
+                
                 return RedirectToAction("Index", "Home");
             }
             else

@@ -59,6 +59,10 @@ namespace Game_Store_Web_Front.Controllers
         [HttpGet]
         public ActionResult Create()
         {
+            if (!Session["Role"].Equals("Admin"))
+            {
+                return RedirectToAction("Index", "Home");
+            } 
             List<GetGenreDTO> genres = new List<GetGenreDTO>();
             List<GetTagDTO> tags = new List<GetTagDTO>();
 
@@ -75,6 +79,10 @@ namespace Game_Store_Web_Front.Controllers
         [HttpPost]
         public ActionResult Create(SetGameDTO createGame)
         {
+            if (!Session["Role"].Equals("Admin"))
+            {
+                return RedirectToAction("Index", "Home");
+            } 
             var request = new RestRequest("api/Games", Method.POST);
             var apiKey = Session["ApiKey"];
             var UserId = Session["UserId"];
@@ -106,6 +114,10 @@ namespace Game_Store_Web_Front.Controllers
         [HttpGet]
         public ActionResult Edit(int id)
         {
+            if (!Session["Role"].Equals("Admin"))
+            {
+                return RedirectToAction("Index", "Home");
+            } 
             var request = new RestRequest("api/Games/" + id, Method.GET);
             var apiKey = Session["ApiKey"];
             var UserId = Session["UserId"];
@@ -172,6 +184,10 @@ namespace Game_Store_Web_Front.Controllers
         [HttpPost]
         public ActionResult Edit(GetGameDTO editedGame, string url)
         {
+            if (!Session["Role"].Equals("Admin"))
+            {
+                return RedirectToAction("Index", "Home");
+            } 
             try
             {
                 Mapper.CreateMap<SetGameDTO, GetGameDTO>();
@@ -232,6 +248,10 @@ namespace Game_Store_Web_Front.Controllers
         [HttpPost]
         public ActionResult Delete(int id)
         {
+            if (!Session["Role"].Equals("Admin"))
+            {
+                return RedirectToAction("Index", "Home");
+            } 
             try
             {
                 

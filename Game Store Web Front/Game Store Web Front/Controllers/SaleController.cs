@@ -416,7 +416,7 @@ namespace Game_Store_Web_Front.Controllers
 
             statusCodeCheck(queryResult);
 
-            if (queryResult.StatusCode == HttpStatusCode.OK)
+            if (queryResult.StatusCode == HttpStatusCode.OK)               
             {
                 RestSharp.Deserializers.JsonDeserializer deserial = new JsonDeserializer();
                 x = JsonConvert.DeserializeObject<List<GetCartDTO>>(queryResult.Content);
@@ -430,6 +430,7 @@ namespace Game_Store_Web_Front.Controllers
                     }
                 }
             }
+
 
             return x;
         }

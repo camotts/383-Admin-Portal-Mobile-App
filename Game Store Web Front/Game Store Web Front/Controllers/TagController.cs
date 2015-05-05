@@ -55,6 +55,10 @@ namespace Game_Store_Web_Front.Controllers
         // GET: Tag/Create
         public ActionResult Create()
         {
+            if (!Session["Role"].Equals("Admin"))
+            {
+                return RedirectToAction("Index", "Home");
+            } 
             return View();
         }
 
@@ -62,6 +66,10 @@ namespace Game_Store_Web_Front.Controllers
         [HttpPost]
         public ActionResult Create(SetTagDTO collection)
         {
+            if (!Session["Role"].Equals("Admin"))
+            {
+                return RedirectToAction("Index", "Home");
+            } 
             var request = new RestRequest("api/Tags/", Method.POST);
             var apiKey = Session["ApiKey"];
             var UserId = Session["UserId"];
@@ -88,6 +96,10 @@ namespace Game_Store_Web_Front.Controllers
         // GET: Tag/Edit/5
         public ActionResult Edit(int id)
         {
+            if (!Session["Role"].Equals("Admin"))
+            {
+                return RedirectToAction("Index", "Home");
+            } 
             var request = new RestRequest("api/Tags/" + id, Method.GET);
             var apiKey = Session["ApiKey"];
             var UserId = Session["UserId"];
@@ -118,6 +130,10 @@ namespace Game_Store_Web_Front.Controllers
         [HttpPost]
         public ActionResult Edit(int id, SetTagDTO collection)
         {
+            if (!Session["Role"].Equals("Admin"))
+            {
+                return RedirectToAction("Index", "Home");
+            } 
             try
             {
                 // TODO: Add update logic here
@@ -154,6 +170,10 @@ namespace Game_Store_Web_Front.Controllers
         [HttpPost]
         public ActionResult Delete(int id)
         {
+            if (!Session["Role"].Equals("Admin"))
+            {
+                return RedirectToAction("Index", "Home");
+            } 
             try
             {
                 // TODO: Add update logic here

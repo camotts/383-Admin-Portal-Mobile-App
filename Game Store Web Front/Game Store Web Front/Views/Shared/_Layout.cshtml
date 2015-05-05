@@ -162,7 +162,58 @@
 <body>
 
 
-    @if (Convert.ToInt32(Session["Role"]) != 2 && Session["Role"] != null)
+    @if (Session["Role"] == null || Session["Role"].Equals("User") )
+    {
+        <nav class="navbar navbar-mybar navbar-fixed-top" style="height:60px">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <strong style="font-size:40px; text-decoration : none ">@Html.ActionLink("Game Store", "Index", "Home")</strong>
+                </div>
+                <div class="collapse navbar-collapse" id="navbar">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-fw fa-bell-o"></i> Games <span class="glyphicon glyphicon-arrow-down"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="/game"><i class="fa fa-fw fa-tag"></i> <span class="badge">Recent Releases</span>  <span class="badge">By Date</span>All the new ones in Store !</a></li>
+                                <li><a href="#"><i class="fa fa-fw fa-thumbs-o-up"></i> <span class="badge">Coming Soon</span> Keep yourself Updated !</a></li>
+                                <li><a href="#"><i class="fa fa-fw fa-thumbs-o-up"></i> <span class="badge">All Collection</span>Look out for all the Games in Store !</a></li>
+                                <li><a href="#"><i class="fa fa-fw fa-thumbs-o-up"></i> <span class="badge">Sale</span>Save more than 36% !(Limited Offer)</a></li>
+
+                            </ul>
+                        </li>
+                        <li class="active"><a href="#">News <span class="sr-only">(current)</span></a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">About Us <span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="#">Location</a></li>
+                                <li><a href="#">Contact Us</a></li>
+                                <li class="divider"></li>
+                                <li><a href="#">Return and Shipping</a></li>
+                                <li><a href="#exit">Our Team</a></li>
+                            </ul>
+                        </li>
+                        @if(Session["Role"] == null){
+                        <li class="active">@Html.ActionLink("Sign In", "Login", "User") <span class="sr-only">(current)</span></li>
+                        }
+                        else{
+                            <li class="active" onclick="logout();">@Html.ActionLink("Logout", "", "") <span class="sr-only">(current)</span></li>
+                        }
+                    </ul>
+                    <form class="search navbar-right">
+                        <input type="text" class="form-control input-sm" maxlength="64" placeholder="Search Game" />
+                        <button type="submit" class="btn btn-primary btn-sm" style="background-color:#E64A19; border-color: #E64A19; font-size:large ">Search</button>
+
+                    </form>
+                </div>
+        </nav>
+    }
+    else
     {
         <nav class="navbar navbar-default sidebar" role="navigation">
             <div class="container-fluid">
@@ -226,53 +277,7 @@
             </div>
         </nav>
     }
-    else
-    {
-        <nav class="navbar navbar-mybar navbar-fixed-top" style="height:60px">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <strong style="font-size:40px; text-decoration : none ">@Html.ActionLink("Game Store", "Index", "Home")</strong>
-                </div>
-                <div class="collapse navbar-collapse" id="navbar">
-                    <ul class="nav navbar-nav navbar-right">
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-fw fa-bell-o"></i> Games <span class="glyphicon glyphicon-arrow-down"></span></a>
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a href="/game"><i class="fa fa-fw fa-tag"></i> <span class="badge">Recent Releases</span>  <span class="badge">By Date</span>All the new ones in Store !</a></li>
-                                <li><a href="#"><i class="fa fa-fw fa-thumbs-o-up"></i> <span class="badge">Coming Soon</span> Keep yourself Updated !</a></li>
-                                <li><a href="#"><i class="fa fa-fw fa-thumbs-o-up"></i> <span class="badge">All Collection</span>Look out for all the Games in Store !</a></li>
-                                <li><a href="#"><i class="fa fa-fw fa-thumbs-o-up"></i> <span class="badge">Sale</span>Save more than 36% !(Limited Offer)</a></li>
-
-                            </ul>
-                        </li>
-                        <li class="active"><a href="#">News <span class="sr-only">(current)</span></a></li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">About Us <span class="caret"></span></a>
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a href="#">Location</a></li>
-                                <li><a href="#">Contact Us</a></li>
-                                <li class="divider"></li>
-                                <li><a href="#">Return and Shipping</a></li>
-                                <li><a href="#exit">Our Team</a></li>
-                            </ul>
-                        </li>
-                        <li class="active">@Html.ActionLink("Sign In", "Login", "User") <span class="sr-only">(current)</span></li>
-                    </ul>
-                    <form class="search navbar-right">
-                        <input type="text" class="form-control input-sm" maxlength="64" placeholder="Search Game" />
-                        <button type="submit" class="btn btn-primary btn-sm" style="background-color:#E64A19; border-color: #E64A19; font-size:large ">Search</button>
-
-                    </form>
-                </div>
-        </nav>
-    }
-
+    
     <div class="container">
 
 
