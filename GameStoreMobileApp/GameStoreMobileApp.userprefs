@@ -1,16 +1,20 @@
 ﻿<Properties StartupItem="iOS/GameStoreMobileApp.iOS.csproj">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.IPhone6.8.3" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="GameStoreMobileApp/Repositories/UserRepository.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.IPhone5s.8.3" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="GameStoreMobileApp/Views/UserAccount.cs">
     <Files>
-      <File FileName="GameStoreMobileApp/Models/User.cs" Line="5" Column="2" />
-      <File FileName="GameStoreMobileApp/Models/UserApiKey.cs" Line="7" Column="20" />
       <File FileName="GameStoreMobileApp/Views/HomeScreen.cs" Line="1" Column="1" />
-      <File FileName="GameStoreMobileApp/Views/AllGames.cs" Line="22" Column="29" />
+      <File FileName="GameStoreMobileApp/Views/AllGames.cs" Line="56" Column="4" />
       <File FileName="GameStoreMobileApp/Views/SearchGame.cs" Line="1" Column="1" />
       <File FileName="GameStoreMobileApp/Views/BestSellingGames.cs" Line="1" Column="1" />
-      <File FileName="GameStoreMobileApp/Repositories/GameRepository.cs" Line="1" Column="1" />
-      <File FileName="GameStoreMobileApp/Models/Game.cs" Line="9" Column="32" />
-      <File FileName="GameStoreMobileApp/Repositories/UserRepository.cs" Line="28" Column="56" />
+      <File FileName="GameStoreMobileApp/Repositories/GameRepository.cs" Line="17" Column="4" />
+      <File FileName="GameStoreMobileApp/Models/Game.cs" Line="10" Column="39" />
+      <File FileName="GameStoreMobileApp/Repositories/UserRepository.cs" Line="29" Column="4" />
+      <File FileName="iOS/Main.cs" Line="17" Column="1" />
+      <File FileName="GameStoreMobileApp/Models/Tag.cs" Line="10" Column="34" />
+      <File FileName="GameStoreMobileApp/Models/Genre.cs" Line="10" Column="24" />
+      <File FileName="GameStoreMobileApp/Views/LogInPage.cs" Line="66" Column="6" />
+      <File FileName="GameStoreMobileApp/Views/LookAround.cs" Line="16" Column="20" />
+      <File FileName="GameStoreMobileApp/Views/UserAccount.cs" Line="13" Column="7" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

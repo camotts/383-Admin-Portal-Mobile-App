@@ -67,7 +67,7 @@ namespace GameStoreMobileApp
 			LookAroundButton.Clicked += (o,e) =>
 			{
 				if(Application.Current.Properties.ContainsKey("UserId")){
-					Navigation.PushAsync (new LookAround());
+					Navigation.PushAsync (new NavigationPage(new LookAround()));
 				}
 				else{
 					Navigation.PushAsync (new UnauthorizedLookAround());

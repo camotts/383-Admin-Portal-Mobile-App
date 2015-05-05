@@ -17,9 +17,9 @@ namespace GameStoreMobileApp
 				return false; // runs again, or false to stop
 			});
 				
-			Children.Add (new AllGames {Title="All",Icon="Menu-32.png"});
-			Children.Add (new BestSellingGames{Title="Best Seller",Icon="Star-32.png"});
+			Children.Add (new AllGames {Title="Store",Icon="Menu-32.png"});
 			Children.Add (new SearchGame {Title="Search",Icon="Search-32.png"});
+			Children.Add (new NavigationPage (new UserAccount()) { Title="Account", Icon="Contacts-32.png" });
 		}
 
 

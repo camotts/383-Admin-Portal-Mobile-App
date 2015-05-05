@@ -24,7 +24,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Interface\IHud.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\AllGames.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\SearchGame.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Views\BestSellingGames.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\UserApiKey.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\UnauthorizedLookAround.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Repositories\GameRepository.cs" />
@@ -32,6 +31,17 @@
     <Compile Include="$(MSBuildThisFileDirectory)Models\Roles.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Genre.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Tag.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\UserAccount.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\OrderHistory.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\AccountSettings.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\BillingInfo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\ShippingInfo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\RedeemDiscount.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Help.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Notofications.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Legal.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\AccountBalance.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\LOGOUT.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Models\" />

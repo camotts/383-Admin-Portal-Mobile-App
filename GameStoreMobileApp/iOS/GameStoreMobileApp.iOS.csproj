@@ -156,6 +156,7 @@
     <BundleResource Include="Resources\ad3.jpg" />
     <BundleResource Include="Resources\ad4.jpg" />
     <BundleResource Include="Resources\ad5.jpg" />
+    <BundleResource Include="Resources\Contacts-32.png" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />

@@ -73,6 +73,7 @@ namespace GameStoreMobileApp
 						hud.Dismiss ();
 						return false; // runs again, or false to stop
 					});
+						
 				} else {
 					hud.ShowErrorWithStatus ("Invalid Credentials");
 					DisplayAlert ("Sorry! Invalid Credentials.", "Please Check your Email or Password!", "Try Again");
